@@ -9,8 +9,13 @@
 body {
   display: flex;
   justify-content: center;
-  font-family: "Poppins";
-  background-image: url(./image/IMG-20210707-WA0002.jpg);
+  font-family: Arial, Helvetica, sans-serif;
+  background: url(./image/IMG-20210707-WA0002.jpg);
+  background-color: antiquewhite;
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
@@ -250,28 +255,76 @@ p {
 }
 
 @media screen and (max-width: 476px) {
+  .container {
+    margin: 20px 35px;
+  }
   .form-container {
-    width: 300px;
-    margin: auto;
+    width: auto;
+  }
+  .reset-form-container {
+    width: auto;
   }
   input[type="text"],
   input[type="password"] {
-    width: auto;
+    width: 75vw;
+    margin: 5px 15px 22px 15px;
   }
   .check-sec input[type="checkbox" i] {
     margin: 0;
+    margin-right: 10px;
   }
   .check-sec {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 75vw;
   }
 
   .check-sec p {
     font-weight: 600;
+    font-size: 15px;
     margin: 0;
   }
   .registerbtn {
-    width: 200px;
+    width: 75vw;
+    margin: 30px 25px;
+  }
+  .resetbtn {
+    width: 75vw;
+    margin: 30px 25px;
+  }
+  .loginbtn {
+    width: 75vw;
+    margin: 30px 25px;
+  }
+  p {
+    font-size: 14px;
+  }
+  #login-link {
+    width: 75vw;
+    font-size: 14px;
+  }
+  .forget-form-container {
+    width: auto;
+  }
+  .forget-form input[type="text"] {
+    width: 75vw;
+    margin: 10px 15px !important;
+  }
+  .forgetbtn {
+    width: 75vw;
+    margin: 15px 25px;
+  }
+  .forget-form-container h1 {
+    margin: 10px 15px;
+  }
+  .forget-form-container p {
+    font-size: 14px;
+    margin: 10px;
+  }
+  #text-sec {
+    width: 75vw;
+    font-size: 14px;
+    margin: 10px 0;
   }
 }
