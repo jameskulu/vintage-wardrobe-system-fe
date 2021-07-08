@@ -1,8 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
-    return ( 
+    const history = useHistory();
+
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const userLogin = async (e) => {
+        e.preventDefault();
+
+        try {
+            const loginResponse = await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/users/login`,
+                { email, password }
+            );
+
+            localStorage.setItem('auth-token', loginResponse.data.token);
+            toast.success('You are logged in successfully.');
+            history.push('/');
+        } catch (err) {
+            toast.error(`${err.response.data.message}`);
+        }
+    };
+    return (
         <div className="container">
             <form action="">
                 <div className="login-form-container">
@@ -15,19 +38,27 @@ const Login = () => {
                             name="email"
                             id="email"
                             autoComplete="off"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <input
                             type="password"
                             placeholder="Password"
-                            name="pwd"
+                            name="password"
                             id="pwd"
                             autoComplete="off"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <Link id="login-link" to="#">
                             Forgot Password?
                         </Link>
 
-                        <button type="button" className="loginbtn">
+                        <button
+                            type="button"
+                            className="loginbtn"
+                            onClick={userLogin}
+                        >
                             LOGIN
                         </button>
 

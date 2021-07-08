@@ -207,6 +207,7 @@ h1 {
   font-weight: bold;
   text-align: center;
   font-size: 20px;
+  cursor: pointer;
 }
 .resetbtn {
   background-color: #8aaae5;
