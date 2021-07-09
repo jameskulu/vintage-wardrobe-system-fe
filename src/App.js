@@ -8,6 +8,7 @@ import Home from './components/pages/Home/Home';
 import Header from './components/layout/Header/Header';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
+import ForgotPassword from './components/auth/ForgotPassword';
 
 toast.configure();
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/Signup" component={Signup} />
+                <Route exact path="/forgotpassword" component={ForgotPassword} />
 
             </div>
         </BrowserRouter>
