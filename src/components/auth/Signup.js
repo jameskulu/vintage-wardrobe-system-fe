@@ -28,7 +28,7 @@ const Signup = () => {
             );
 
             history.push('/login');
-            toast.success('Your account is created successfully.');
+            toast.success('Your account is created successfully. Please check your email for verification.');
         } catch (err) {
             toast.error(err.response.data.message);
         }

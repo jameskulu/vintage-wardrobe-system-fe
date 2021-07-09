@@ -51,7 +51,7 @@ const Login = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <Link id="login-link" to="/forgotpassword">
+                        <Link id="login-link" to="/forgot-password">
                             Forgot Password?
                         </Link>
 
@@ -64,8 +64,8 @@ const Login = () => {
                         </button>
 
                         <p>
-                            Don’t have an account?{' '}
-                            <Link to="/Signup">Sign Up</Link>.
+                            Don’t have an account?
+                            <Link to="/signup">Sign Up</Link>.
                         </p>
                     </div>
                 </div>
