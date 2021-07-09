@@ -51,7 +51,7 @@ const Login = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <Link id="login-link" to="#">
+                        <Link id="login-link" to="/forgotpassword">
                             Forgot Password?
                         </Link>
 
