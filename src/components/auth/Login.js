@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './auth.css'
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
