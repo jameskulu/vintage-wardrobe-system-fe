@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './index.css';
 import UserContext from './context/UserContext';
 
 // Components
@@ -14,7 +16,7 @@ import Signup from './components/auth/Signup';
 import VerifyEmail from './components/auth/VerifyEmail';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ResetPassword from './components/auth/ResetPassword';
-import { useEffect, useState } from 'react';
+
 
 toast.configure();
 function App() {
@@ -58,7 +60,7 @@ function App() {
                 <div className="App">
                     <Header />
 
-                    {/* <Route exact path="/" component={Home} /> */}
+                    <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/Signup" component={Signup} />
                     <Route

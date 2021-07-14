@@ -1,87 +1,130 @@
-
-
-.bg{
+.homepage .bg {
     margin: auto;
-  width: 100%;
-  height: 200%;
-  display: flex;
-  justify-content: center;
-  background: url("../../../images/background.jpg");
-
-  background-attachment: fixed;
-  background-position: center 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 50px 0;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    background: url('../../../images/background.jpg');
+    background-attachment: fixed;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 0;
 }
 
-
-.text-center{
-	margin-top: 50px;
+.homepage .text-center {
+    margin-top: 50px;
 }
 
-.img-thumbnail{
-	width: 70%;
-	height: 70%;
-	border: white;
+.homepage .img-thumbnail {
+    width: 70%;
+    height: 70%;
+    border: white;
 }
 
-.img-fluid{
-	width: 70%;
-	height: 350px;
-	border: white;
+.homepage .img-fluid {
+    width: 70%;
+    height: 350px;
+    border: white;
 }
 
-
-#deals{
-	background: #8AAAE5;
-	height: auto;
-	width : 100%;
-
+.homepage #deals {
+    background: #8aaae5;
+    height: auto;
+    width: 100%;
 }
 
-.btn-rent{
-	
-  	padding: 15px 40px;
-
-	background: #8AAAE5;
-	color: white;
-	border:#8AAAE5;
-	font-size: 20px;
-	margin-top: auto;
-	margin-bottom: auto;
-	
-}
-
-.section-subheading{
-	color: white;
-
-}
-
-.card{
-	border: white;
-}
-
-
-
-#offercaraousel{
-	background-color: #8AAAE5;
-	
-}
-
-#rent{
-	margin-left: 30%;
-	margin-right: 30%;
-
-}
-
-.btn-browse{
-	 padding: 15px 40px;
+.homepage .btn-rent {
+    padding: 15px 40px;
+    background: #8aaae5;
+    color: white;
+    border: #8aaae5;
     font-size: 20px;
-    
-    color: #8AAAE5;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.homepage .section-subheading {
+    color: white;
+}
+
+.homepage .card {
+    border: white;
+}
+
+.homepage #offercaraousel {
+    background-color: #8aaae5;
+}
+
+.homepage #rent {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.homepage .btn-browse {
+    padding: 15px 40px;
+    font-size: 20px;
+    color: #8aaae5;
     margin-bottom: 50px;
 }
 
+.homepage button {
+    background-color: #8aaae5;
+    color: white;
+    padding: 16px 0px;
+    margin: 30px 0;
+    margin-left: 35px;
+    border: none;
+    text-transform: uppercase;
+    width: 350px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 20px;
+}
 
+.homepage .bg button {
+    background-color: #8aaae5;
+    color: white;
+    padding: 16px 0px;
+    border: none;
+    text-transform: uppercase;
+    width: 350px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 20px;
+}
 
+.homepage .bg button:hover {
+    opacity: 0.8;
+}
+
+.homepage #offer button {
+    background-color: #ffffff;
+    color: #8aaae5;
+    padding: 16px 0px;
+    border: none;
+    text-transform: uppercase;
+    width: 350px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.homepage #offer button:hover {
+    opacity: 0.9;
+}
+
+.homepage #offer h2{
+    color: #ffffff;
+    font-size:23px;
+    font-weight: bold;
+}
+
+.homepage #offer h3{
+    margin-top: 50px;
+    font-size:18px;
+    color: #ffffff;
+}
