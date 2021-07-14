@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import UserContext from './context/UserContext';
 
 // Components
@@ -58,7 +58,7 @@ function App() {
                 <div className="App">
                     <Header />
 
-                    <Route exact path="/" component={Home} />
+                    {/* <Route exact path="/" component={Home} /> */}
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/Signup" component={Signup} />
                     <Route
