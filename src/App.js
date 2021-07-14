@@ -16,6 +16,7 @@ import Signup from './components/auth/Signup';
 import VerifyEmail from './components/auth/VerifyEmail';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ResetPassword from './components/auth/ResetPassword';
+import Footer from './components/layout/Footer/Footer';
 
 
 toast.configure();
@@ -78,6 +79,7 @@ function App() {
                         path="/verify-email/:token"
                         component={VerifyEmail}
                     />
+                    <Footer/>
                 </div>
             </UserContext.Provider>
         </BrowserRouter>
