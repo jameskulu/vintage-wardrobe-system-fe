@@ -1,0 +1,87 @@
+
+
+.bg{
+    margin: auto;
+  width: 100%;
+  height: 200%;
+  display: flex;
+  justify-content: center;
+  background: url("../../../images/background.jpg");
+
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 0;
+}
+
+
+.text-center{
+	margin-top: 50px;
+}
+
+.img-thumbnail{
+	width: 70%;
+	height: 70%;
+	border: white;
+}
+
+.img-fluid{
+	width: 70%;
+	height: 350px;
+	border: white;
+}
+
+
+#deals{
+	background: #8AAAE5;
+	height: auto;
+	width : 100%;
+
+}
+
+.btn-rent{
+	
+  	padding: 15px 40px;
+
+	background: #8AAAE5;
+	color: white;
+	border:#8AAAE5;
+	font-size: 20px;
+	margin-top: auto;
+	margin-bottom: auto;
+	
+}
+
+.section-subheading{
+	color: white;
+
+}
+
+.card{
+	border: white;
+}
+
+
+
+#offercaraousel{
+	background-color: #8AAAE5;
+	
+}
+
+#rent{
+	margin-left: 30%;
+	margin-right: 30%;
+
+}
+
+.btn-browse{
+	 padding: 15px 40px;
+    font-size: 20px;
+    
+    color: #8AAAE5;
+    margin-bottom: 50px;
+}
+
+
+

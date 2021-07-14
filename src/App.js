@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import UserContext from './context/UserContext';
 
 // Components
