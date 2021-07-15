@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './home.css';
 import woman from '../../../images/woman.jpg';
 import kid from '../../../images/kids.png';
@@ -7,10 +7,27 @@ import dress1 from '../../../images/dress1.jpg';
 import dress2 from '../../../images/dress2.jpg';
 import dress3 from '../../../images/dress3.jpg';
 import dress4 from '../../../images/dress4.jpg';
+import axios from 'axios';
+import Item from './Item';
 
 const Home = () => {
+
+    const [latestItems, setLatestItems] = useState([])
+
+    useEffect(()=>{
+        const displayItems = async() => {
+            const itemResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/items/`)
+            const sortedItemResponse = itemResponse.data.data.reverse()
+            setLatestItems(sortedItemResponse)
+
+        }
+        displayItems()
+    })
+    
     return (
         <div class="homepage">
+                        
+                                    
             <section className="bg">
                 <div className="container ">
                     <div className="row h-100">
@@ -51,84 +68,14 @@ const Home = () => {
                         <h2 className="text-center">New Arrival</h2>
                     </div>
                 </div>
+           
+                <Item items = {latestItems}/>
 
-                <div className="row text-center">
-                    <div className="col-lg-3 col-sm-3 mb-4">
-                        <div className="card">
-                            <a className="card-img-top">
-                                <img
-                                    className="img-fluid"
-                                    src={dress1}
-                                    alt="..."
-                                />
-                            </a>
-                            <div className="card-title">
-                                <div className="font-weight-bold">Threads</div>
-                                <div className="card-body text-muted">
-                                    Illustration
-                                </div>
-                                <div className="font-weight-bold">Threads</div>
-                            </div>
-                        </div>
-                    </div>
+               
 
-                    <div className="col-lg-3 col-sm-3 mb-4">
-                        <div className="card">
-                            <a className="card-img-top">
-                                <img
-                                    className="img-fluid"
-                                    src={dress2}
-                                    alt="..."
-                                />
-                            </a>
-                            <div className="card-title">
-                                <div className="font-weight-bold">Threads</div>
-                                <div className="card-body text-muted">
-                                    Illustration
-                                </div>
-                                <div className="font-weight-bold">Threads</div>
-                            </div>
-                        </div>
-                    </div>
+                
 
-                    <div className="col-lg-3 col-sm-3 mb-4">
-                        <div className="card">
-                            <a className="card-img-top">
-                                <img
-                                    className="img-fluid"
-                                    src={dress3}
-                                    alt="..."
-                                />
-                            </a>
-                            <div className="card-title">
-                                <div className="font-weight-bold">Threads</div>
-                                <div className="card-body text-muted">
-                                    Illustration
-                                </div>
-                                <div className="font-weight-bold">Threads</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-lg-3 col-sm-3 mb-4">
-                        <div className="card">
-                            <a className="card-img-top">
-                                <img
-                                    className="img-fluid"
-                                    src={dress4}
-                                    alt="..."
-                                />
-                            </a>
-                            <div className="card-title">
-                                <div className="font-weight-bold">Threads</div>
-                                <div className="card-body text-muted">
-                                    Illustration
-                                </div>
-                                <div className="font-weight-bold">Threads</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </section>
 
             <section id="offer">
@@ -150,6 +97,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            
         </div>
     );
 };
