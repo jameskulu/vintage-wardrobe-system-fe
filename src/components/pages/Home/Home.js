@@ -11,23 +11,22 @@ import axios from 'axios';
 import Item from './Item';
 
 const Home = () => {
+    const [latestItems, setLatestItems] = useState([]);
 
-    const [latestItems, setLatestItems] = useState([])
+    useEffect(() => {
+        const displayItems = async () => {
+            const itemResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/items/`
+            );
+            const sortedItemResponse = itemResponse.data.data.reverse();
+            setLatestItems(sortedItemResponse);
+            console.log(sortedItemResponse)
+        };
+        displayItems();
+    },[]);
 
-    useEffect(()=>{
-        const displayItems = async() => {
-            const itemResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/items/`)
-            const sortedItemResponse = itemResponse.data.data.reverse()
-            setLatestItems(sortedItemResponse)
-
-        }
-        displayItems()
-    })
-    
     return (
         <div class="homepage">
-                        
-                                    
             <section className="bg">
                 <div className="container ">
                     <div className="row h-100">
@@ -39,9 +38,9 @@ const Home = () => {
             </section>
 
             <section id="rent">
-                <div className="row">
+                <div className="row mt-5">
                     <div className="col-md-12 col-sm-12">
-                        <h2 className="text-center">Rent Clothing</h2>
+                        <h1>Rent <span class="heading-span">Clothing</span></h1>
                     </div>
                 </div>
 
@@ -62,21 +61,13 @@ const Home = () => {
                 </div>
             </section>
 
-            <section id="arrival" className="mt-5">
-                <div className="row">
-                    <div className="col-md-12 col-sm-12">
-                        <h2 className="text-center">New Arrival</h2>
-                    </div>
+            <div className="container outer-latest-released">
+                <h1>Latest <span class="heading-span">Released</span></h1>
+
+                <div className="latest-released">
+                    <Item items={latestItems} />
                 </div>
-           
-                <Item items = {latestItems}/>
-
-               
-
-                
-
-               
-            </section>
+            </div>
 
             <section id="offer">
                 <div className="row">
@@ -97,7 +88,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            
         </div>
     );
 };

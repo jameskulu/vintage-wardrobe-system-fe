@@ -1,0 +1,47 @@
+import axios from 'axios';
+import React, { useState } from 'react';
+import Item from '../Home/Item';
+import './search.css';
+
+const SearchPage = () => {
+    const [searchedItems, setSearchedItems] = useState([]);
+    const [search, setSearch] = useState([]);
+
+    const onSearch = async (e) => {
+        setSearch(e.target.value);
+
+        if (e.target.value !== '') {
+            const searchedItemsResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/items/s?q=${search}`
+            );
+            const sortedSearchedItemsResponse =
+                searchedItemsResponse.data.data.reverse();
+            setSearchedItems(sortedSearchedItemsResponse);
+        } else {
+            const itemsResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/items`
+            );
+            const sortedItemResponse = itemsResponse.data.data.reverse();
+            setSearchedItems(sortedItemResponse);
+        }
+    };
+
+    return (
+        <div className="container search mt-4">
+            <input
+                type="text"
+                placeholder="Search for items..."
+                onChange={onSearch}
+                value={search}
+            />
+
+            <div className="outer-latest-released">
+                <div className="latest-released">
+                    <Item items={searchedItems} />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default SearchPage;
