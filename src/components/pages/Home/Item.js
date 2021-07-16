@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import dress1 from '../../../images/dress1.jpg';
 
 const Item = ({items})=>{
@@ -17,13 +18,20 @@ const Item = ({items})=>{
                         </a>
                         
         
-                <div key={item._id} className="card-title">
+                <div key={item.id} className="card-title">
                     
-                    <div className="font-weight-bold"> {item.name}</div>
+                    <div className="font-weight-bold"><Link to ={`/items/${item.id}`}> {item.name}</Link></div>
                     <div className="card-body text-muted">
+                        <Link to ={`/items/${item.id}`}>
                         {item.description}
+                        </Link>
+                        
                     </div>
-                    <div className="font-weight-bold">{item.price}</div>
+                    <div className="font-weight-bold">
+                        <Link to ={`/items/${item.id}`}>
+                        {item.price}
+                        </Link>
+                        </div>
                 </div>
 
                 </div>
