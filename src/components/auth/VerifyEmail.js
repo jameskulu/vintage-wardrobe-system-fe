@@ -26,7 +26,7 @@ const VerifyEmail = (props) => {
     },[]);
 
     return (
-        <div class="container">
+        <div class="auth-container">
             <form action="">
                 <div class="form-container" style={{ textAlign: 'center' }}>
                     <h4>{message}</h4>

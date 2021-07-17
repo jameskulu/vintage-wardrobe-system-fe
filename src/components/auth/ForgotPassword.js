@@ -26,7 +26,7 @@ const ForgotPassword = () => {
     };
 
     return (
-        <div class="container">
+        <div class="auth-container">
             <form action="" onSubmit={submit}>
                 <div class="forget-form-container">
                     <h1>FORGET PASSWORD?</h1>

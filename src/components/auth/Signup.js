@@ -35,7 +35,7 @@ const Signup = () => {
     };
 
     return (
-        <div className="container">
+        <div className="auth-container">
             <form action="">
                 <div className="form-container">
                     <h1>SIGN UP</h1>

@@ -33,7 +33,7 @@ const ResetPassword = (props) => {
   };
 
     return (
-        <div class="container">
+        <div class="auth-container">
             <form action="" onSubmit={submit}>
                 <div class="reset-form-container">
                     <h1>RESET PASSWORD?</h1>

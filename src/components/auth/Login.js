@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import './auth.css'
 import { Link, useHistory } from 'react-router-dom';
+import UserContext from '../../context/UserContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
     const history = useHistory();
+    const { setUserData } = useContext(UserContext);
+    
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -18,7 +21,10 @@ const Login = () => {
                 `${process.env.REACT_APP_API_URL}/api/users/login`,
                 { email, password }
             );
-
+            setUserData({
+                token: loginResponse.data.token,
+                user: loginResponse.data.data,
+            });
             localStorage.setItem('auth-token', loginResponse.data.token);
             toast.success('You are logged in successfully.');
             history.push('/');
@@ -27,7 +33,7 @@ const Login = () => {
         }
     };
     return (
-        <div className="container">
+        <div className="auth-container">
             <form action="">
                 <div className="login-form-container">
                     <h1>LOG IN</h1>
