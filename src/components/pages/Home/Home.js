@@ -40,13 +40,13 @@ const Home = () => {
             <section id="rent">
                 <div className="row mt-5">
                     <div className="col-md-12 col-sm-12">
-                        <h1>Rent <span class="heading-span">Clothing</span></h1>
+                        <h2>Rent Clothing</h2>
                     </div>
                 </div>
 
                 <div className="row text-center">
                     <div className="col-md-4">
-                        <img src={woman} className="img-thumbnail" />
+                        <img src={woman} className="img-thumbnail" alt={woman} />
                         <h4 className="my-3">Women</h4>
                     </div>
                     <div className="col-md-4">
@@ -62,7 +62,7 @@ const Home = () => {
             </section>
 
             <div className="container outer-latest-released">
-                <h1>Latest <span class="heading-span">Released</span></h1>
+                <h2>Latest Released</h2>
 
                 <div className="latest-released">
                     <Item items={latestItems} />
