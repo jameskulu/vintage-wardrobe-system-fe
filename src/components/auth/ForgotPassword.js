@@ -2,13 +2,15 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import './auth.css'
+import './auth.css';
 
 const ForgotPassword = () => {
+    const [disable, setDisable] = useState(false);
     const [email, setEmail] = useState('');
 
     const submit = async (e) => {
         e.preventDefault();
+        setDisable(true);
 
         try {
             await axios.post(
@@ -20,7 +22,7 @@ const ForgotPassword = () => {
             setEmail('');
             toast.success('Link has been sent to your email.');
         } catch (err) {
-            console.log(err.response)
+            setDisable(false);
             toast.error(`${err.response.data.message}`);
         }
     };
@@ -47,7 +49,11 @@ const ForgotPassword = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
 
-                        <button type="submit" class="forgetbtn">
+                        <button
+                            disabled={disable}
+                            type="submit"
+                            class="forgetbtn"
+                        >
                             SEND
                         </button>
                     </div>

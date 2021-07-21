@@ -2,35 +2,40 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import './auth.css'
+import './auth.css';
 
 const ResetPassword = (props) => {
-
     const history = useHistory();
-
+    const [disable, setDisable] = useState(false);
     const [newPassword, setNewPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
     const token = props.match.params.token;
 
     const submit = async (e) => {
-      e.preventDefault();
+        e.preventDefault();
+        setDisable(true);
 
-      if (newPassword !== confirmPassword)
-          return toast.error('Two password fields did not match.');
-
-      try {
-          await axios.post(`${process.env.REACT_APP_API_URL}/api/users/reset-password`, {
-              newPassword,
-              token,
-          });
-          toast.success('New password has been changed successfully.');
-          history.push('/login');
-      } catch (err) {
-        console.log(err.response)
-          toast.error(`${err.response.data.message}`);
-      }
-  };
+        if (newPassword !== confirmPassword){
+            setDisable(false);
+            return toast.error('Two password fields did not match.');
+        }
+        
+        try {
+            await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/users/reset-password`,
+                {
+                    newPassword,
+                    token,
+                }
+            );
+            toast.success('New password has been changed successfully.');
+            history.push('/login');
+        } catch (err) {
+            setDisable(false);
+            toast.error(`${err.response.data.message}`);
+        }
+    };
 
     return (
         <div class="auth-container">
@@ -54,8 +59,12 @@ const ResetPassword = (props) => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
 
-                        <button type="submit" class="resetbtn">
-                            SEND
+                        <button
+                            disabled={disable}
+                            type="submit"
+                            class="resetbtn"
+                        >
+                            SAVE
                         </button>
                     </div>
                 </div>

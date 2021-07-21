@@ -83,7 +83,7 @@ const Header = () => {
                                         className="dropdown-menu"
                                         aria-labelledby="navbarDropdown"
                                     >
-                                        <Link className="dropdown-item" to="#">
+                                        <Link className="dropdown-item" to="/renter/items/add">
                                             Add an item
                                         </Link>
                                         <Link className="dropdown-item" to="#">
@@ -99,7 +99,7 @@ const Header = () => {
                                     <Link
                                         className="nav-item-link dropdown-toggle"
                                         to="#"
-                                        id="navbarDropdown"
+                                        id="navbarDropdown2"
                                         role="button"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
@@ -109,7 +109,7 @@ const Header = () => {
                                     </Link>
                                     <div
                                         className="dropdown-menu"
-                                        aria-labelledby="navbarDropdown"
+                                        aria-labelledby="navbarDropdown2"
                                     >
                                         <Link className="dropdown-item" to="#">
                                             Manage Profile

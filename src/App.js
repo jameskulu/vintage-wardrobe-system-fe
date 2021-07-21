@@ -105,7 +105,7 @@ function App() {
 
                     <Route
                         exact
-                        path="/renters/items/add"
+                        path="/renter/items/add"
                         component={AddItem}
                     />
 
