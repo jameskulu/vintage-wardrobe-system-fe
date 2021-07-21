@@ -67,9 +67,9 @@ const Header = () => {
 
                         {userData.user ? (
                             <>
-                                <li className="nav-item dropdown">
+                                <li className="dropdown">
                                     <Link
-                                        className="nav-item-link nav-link dropdown-toggle"
+                                        className="nav-item-link dropdown-toggle"
                                         to="#"
                                         id="navbarDropdown"
                                         role="button"
@@ -97,7 +97,7 @@ const Header = () => {
 
                                 <li className="nav-item dropdown">
                                     <Link
-                                        className="nav-item-link nav-link dropdown-toggle"
+                                        className="nav-item-link dropdown-toggle"
                                         to="#"
                                         id="navbarDropdown"
                                         role="button"
