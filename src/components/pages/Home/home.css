@@ -22,6 +22,8 @@
     border: white;
 }
 
+
+
 .homepage .img-fluid {
     width: 70%;
     height: 350px;
@@ -135,10 +137,7 @@
     margin-top: 20px;
 }
 
-h1 span.heading-span {
-    color: #8aaae5;
-    padding: 0;
-}
+
 
 .outer-latest-released .latest-released {
     margin-top: 40px;
