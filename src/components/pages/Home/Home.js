@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './home.css';
 import woman from '../../../images/woman.jpg';
-import kid from '../../../images/kids.png';
-import men from '../../../images/men.png';
+import kids from '../../../images/kids.png';
+import men from '../../../images/men.jpg';
 import dress1 from '../../../images/dress1.jpg';
 import dress2 from '../../../images/dress2.jpg';
 import dress3 from '../../../images/dress3.jpg';
@@ -54,7 +54,7 @@ const Home = () => {
                         <h4 className="my-3">Mens</h4>
                     </div>
                     <div className="col-md-4">
-                        <img src={kid} alt="..." className="img-thumbnail" />
+                        <img src={kids} alt="..." className="img-thumbnail " />
 
                         <h4 className="my-3">Kids</h4>
                     </div>
