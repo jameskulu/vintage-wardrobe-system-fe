@@ -36,7 +36,7 @@ const Footer = () => {
                                     <p className="list-group-item list-heading">
                                         Rentals
                                     </p>
-                                    <Link to="#" className="list-group-item ">
+                                    <Link to="/add/item" className="list-group-item ">
                                         Upload an Item
                                     </Link>
                                     <Link to="#" className="list-group-item ">

@@ -22,6 +22,8 @@
     border: white;
 }
 
+
+
 .homepage .img-fluid {
     width: 70%;
     height: 350px;
@@ -59,6 +61,11 @@
 .homepage #rent {
     margin-left: 30%;
     margin-right: 30%;
+    margin-top: 70px;
+}
+
+.homepage #rent h2 {
+    text-align: center;
 }
 
 .homepage .btn-browse {
@@ -132,12 +139,11 @@
 .outer-latest-released {
     width: 100%;
     padding: 40px 0;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
-h1 span.heading-span {
-    color: #8aaae5;
-    padding: 0;
+.outer-latest-released h2 {
+    text-align: center;
 }
 
 .outer-latest-released .latest-released {

@@ -20,6 +20,8 @@ import Footer from './components/layout/Footer/Footer';
 import ItemDetail from './components/pages/ItemDetail/ItemDetail';
 import SearchPage from './components/pages/Search/Search';
 
+import AddItem from './components/pages/AddItem/AddItem';
+
 
 toast.configure();
 function App() {
@@ -87,6 +89,14 @@ function App() {
                         path="/items/:itemId"
                         component={ItemDetail}
                     />
+
+                    <Route
+                        exact
+                        path="/add/item"
+                        component={AddItem}
+                    />
+
+                  
                     <Route exact path='/s' component={SearchPage} />
                     <Footer/>
                 </div>
