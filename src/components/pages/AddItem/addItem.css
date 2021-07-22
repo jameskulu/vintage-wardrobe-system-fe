@@ -1,17 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
-
-.add-item{
+.add-item-container .add-item{
  background: #8AAAE5;
 }
 
-.add-item-text{
+.add-item-container .add-item-text{
      font-weight: lighter;
  font-style: poppins;
  margin: 20px;
  font-size: xx-large;
 }
 
-.edit{
+.add-item-container .edit{
     background: #8AAAE5;
     color: white;
     margin-top: 20px;
@@ -19,11 +17,11 @@
 
 }
 
-.form-title{
+.add-item-container .form-title{
     font-weight: bold;
 }
 
-.form-group{
+.add-item-container .form-group{
     margin-top: 20px;
     margin-bottom: 20px;
 }

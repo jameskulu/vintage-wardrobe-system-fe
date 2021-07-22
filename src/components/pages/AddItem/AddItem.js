@@ -2,6 +2,7 @@ import './addItem.css';
 
 const AddItem =()=>{
     return(
+      <div class="add-item-container">
 <div class="container-fluid">
 
 <section>
@@ -95,6 +96,7 @@ const AddItem =()=>{
 
 </div>
 
+</div>
 			
 	
     );
