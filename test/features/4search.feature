@@ -3,5 +3,3 @@ Feature: search item
   Scenario: After login user shouldbe able to search the items or clothes 
     Given Search functionality 
     
-    
-    
