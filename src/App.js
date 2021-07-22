@@ -1,11 +1,24 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'jquery/dist/jquery.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import './index.css';
+// import 'bootstrap';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/js/bootstrap.js';
+// import $ from 'jquery';
+// import Popper from 'popper.js';
+
+
+
 import UserContext from './context/UserContext';
 
 // Components
@@ -92,7 +105,7 @@ function App() {
 
                     <Route
                         exact
-                        path="/add/item"
+                        path="/renter/items/add"
                         component={AddItem}
                     />
 

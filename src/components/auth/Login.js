@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import './auth.css'
+import './auth.css';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import { toast } from 'react-toastify';
@@ -8,13 +8,14 @@ import { toast } from 'react-toastify';
 const Login = () => {
     const history = useHistory();
     const { setUserData } = useContext(UserContext);
-    
 
+    const [disable, setDisable] = useState(false);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     const userLogin = async (e) => {
         e.preventDefault();
+        setDisable(true);
 
         try {
             const loginResponse = await axios.post(
@@ -29,6 +30,7 @@ const Login = () => {
             toast.success('You are logged in successfully.');
             history.push('/');
         } catch (err) {
+            setDisable(false);
             toast.error(`${err.response.data.message}`);
         }
     };
@@ -62,6 +64,7 @@ const Login = () => {
                         </Link>
 
                         <button
+                            disabled={disable}
                             type="button"
                             className="loginbtn"
                             onClick={userLogin}

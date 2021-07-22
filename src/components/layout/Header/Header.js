@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 const Header = () => {
     const { userData, setUserData } = useContext(UserContext);
+    console.log(userData);
     const history = useHistory();
     const toggleMenu = () => {
         document.getElementById('navbar').classList.toggle('toggle');
@@ -49,12 +50,12 @@ const Header = () => {
                     ></i>
                     <ul id="navbar">
                         <li>
-                            <Link className="active" to="/">
+                            <Link className="nav-item-link active" to="/">
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link to="/category">Category</Link>
+                            <Link to="/category" className="nav-item-link">Category</Link>
                         </li>
                         {/* {userData.user ? (
                             userData.user.role === 'admin' ? (
@@ -66,25 +67,76 @@ const Header = () => {
 
                         {userData.user ? (
                             <>
-                                <li>
-                                    <Link to="/profile">
-                                    <i className="far fa-user"></i>
-                                    </Link>
-                                </li>
-                                <li class="nav-item">
+                                <li className="dropdown">
                                     <Link
-                                        class="nav-link"
-                                        onClick={() => {
-                                            logout();
-                                        }}
+                                        className="nav-item-link dropdown-toggle"
+                                        to="#"
+                                        id="navbarDropdown"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
                                     >
-                                        Logout
+                                        Renter
                                     </Link>
+                                    <div
+                                        className="dropdown-menu"
+                                        aria-labelledby="navbarDropdown"
+                                    >
+                                        <Link className="dropdown-item" to="/renter/items/add">
+                                            Add an item
+                                        </Link>
+                                        <Link className="dropdown-item" to="#">
+                                            My items
+                                        </Link>
+                                        <Link className="dropdown-item" to="#">
+                                            My orders
+                                        </Link>
+                                    </div>
+                                </li>
+
+                                <li className="nav-item dropdown">
+                                    <Link
+                                        className="nav-item-link dropdown-toggle"
+                                        to="#"
+                                        id="navbarDropdown2"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
+                                        Hi, {userData.user.firstName}
+                                    </Link>
+                                    <div
+                                        className="dropdown-menu"
+                                        aria-labelledby="navbarDropdown2"
+                                    >
+                                        <Link className="dropdown-item" to="#">
+                                            Manage Profile
+                                        </Link>
+                                        <Link className="dropdown-item" to="#">
+                                            Change Password
+                                        </Link>
+                                        <div className="dropdown-divider"></div>
+                                        <Link
+                                            onClick={() => {
+                                                logout();
+                                            }}
+                                            className="dropdown-item"
+                                        >
+                                            Logout
+                                        </Link>
+                                    </div>
                                 </li>
                             </>
                         ) : null}
                         <li>
-                            <Link to="/s">
+                            <Link to="/cart" className="nav-item-link">
+                                <i className="fas fa-shopping-cart"></i>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/s" className="nav-item-link">
                                 <i className="fas fa-search"></i>
                             </Link>
                         </li>

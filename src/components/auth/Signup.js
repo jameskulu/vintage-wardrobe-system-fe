@@ -6,18 +6,27 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
     const history = useHistory();
+    const [disable, setDisable] = useState(false);
 
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+    const [terms, setTerms] = useState(false);
 
     const userRegister = async (e) => {
         e.preventDefault();
+        setDisable(true);
 
         if (password !== confirmPassword) {
+            setDisable(false);
             return toast.error('Two password fields did not match.');
+        }
+
+        if (!terms) {
+            setDisable(false);
+            return toast.error('Please check terms and conditions to proceed.');
         }
 
         try {
@@ -30,8 +39,11 @@ const Signup = () => {
             history.push('/login');
             toast.success('Your account is created successfully. Please check your email for verification.');
         } catch (err) {
+            setDisable(false);
             toast.error(err.response.data.message);
         }
+
+        
     };
 
     return (
@@ -90,9 +102,11 @@ const Signup = () => {
                                 type="checkbox"
                                 id="checkbox"
                                 name="checkbox"
+                                defaultChecked={terms}
+                                onChange={(e) => setTerms(!terms)}
                             />
                             <p>
-                                I agree all statement in{' '}
+                                I agree all statement in
                                 <Link id="terms" to="#">
                                     Terms of service
                                 </Link>
@@ -101,6 +115,7 @@ const Signup = () => {
                         </div>
                     </div>
                     <button
+                        disabled={disable}
                         type="submit"
                         className="registerbtn"
                         onClick={userRegister}

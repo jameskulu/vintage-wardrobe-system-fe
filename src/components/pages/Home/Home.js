@@ -9,6 +9,7 @@ import dress3 from '../../../images/dress3.jpg';
 import dress4 from '../../../images/dress4.jpg';
 import axios from 'axios';
 import Item from './Item';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [latestItems, setLatestItems] = useState([]);
@@ -20,10 +21,10 @@ const Home = () => {
             );
             const sortedItemResponse = itemResponse.data.data.reverse();
             setLatestItems(sortedItemResponse);
-            console.log(sortedItemResponse)
+            console.log(sortedItemResponse);
         };
         displayItems();
-    },[]);
+    }, []);
 
     return (
         <div class="homepage">
@@ -31,7 +32,9 @@ const Home = () => {
                 <div className="container ">
                     <div className="row h-100">
                         <div className="col-md-12 col-sm-12 text-center my-auto">
-                            <button className="">Rent your Clothes</button>
+                            <Link to="/renter/items/add">
+                                <button className="">Rent your Clothes</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -46,7 +49,11 @@ const Home = () => {
 
                 <div className="row text-center">
                     <div className="col-md-4">
-                        <img src={woman} className="img-thumbnail" alt={woman} />
+                        <img
+                            src={woman}
+                            className="img-thumbnail"
+                            alt={woman}
+                        />
                         <h4 className="my-3">Women</h4>
                     </div>
                     <div className="col-md-4">
