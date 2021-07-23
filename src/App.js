@@ -34,6 +34,7 @@ import ItemDetail from './components/pages/ItemDetail/ItemDetail';
 import SearchPage from './components/pages/Search/Search';
 
 import AddItem from './components/pages/AddItem/AddItem';
+import EditItem from './components/pages/EditItem/EditItem';
 
 
 toast.configure();
@@ -107,6 +108,12 @@ function App() {
                         exact
                         path="/renter/items/add"
                         component={AddItem}
+                    />
+
+                    <Route
+                        exact
+                        path="/renter/items/edit/:itemId"
+                        component={EditItem}
                     />
 
                   
