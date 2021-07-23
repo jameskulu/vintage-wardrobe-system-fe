@@ -33,6 +33,7 @@ import SearchPage from './components/pages/Search/Search';
 import AddItem from './components/pages/AddItem/AddItem';
 import EditItem from './components/pages/EditItem/EditItem';
 import ViewItem from './components/pages/ViewItem/ViewItem';
+import RentOrder from './components/pages/RentOrder/RentOrder';
 
 toast.configure();
 function App() {
@@ -109,6 +110,12 @@ function App() {
                         exact
                         path="/renter/items"
                         component={ViewItem}
+                    />
+
+                    <Route
+                        exact
+                        path="/renter/order"
+                        component={RentOrder}
                     />
 
                     <Route exact path="/s" component={SearchPage} />

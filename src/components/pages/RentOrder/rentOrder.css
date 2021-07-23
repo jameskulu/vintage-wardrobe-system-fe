@@ -1,0 +1,72 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+.table {
+  width: 90%;
+  margin: auto;
+  border: 1px solid black;
+  padding: 15px;
+}
+.img-thumbnail {
+  height: 90px;
+  width: 80px;
+}
+.table .thead-light th {
+  background: white;
+}
+
+.table thead th {
+  border: none;
+}
+.table td,
+.table th {
+  border: none;
+}
+
+.text-uppercase {
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 900;
+}
+.btn {
+  background: #ececec;
+  color: black;
+  font-weight: 900;
+  border-radius: 0px;
+}
+
+headings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  background: #8aaae5;
+  color: white;
+  margin-bottom: 70px;
+}
+.table tbody + tbody {
+  border-top: 1px solid #dee2e6;
+}
+#price {
+  font-weight: 900;
+}
+#date {
+  font-weight: 600;
+}
+
+.table td:nth-child(2) p {
+  font-weight: 900;
+}
+
+#icondel i {
+  color: #f13333;
+}
+#iconedit i {
+  color: #648cd7;
+}
