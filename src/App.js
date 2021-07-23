@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -16,8 +15,6 @@ import axios from 'axios';
 // import 'bootstrap/dist/js/bootstrap.js';
 // import $ from 'jquery';
 // import Popper from 'popper.js';
-
-
 
 import UserContext from './context/UserContext';
 
@@ -35,7 +32,7 @@ import SearchPage from './components/pages/Search/Search';
 
 import AddItem from './components/pages/AddItem/AddItem';
 import EditItem from './components/pages/EditItem/EditItem';
-
+import ViewItem from './components/pages/ViewItem/ViewItem';
 
 toast.configure();
 function App() {
@@ -98,17 +95,9 @@ function App() {
                         component={VerifyEmail}
                     />
 
-                    <Route
-                        exact
-                        path="/items/:itemId"
-                        component={ItemDetail}
-                    />
+                    <Route exact path="/items/:itemId" component={ItemDetail} />
 
-                    <Route
-                        exact
-                        path="/renter/items/add"
-                        component={AddItem}
-                    />
+                    <Route exact path="/renter/items/add" component={AddItem} />
 
                     <Route
                         exact
@@ -116,9 +105,14 @@ function App() {
                         component={EditItem}
                     />
 
-                  
-                    <Route exact path='/s' component={SearchPage} />
-                    <Footer/>
+                    <Route
+                        exact
+                        path="/renter/items"
+                        component={ViewItem}
+                    />
+
+                    <Route exact path="/s" component={SearchPage} />
+                    <Footer />
                 </div>
             </UserContext.Provider>
         </BrowserRouter>

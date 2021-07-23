@@ -33,7 +33,7 @@ const AddItem = () => {
         loadCategories();
     }, []);
 
-    const onFoodAdd = async (e) => {
+    const onItemAdd = async (e) => {
         e.preventDefault();
         setDisable(true);
 
@@ -249,7 +249,7 @@ const AddItem = () => {
 
                             <button
                                 disabled={disable}
-                                onClick={onFoodAdd}
+                                onClick={onItemAdd}
                                 type="button"
                                 className="btn edit col-md-12"
                             >

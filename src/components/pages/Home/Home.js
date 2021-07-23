@@ -21,7 +21,6 @@ const Home = () => {
             );
             const sortedItemResponse = itemResponse.data.data.reverse();
             setLatestItems(sortedItemResponse);
-            console.log(sortedItemResponse);
         };
         displayItems();
     }, []);

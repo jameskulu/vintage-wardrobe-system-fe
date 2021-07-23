@@ -1,5 +1,9 @@
 .add-item-container .add-item {
     background: #8aaae5;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-item-container .add-item-text {

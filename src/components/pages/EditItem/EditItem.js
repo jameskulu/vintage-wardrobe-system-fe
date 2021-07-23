@@ -2,16 +2,16 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import '../AddItem/addItem.css';
 
-import '../AddItem/addItem.css'
-
-const EditItem =(props)=> {
-	
-	const itemId = props.match.params.itemId;
-	const [categories, setCategories] = useState([]);
+const EditItem = (props) => {
+    const history = useHistory();
+    const itemId = props.match.params.itemId;
+    const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
-    
-	const [name, setName] = useState();
+    const [disable, setDisable] = useState(false);
+
+    const [name, setName] = useState();
     const [description, setDescription] = useState();
     const [price, setPrice] = useState();
     const [categoryId, setCategoryId] = useState();
@@ -19,8 +19,7 @@ const EditItem =(props)=> {
     const [color, setColor] = useState();
     const [size, setSize] = useState();
 
-
-	useEffect(() => {
+    useEffect(() => {
         const loadCategories = async () => {
             const categoriesResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/categories`
@@ -34,92 +33,120 @@ const EditItem =(props)=> {
         };
         loadCategories();
 
-		const loadsingleItem = async () => {
-			const singleItemResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`)
+        const loadSingleItem = async () => {
+            const singleItemResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/items/${itemId}`
+            );
 
-			setName(singleItemResponse.data.data.name)
-			setDescription(singleItemResponse.data.data.description)
-			setPrice(singleItemResponse.data.data.price)
-			setCategoryId(singleItemResponse.data.data.categoryId)
-			setSubCategoryId(singleItemResponse.data.data.subCategoryId)
-			setColor(singleItemResponse.data.data.color)
-			setSize(singleItemResponse.data.data.size)
-		}
+            setName(singleItemResponse.data.data.name);
+            setDescription(singleItemResponse.data.data.description);
+            setPrice(singleItemResponse.data.data.price);
+            setSubCategoryId(singleItemResponse.data.data.subCategoryId);
 
-		loadsingleItem();
+        };
+
+        loadSingleItem();
     }, []);
 
-	const onItemUpdate = async (e) => {
-		e.preventDefault()
+    const onItemUpdate = async (e) => {
+        e.preventDefault();
+        setDisable(true);
 
-		try {
-			const updateItem = new FormData ()
-			updateItem.append('name',name)
-			updateItem.append('description',description)
-			updateItem.append('price',price)
-			// updateItem.append('categoryId',categoryId)
-			updateItem.append('subCategoryId',subCategoryId)
-			// updateItem.append('color',color)
-			// updateItem.append('size',size)
+        try {
+            const updateItem = {
+                name,
+                description,
+                price: parseInt(price),
+                subCategoryId,
+            };
+            console.log(updateItem)
 
-			await axios.put(`${process.env.REACT_APP_API_URL}/api/renter/items/update/`+ itemId)
-			toast.success("Items updated")
+            const token = localStorage.getItem('auth-token');
+            await axios.put(
+                `${process.env.REACT_APP_API_URL}/api/renter/items/update/${itemId}`,
+                updateItem,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            toast.success('Items updated');
+            history.push('/renter/items');
+        } catch (err) {
+            setDisable(false);
+            toast.error(err.response.data.message);
+        }
+    };
 
+    return (
+        <div className="add-item-container">
+            <div className="container-fluid">
+                <section>
+                    <div className="row">
+                        <div className="col-md-12 col-sm-12 add-item">
+                            <div className="text-center">
+                                <h4 className="text-light text-center add-item-text">
+                                    EDIT ITEM
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-		}
-
-		catch(err) {
-			toast.error(err.response.data.msg)
-		}
-	}
-
-
-	
-
-
-    return(
-
-        <div class="container-fluid">
-
-    <section>
-        <div class="row">
-            <div class="col-md-12 col-sm-12 add-item" >
-                <div class="text-center">
-                    <h4 class="text-light text-center add-item-text">Add an Item</h4>
-
-                </div>
-               
-                    
-                </div>
-            </div>
-       
-
-    </section>
-
-
-		<div class="row"> 
-			<div class=" col-md-12 col-sm-12">
-
-	<form class=" col-md-6 offset-md-3 product-form " >
-				  <div class="form-group">
-				    <label for="formGroupExampleInput"> Name</label>
-				    <input class="form-control" id="formGroupExampleInput"  value={name}
-                                    onChange={(e) => setName(e.target.value)}/>
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleFormControlTextarea1">Description</label>
-				    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                     value={description}
-                     onChange={(e) => setDescription(e.target.value)}></textarea>
-				  </div>
-  				<div class="form-group">
-				    <label for="formGroupExampleInput2">Price</label>
-				    <input  class="form-control" id="formGroupExampleInput2"  value={price}
-                                    onChange={(e) => setPrice(e.target.value)}/>
-			  	</div>
-			  	 <div class="form-group">
-				    <label for="exampleFormControlSelect1"> Category</label>
-					<select
+                <div className="row">
+                    <div className=" col-md-12 col-sm-12">
+                        <form className=" col-md-4 offset-md-4  ">
+                            <div className="form-group">
+                                <label
+                                    for="formGroupExampleInput "
+                                    className="form-title"
+                                >
+                                    Name
+                                </label>
+                                <input
+                                    className="form-control"
+                                    id="formGroupExampleInput"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label
+                                    for="exampleFormControlTextarea1 "
+                                    className="form-title"
+                                >
+                                    Description
+                                </label>
+                                <textarea
+                                    className="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    rows="3"
+                                    value={description}
+                                    onChange={(e) =>
+                                        setDescription(e.target.value)
+                                    }
+                                ></textarea>
+                            </div>
+                            <div className="form-group">
+                                <label
+                                    for="formGroupExampleInput2 "
+                                    className="form-title"
+                                >
+                                    Price
+                                </label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    id="formGroupExampleInput2"
+                                    value={price}
+                                    onChange={(e) => setPrice(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label
+                                    for="exampleFormControlSelect1 "
+                                    className="form-title"
+                                >
+                                    Category
+                                </label>
+                                <select
                                     className="form-control"
                                     id="exampleFormControlSelect1"
                                     value={categoryId}
@@ -141,11 +168,16 @@ const EditItem =(props)=> {
                                         );
                                     })}
                                 </select>
-				  </div>
+                            </div>
 
-				  <div class="form-group">
-				    <label for="exampleFormControlSelect1">Sub-Category</label>
-					<select
+                            <div className="form-group">
+                                <label
+                                    for="exampleFormControlSelect1 "
+                                    className="form-title"
+                                >
+                                    Sub Category
+                                </label>
+                                <select
                                     className="form-control"
                                     id="exampleFormControlSelect1"
                                     value={subCategoryId}
@@ -167,48 +199,78 @@ const EditItem =(props)=> {
                                         );
                                     })}
                                 </select>
-				  </div>
+                            </div>
 
-				  <div class="form-group">
-				    <label for="exampleFormControlSelect1">Color</label>
-				    <select class="form-control" id="exampleFormControlSelect1"  value={color}
-                                    onChange={(e) => setColor(e.target.value)}>
-				      <option>1</option>
-				      <option>2</option>
-				      <option>3</option>
-				      <option>4</option>
-				      <option>5</option>
-				    </select>
-				  </div>
+                            <div className="form-group">
+                                <label
+                                    for="exampleFormControlSelect1 "
+                                    className="form-title"
+                                >
+                                    Color
+                                </label>
+                                <select
+                                    className="form-control"
+                                    id="exampleFormControlSelect1"
+                                    value={color}
+                                    onChange={(e) => setColor(e.target.value)}
+                                >
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
 
-				  <div class="form-group">
-				    <label for="exampleFormControlSelect1">Size</label>
-				    <select class="form-control" id="exampleFormControlSelect1"  value={size}
-                                    onChange={(e) => setSize(e.target.value)}>
-				      <option>1</option>
-				      <option>2</option>
-				      <option>3</option>
-				      <option>4</option>
-				      <option>5</option>
-				    </select>
-				  </div>
+                            <div className="form-group">
+                                <label
+                                    for="exampleFormControlSelect1 "
+                                    className="form-title"
+                                >
+                                    Size
+                                </label>
+                                <select
+                                    className="form-control"
+                                    id="exampleFormControlSelect1"
+                                    value={size}
+                                    onChange={(e) => setSize(e.target.value)}
+                                >
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
 
-				   <div class="form-group">
-				    <label for="exampleFormControlFile1">Images</label>
-				    <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
-				  </div>
-				  
-				  <button type="button" class="btn edit col-md-12 " onClick = {onItemUpdate}>Update</button>
-				      
+                            <div className="form-group">
+                                <label
+                                    for="exampleFormControlFile1 "
+                                    className="form-title"
+                                >
+                                    Images
+                                </label>
+                                <input
+                                    type="file"
+                                    className="form-control-file"
+                                    id="exampleFormControlFile1"
+                                ></input>
+                            </div>
 
-	</form>
+                            <button
+                                disabled={disable}
+                                onClick={onItemUpdate}
+                                type="button"
+                                className="btn edit col-md-12"
+                            >
+                                Update
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
-			</div>
-		</div>
-
-	</div>
-        
-    )
-}
-
-export default EditItem
+export default EditItem;
