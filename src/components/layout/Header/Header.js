@@ -55,7 +55,9 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/category" className="nav-item-link">Category</Link>
+                            <Link to="/category" className="nav-item-link">
+                                Category
+                            </Link>
                         </li>
                         {/* {userData.user ? (
                             userData.user.role === 'admin' ? (
@@ -83,48 +85,20 @@ const Header = () => {
                                         className="dropdown-menu"
                                         aria-labelledby="navbarDropdown"
                                     >
-                                        <Link className="dropdown-item" to="/renter/items/add">
+                                        <Link
+                                            className="dropdown-item"
+                                            to="/renter/items/add"
+                                        >
                                             Add an item
                                         </Link>
-                                        <Link className="dropdown-item" to="/renter/items">
+                                        <Link
+                                            className="dropdown-item"
+                                            to="/renter/items"
+                                        >
                                             My items
                                         </Link>
                                         <Link className="dropdown-item" to="#">
                                             My orders
-                                        </Link>
-                                    </div>
-                                </li>
-
-                                <li className="nav-item dropdown">
-                                    <Link
-                                        className="nav-item-link dropdown-toggle"
-                                        to="#"
-                                        id="navbarDropdown2"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
-                                        Hi, {userData.user.firstName}
-                                    </Link>
-                                    <div
-                                        className="dropdown-menu"
-                                        aria-labelledby="navbarDropdown2"
-                                    >
-                                        <Link className="dropdown-item" to="#">
-                                            Manage Profile
-                                        </Link>
-                                        <Link className="dropdown-item" to="#">
-                                            Change Password
-                                        </Link>
-                                        <div className="dropdown-divider"></div>
-                                        <Link
-                                            onClick={() => {
-                                                logout();
-                                            }}
-                                            className="dropdown-item"
-                                        >
-                                            Logout
                                         </Link>
                                     </div>
                                 </li>
@@ -141,7 +115,41 @@ const Header = () => {
                             </Link>
                         </li>
 
-                        {userData.user ? null : (
+                        {userData.user ? (
+                            <li className="nav-item dropdown">
+                                <Link
+                                    className="nav-item-link dropdown-toggle"
+                                    to="#"
+                                    id="navbarDropdown2"
+                                    role="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    Hi, {userData.user.firstName}
+                                </Link>
+                                <div
+                                    className="dropdown-menu"
+                                    aria-labelledby="navbarDropdown2"
+                                >
+                                    <Link className="dropdown-item" to="#">
+                                        Manage Profile
+                                    </Link>
+                                    <Link className="dropdown-item" to="#">
+                                        Change Password
+                                    </Link>
+                                    <div className="dropdown-divider"></div>
+                                    <Link
+                                        onClick={() => {
+                                            logout();
+                                        }}
+                                        className="dropdown-item"
+                                    >
+                                        Logout
+                                    </Link>
+                                </div>
+                            </li>
+                        ) : (
                             <li>
                                 <Link to="/login">
                                     <button>Login</button>
