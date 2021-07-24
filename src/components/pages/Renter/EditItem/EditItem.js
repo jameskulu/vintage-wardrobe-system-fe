@@ -83,7 +83,7 @@ const EditItem = (props) => {
                         <div className="col-md-12 col-sm-12 add-item">
                             <div className="text-center">
                                 <h4 className="text-light text-center add-item-text">
-                                    EDIT ITEM
+                                    Edit Item
                                 </h4>
                             </div>
                         </div>

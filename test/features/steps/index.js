@@ -60,3 +60,48 @@ Given('View Items', async () => {  //viewItems and displaying the details
   await driver.sleep(delay);
   await driver.findElement(By.className('add-cart')).click();
 });
+
+Given('Upload functionality', async () => {  //viewItems and displaying the details
+  let driver = await new Builder().forBrowser('chrome').build();
+ await driver.get('https://vintagewardrobe.herokuapp.com/login');
+ await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+ await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+ await driver.findElement(By.className('loginbtn')).click();
+ await driver.sleep(delay);
+ await driver.get('https://vintagewardrobe.herokuapp.com/renter/items/add');
+ await driver.findElement(By.id('formGroupExampleInput')).sendKeys('Arbin');
+ await driver.findElement(By.id('exampleFormControlTextarea1')).sendKeys('About pants');
+ await driver.findElement(By.id('formGroupExampleInput2')).sendKeys('Rs 1000');
+ await driver.findElement(By.className('btn')).click();
+ 
+});
+
+Given('Edit functionality', async () => {  //viewItems and displaying the details
+  let driver = await new Builder().forBrowser('chrome').build();
+ await driver.get('https://vintagewardrobe.herokuapp.com/login');
+ await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+ await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+ await driver.findElement(By.className('loginbtn')).click();
+ await driver.sleep(delay);
+ await driver.get('https://vintagewardrobe.herokuapp.com/renter/items');
+//  await driver.findElement(By.className('fa-edit')).click();
+await driver.sleep(5000);
+await driver.get('https://vintagewardrobe.herokuapp.com/renter/items/edit/ec343593-1638-4ac3-9524-a8d89b0f6f06');
+ await driver.findElement(By.id('formGroupExampleInput')).sendKeys('Sandesh');
+ await driver.sleep(2000);
+ await driver.findElement(By.id('exampleFormControlTextarea1')).sendKeys('About pants');
+ await driver.sleep(2000);
+ await driver.findElement(By.id('formGroupExampleInput2')).sendKeys('Rs 2000');
+ await driver.findElement(By.className('btn')).click();
+});
+
+Given('View item functionality', async () => {  //viewItems and displaying the details
+  let driver = await new Builder().forBrowser('chrome').build();
+ await driver.get('https://vintagewardrobe.herokuapp.com/login');
+ await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+ await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+ await driver.findElement(By.className('loginbtn')).click();
+ await driver.sleep(delay);
+ await driver.get('https://vintagewardrobe.herokuapp.com/renter/items');
+
+});

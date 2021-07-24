@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './view-items.css';
-import dress1 from '../../../images/dress1.jpg';
+import dress1 from '../../../../images/dress1.jpg';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 
@@ -57,7 +57,7 @@ const ViewItem = () => {
     return (
         <div className="view-items-container">
             <headings>
-                <h2>MY ITEMS</h2>
+                <h2>My Items</h2>
             </headings>
             <div className="table-responsive">
                 <table className="table">
