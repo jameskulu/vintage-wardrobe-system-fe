@@ -70,7 +70,7 @@ header .inner-header nav ul li {
     margin-left: 60px;
 }
 
-header .inner-header nav ul li a {
+header .inner-header nav ul li a.nav-item-link {
     text-decoration: none;
     padding: 22px 0;
     font-size: 18px;
@@ -121,7 +121,7 @@ header .inner-header nav ul li button{
         padding: 10px 0;
     }
 
-    header .inner-header nav ul li a {
+    header .inner-header nav ul li a.nav-item-link {
         padding: 0;
     }
 

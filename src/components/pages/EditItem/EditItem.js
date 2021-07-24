@@ -2,10 +2,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import './addItem.css';
+import '../AddItem/addItem.css';
 
-const AddItem = () => {
+const EditItem = (props) => {
     const history = useHistory();
+    const itemId = props.match.params.itemId;
     const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
     const [disable, setDisable] = useState(false);
@@ -31,33 +32,42 @@ const AddItem = () => {
             setSubCategories(subCategoriesResponse.data.data);
         };
         loadCategories();
+
+        const loadSingleItem = async () => {
+            const singleItemResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/items/${itemId}`
+            );
+
+            setName(singleItemResponse.data.data.name);
+            setDescription(singleItemResponse.data.data.description);
+            setPrice(singleItemResponse.data.data.price);
+            setSubCategoryId(singleItemResponse.data.data.subCategoryId);
+
+        };
+
+        loadSingleItem();
     }, []);
 
-    const onItemAdd = async (e) => {
+    const onItemUpdate = async (e) => {
         e.preventDefault();
         setDisable(true);
 
         try {
-            const newItem = {
+            const updateItem = {
                 name,
                 description,
                 price: parseInt(price),
                 subCategoryId,
             };
-            // const newItem = new FormData() // new line
-            // newItem.append('name', name)
-            // newItem.append('description', description)
-            // newItem.append('price', price)
-            // newItem.append('subCategoryId', subCategoryId)
+            console.log(updateItem)
 
             const token = localStorage.getItem('auth-token');
-            await axios.post(
-                `${process.env.REACT_APP_API_URL}/api/renter/items/new`,
-                newItem,
+            await axios.put(
+                `${process.env.REACT_APP_API_URL}/api/renter/items/update/${itemId}`,
+                updateItem,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            toast.success('New Item has been added.');
-
+            toast.success('Items updated');
             history.push('/renter/items');
         } catch (err) {
             setDisable(false);
@@ -73,7 +83,7 @@ const AddItem = () => {
                         <div className="col-md-12 col-sm-12 add-item">
                             <div className="text-center">
                                 <h4 className="text-light text-center add-item-text">
-                                    ADD AN ITEM
+                                    EDIT ITEM
                                 </h4>
                             </div>
                         </div>
@@ -249,11 +259,11 @@ const AddItem = () => {
 
                             <button
                                 disabled={disable}
-                                onClick={onItemAdd}
+                                onClick={onItemUpdate}
                                 type="button"
                                 className="btn edit col-md-12"
                             >
-                                Upload
+                                Update
                             </button>
                         </form>
                     </div>
@@ -263,4 +273,4 @@ const AddItem = () => {
     );
 };
 
-export default AddItem;
+export default EditItem;
