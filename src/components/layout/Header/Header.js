@@ -89,7 +89,7 @@ const Header = () => {
                                         <Link className="dropdown-item" to="/renter/items">
                                             My items
                                         </Link>
-                                        <Link className="dropdown-item" to="#">
+                                        <Link className="dropdown-item" to="/renter/order">
                                             My orders
                                         </Link>
                                     </div>
