@@ -54,6 +54,12 @@ const Header = () => {
                                 Home
                             </Link>
                         </li>
+                        <li>
+                            <Link className="nav-item-link active" to="/">
+                                About Us
+                            </Link>
+                        </li>
+                        
                         <li className="dropdown">
                             <Link
                                 className="nav-item-link "
