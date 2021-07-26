@@ -191,7 +191,7 @@ const AddItem = () => {
                                 </select>
                             </div>
 
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label
                                     for="exampleFormControlSelect1 "
                                     className="form-title"
@@ -245,7 +245,7 @@ const AddItem = () => {
                                     className="form-control-file"
                                     id="exampleFormControlFile1"
                                 ></input>
-                            </div>
+                            </div> */}
 
                             <button
                                 disabled={disable}
