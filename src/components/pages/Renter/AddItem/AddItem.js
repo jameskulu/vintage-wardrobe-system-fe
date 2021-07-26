@@ -25,10 +25,10 @@ const AddItem = () => {
             );
             setCategories(categoriesResponse.data.data);
 
-            const subCategoriesResponse = await axios.get(
-                `${process.env.REACT_APP_API_URL}/api/sub-categories`
-            );
-            setSubCategories(subCategoriesResponse.data.data);
+            // const subCategoriesResponse = await axios.get(
+            //     `${process.env.REACT_APP_API_URL}/api/sub-categories`
+            // );
+            // setSubCategories(subCategoriesResponse.data.data);
         };
         loadCategories();
     }, []);
@@ -42,6 +42,8 @@ const AddItem = () => {
                 name,
                 description,
                 price: parseInt(price),
+                size,
+                color,
                 subCategoryId,
             };
             // const newItem = new FormData() // new line
@@ -61,6 +63,20 @@ const AddItem = () => {
             history.push('/renter/items');
         } catch (err) {
             setDisable(false);
+            toast.error(err.response.data.message);
+        }
+    };
+
+    const onCategoryChange = async (e) => {
+        const id = e.target.value
+        setCategoryId(id);
+        try {
+            const categoriesResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/categories/${id}`
+            );
+            const sortedCategoriesResponse = categoriesResponse.data.data.category.reverse();
+            setSubCategories(sortedCategoriesResponse);
+        } catch (err) {
             toast.error(err.response.data.message);
         }
     };
@@ -141,10 +157,10 @@ const AddItem = () => {
                                     id="exampleFormControlSelect1"
                                     value={categoryId}
                                     onChange={(e) =>
-                                        setCategoryId(e.target.value)
+                                        onCategoryChange(e, categoryId)
                                     }
                                 >
-                                    <option disabled defaultValue>
+                                    <option selected="true" disabled="disabled">
                                         -- select a category --
                                     </option>
                                     {categories.map((category) => {
@@ -175,7 +191,7 @@ const AddItem = () => {
                                         setSubCategoryId(e.target.value)
                                     }
                                 >
-                                    <option disabled defaultValue>
+                                    <option selected="true" disabled="disabled">
                                         -- select a sub category --
                                     </option>
                                     {subCategories.map((subCategory) => {
@@ -191,7 +207,7 @@ const AddItem = () => {
                                 </select>
                             </div>
 
-                            {/* <div className="form-group">
+                            <div className="form-group">
                                 <label
                                     for="exampleFormControlSelect1 "
                                     className="form-title"
@@ -204,11 +220,20 @@ const AddItem = () => {
                                     value={color}
                                     onChange={(e) => setColor(e.target.value)}
                                 >
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option selected="true" disabled="disabled">
+                                        -- select a color --
+                                    </option>
+                                    <option value="White">White</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Green">Green</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Gray">Gray</option>
+                                    <option value="Pink">Pink</option>
+                                    <option value="Violet">Violet</option>
+                                    <option value="Purple">Purple</option>
+                                    <option value="Maroon">Maroon</option>
                                 </select>
                             </div>
 
@@ -225,11 +250,14 @@ const AddItem = () => {
                                     value={size}
                                     onChange={(e) => setSize(e.target.value)}
                                 >
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option selected="true" disabled="disabled">
+                                        -- select a size --
+                                    </option>
+                                    <option>Extra Small</option>
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                    <option>Extra Large</option>
                                 </select>
                             </div>
 
@@ -245,7 +273,7 @@ const AddItem = () => {
                                     className="form-control-file"
                                     id="exampleFormControlFile1"
                                 ></input>
-                            </div> */}
+                            </div>
 
                             <button
                                 disabled={disable}

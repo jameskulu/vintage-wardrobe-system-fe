@@ -3,6 +3,7 @@
     margin: 70px auto 0 auto;
     padding: 15px;
     border: 1px solid rgb(163, 163, 163);
+    min-width: 1000px;
 }
 
 .view-items-container .table a:hover {
@@ -12,9 +13,6 @@
 .view-items-container .img-thumbnail {
     height: 90px;
     width: 80px;
-}
-.view-items-container .table .thead-light th {
-    /* background: white; */
 }
 
 .view-items-container .table thead th {

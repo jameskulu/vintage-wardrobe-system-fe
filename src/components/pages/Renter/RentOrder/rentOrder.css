@@ -1,8 +1,12 @@
+.rent-orders-container{
+  
+}
 .rent-orders-container .table {
   width: 90%;
   margin: auto;
   border: 1px solid rgb(163, 163, 163);
   padding: 15px;
+  min-width: 1000px;
 }
 .rent-orders-container .img-thumbnail {
   height: 90px;
