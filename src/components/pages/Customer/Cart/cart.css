@@ -1,0 +1,53 @@
+.img-thumbnail {
+    height: 90px;
+    width: 80px;
+  }
+  .table {
+    width: 90%;
+    margin: auto;
+    border: 1px solid black;
+    padding: 15px;
+  }
+  .cart .thead-light th {
+    background: white;
+  }
+  
+  .cart .cart-heading{
+     background: #8AAAE5;
+     margin-bottom: 50px;
+  
+  }
+  
+  .cart .cart-title{
+    font-weight: regular;
+   font-style: poppins;
+   margin: 20px;
+  }
+  
+  
+  .cart thead th {
+    border: none;
+  }
+  .cart td,
+  .cart th {
+    border: none;
+  }
+  
+  .table tbody + tbody{
+    border-top: 1px solid #dee2e6;
+  }
+  
+  
+  
+  
+  .text-uppercase {
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 900;
+  }
+  
+  .cart .btn-Checkout{
+    color: white ;
+    background: #8AAAE5;
+    margin: 70px;
+  }
