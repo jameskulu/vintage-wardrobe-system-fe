@@ -110,7 +110,7 @@ const Header = () => {
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                     >
-                                        Renter
+                                        Rentals
                                     </Link>
                                     <div
                                         className="dropdown-menu"
