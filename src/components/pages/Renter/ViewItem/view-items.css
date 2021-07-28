@@ -13,6 +13,7 @@
 .view-items-container .img-thumbnail {
     height: 90px;
     width: 80px;
+    object-fit: contain;
 }
 
 .view-items-container .table thead th {

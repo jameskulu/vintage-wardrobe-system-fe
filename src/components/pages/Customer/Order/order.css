@@ -3,23 +3,23 @@
     margin: auto;
 }
 
-.cart-container .img-thumbnail {
+.order-container .img-thumbnail {
     height: 90px;
     width: 80px;
     object-fit: contain;
 }
-.cart-container .table {
+.order-container .table {
     width: 100%;
     margin: auto;
     border: 1px solid rgb(184, 184, 184);
     padding: 15px;
     min-width: 1000px;
 }
-.cart-container .thead-light th {
+.order-container .thead-light th {
     background: white;
 }
 
-.cart-container .cart-heading {
+.order-container .cart-heading {
     background: #8aaae5;
     margin-bottom: 50px;
     height: 110px;
@@ -28,41 +28,41 @@
     justify-content: center;
 }
 
-.cart-container .cart-title {
+.order-container .cart-title {
     font-weight: regular;
     margin: 20px;
 }
 
-.cart-container thead th {
+.order-container thead th {
     /* border: none; */
 }
-.cart-container table td,
-.cart-container table th {
+.order-container table td,
+.order-container table th {
     border: none;
     vertical-align: middle;
 }
 
-.cart-container .table tbody + tbody {
+.order-container .table tbody + tbody {
     border-top: 1px solid #dee2e6;
 }
 
-.cart-container .text-uppercase {
+.order-container .text-uppercase {
     font-size: 20px;
     font-family: sans-serif;
     font-weight: 900;
 }
 
-.cart-container .btn-Checkout {
+.order-container .btn-Checkout {
     color: white;
     background: #8aaae5;
     margin-top: 40px;
 }
 
-.cart-container .fa-trash-alt {
+.order-container .fa-trash-alt {
     color: red;
 }
 
-.cart-container .empty-div {
+.order-container .empty-div {
     height: 150px;
     display: flex;
     align-items: center;
@@ -71,11 +71,11 @@
     border: 1px solid rgb(175, 175, 175);
 }
 
-.cart-container .empty-div button {
+.order-container .empty-div button {
     margin-top: 10px;
 }
 
-.cart-container .proceed-checkout-div {
+.order-container .proceed-checkout-div {
     display: flex;
     justify-content: flex-end;
 }

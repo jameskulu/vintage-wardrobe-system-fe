@@ -1,11 +1,21 @@
 import './checkout.css';
 import { useEffect, useState } from 'react';
+import dress1 from '../../../../images/dress1.jpg';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 const Checkout = () => {
     const items = JSON.parse(localStorage.getItem('cart')) || [];
 
-    const [cartItems, setCartItems] = useState(items);
+    const history = useHistory();
+    const [phone, setPhone] = useState();
+    const [address, setAddress] = useState();
+    const [city, setCity] = useState();
+    const [country, setCountry] = useState();
     const [totalPrice, setTotalPrice] = useState(0);
+
+    const [cartItems] = useState(items);
 
     useEffect(() => {
         cartItems.map((item) =>
@@ -13,25 +23,52 @@ const Checkout = () => {
         );
     }, []);
 
-    const removeItems = async (id, totalPrice) => {
-        const filteredItems = items.filter((item) => item.id !== id);
-        setCartItems(filteredItems);
-        setTotalPrice((prevData) => prevData - totalPrice);
-        localStorage.setItem('cart', JSON.stringify(filteredItems));
+    const orderItems = async () => {
+        const items = [];
+        cartItems.forEach((item) => {
+            items.push({
+                startDate: item.startDate,
+                endDate: item.endDate,
+                phoneNumber: phone,
+                address,
+                city,
+                country,
+                totalPrice: item.totalPrice,
+                itemId: item.id,
+            });
+        });
+
+        try {
+            const token = localStorage.getItem('auth-token');
+            await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/orders/new`,
+                { items },
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            toast.success('Order successfully placed', {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
+            localStorage.setItem('cart', JSON.stringify([]));
+            history.push('/checkout/complete');
+        } catch (err) {
+            toast.error(err.response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
+        }
     };
 
     return (
         <div className="checkout-container">
             <heading>
-                <h1 class="text-white">Checkout</h1>
+                <h1 className="text-white">Checkout</h1>
             </heading>
-            <h4 id="order-heading" class="mb-3">
+            <h4 id="order-heading" className="mb-3">
                 <b>Your Order</b>
             </h4>
             <div className="checkout-cart-table">
                 <div className="table-responsive ">
-                    <table class="table">
-                        <thead class="thead-light">
+                    <table className="table">
+                        <thead className="thead-light">
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col">Item</th>
@@ -40,35 +77,24 @@ const Checkout = () => {
                                 <th scope="col">Days</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Total</th>
-                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             {cartItems.map((item) => (
                                 <tr>
-                                    <td></td>
+                                    <td>
+                                        <img
+                                            className="img-thumbnail"
+                                            src={dress1}
+                                            alt=""
+                                        />
+                                    </td>
                                     <td>{item.name}</td>
                                     <td>{item.startDate}</td>
                                     <td>{item.endDate}</td>
                                     <td>{item.days}</td>
                                     <td>Rs.{item.price}</td>
                                     <td>Rs.{item.totalPrice}</td>
-                                    <td>
-                                        <button
-                                            style={{
-                                                border: 'none',
-                                                background: 'none',
-                                            }}
-                                            onClick={() =>
-                                                removeItems(
-                                                    item.id,
-                                                    item.totalPrice
-                                                )
-                                            }
-                                        >
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -87,46 +113,59 @@ const Checkout = () => {
                     </table>
                 </div>
             </div>
-            <div class="Buttom">
-                <div class="shipping-info col-sm-12 col-md-6">
+            <div className="Buttom">
+                <div className="shipping-info col-sm-12 col-md-6">
                     <form>
-                        <div class="form-row col-sm-12 col-md-12">
+                        <div className="form-row col-sm-12 col-md-12">
                             <h3 className="mb-4">Add Shipping Information</h3>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="inputAddress"
                                     placeholder="Address"
                                     autocomplete="off"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
                                 />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="inputCity"
                                     placeholder="City"
                                     autocomplete="off"
+                                    value={city}
+                                    onChange={(e) => setCity(e.target.value)}
                                 />
                             </div>
-                            <select class="form-control mb-3">
-                                <option>Country</option>
+                            <select
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                className="form-control mb-3"
+                            >
+                                <option selected="true" disabled="disabled">
+                                    Country
+                                </option>
+                                <option value="Nepal">Nepal</option>
                             </select>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input
-                                    type="number"
-                                    class="form-control"
+                                    type="text"
+                                    className="form-control"
                                     id="number"
-                                    placeholder="Number"
+                                    placeholder="Phone Number"
                                     autocomplete="off"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                 ></input>
                             </div>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" className="btn btn-primary">
                                 <b>SAVE</b>
                             </button>
-                            <p>
+                            <p className="mt-3">
                                 By placing this order, you agree to the{' '}
                                 <strong>
                                     <u>Terms of Service and Privacy Policy</u>
@@ -137,28 +176,32 @@ const Checkout = () => {
                     </form>
                 </div>
 
-                <div class="billing col-sm-12 col-md-6">
-                    <div class="billingpart col-sm-12 ">
+                <div className="billing col-sm-12 col-md-6">
+                    <div className="billingpart col-sm-12 ">
                         <h2>Add Billing</h2>
-                        <div class="billing-info  ">
+                        <div className="billing-info  ">
                             <p>Sub-total</p>
                             <p>Rs.{totalPrice}</p>
                         </div>
-                        <div class="billing-info ">
+                        <div className="billing-info ">
                             <p>Shipping</p>
                             <p>Free</p>
                         </div>
                         <hr />
 
-                        <div class="billing-info ">
+                        <div className="billing-info ">
                             <p>Order Total</p>
                             <p>Rs.{totalPrice}</p>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button
+                            onClick={orderItems}
+                            type="submit"
+                            className="btn btn-primary"
+                        >
                             <b>PLACE ORDER</b>
                         </button>
-                        <div class="terms">
-                            <i class="bi bi-lock"></i>
+                        <div className="terms">
+                            <i className="bi bi-lock"></i>
                             <p>Secure Payment</p>
                         </div>
                     </div>

@@ -7,6 +7,7 @@
 }
 .rent-orders-container .img-thumbnail {
   height: 90px;
+  object-fit: contain;
   width: 80px;
 }
 .rent-orders-container .table .thead-light th {

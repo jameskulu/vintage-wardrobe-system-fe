@@ -55,13 +55,19 @@ const Cart = () => {
                                     {cartItems.map((item) => (
                                         <tr>
                                             <td>
-                                                <img
-                                                    className="img-thumbnail"
-                                                    src={dress1}
-                                                    alt=""
-                                                />
+                                                <Link to={`items/${item.id}`}>
+                                                    <img
+                                                        className="img-thumbnail"
+                                                        src={dress1}
+                                                        alt=""
+                                                    />
+                                                </Link>
                                             </td>
-                                            <td>{item.name}</td>
+                                            <td>
+                                                <Link to={`items/${item.id}`}>
+                                                    {item.name}
+                                                </Link>
+                                            </td>
                                             <td>{item.startDate}</td>
                                             <td>{item.endDate}</td>
                                             <td>{item.days}</td>

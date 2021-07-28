@@ -8,6 +8,7 @@
 .checkout-container .img-thumbnail {
     width: 100px;
     aspect-ratio: 1/1;
+    object-fit: contain;
 }
 .checkout-container .table .thead-light th {
     background: white;
