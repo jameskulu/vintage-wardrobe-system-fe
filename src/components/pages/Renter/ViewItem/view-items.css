@@ -20,7 +20,7 @@
 }
 .view-items-container .table td,
 .view-items-container .table th {
-    /* border: none; */
+    vertical-align:middle;
 }
 
 .view-items-container .text-uppercase {

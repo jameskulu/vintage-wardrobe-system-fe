@@ -54,7 +54,13 @@ const Cart = () => {
                                 <tbody>
                                     {cartItems.map((item) => (
                                         <tr>
-                                            <td></td>
+                                            <td>
+                                                <img
+                                                    className="img-thumbnail"
+                                                    src={dress1}
+                                                    alt=""
+                                                />
+                                            </td>
                                             <td>{item.name}</td>
                                             <td>{item.startDate}</td>
                                             <td>{item.endDate}</td>
@@ -74,7 +80,7 @@ const Cart = () => {
                                                         )
                                                     }
                                                 >
-                                                    X
+                                                    <i class="fas fa-times"></i>
                                                 </button>
                                             </td>
                                         </tr>

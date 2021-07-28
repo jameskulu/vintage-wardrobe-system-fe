@@ -161,7 +161,7 @@
 }
 
 .outer-latest-released .latest-released .single-latest-released img {
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 5px;
     height: 400px;
     width: 100%;

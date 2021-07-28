@@ -1,4 +1,4 @@
-.table-button-cart{
+.table-button-cart {
     width: 90%;
     margin: auto;
 }
@@ -38,6 +38,7 @@
 .cart-container table td,
 .cart-container table th {
     border: none;
+    vertical-align: middle;
 }
 
 .cart-container .table tbody + tbody {
@@ -73,7 +74,7 @@
     margin-top: 10px;
 }
 
-.cart-container .proceed-checkout-div{
+.cart-container .proceed-checkout-div {
     display: flex;
     justify-content: flex-end;
 }
