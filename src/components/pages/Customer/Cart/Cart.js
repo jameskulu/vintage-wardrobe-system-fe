@@ -48,7 +48,7 @@ const Cart = () =>{
       <td>
         <p class="font-weight-bold">$64.00</p>
       </td>
-      <td id="icondel"><i class="bi bi-trash"></i></td>
+      <td><i class="far fa-trash-alt"></i></td>
     </tr>
    
    

@@ -51,3 +51,8 @@
     background: #8AAAE5;
     margin: 70px;
   }
+
+  .cart .fa-trash-alt{
+    color: red;
+    
+  }
