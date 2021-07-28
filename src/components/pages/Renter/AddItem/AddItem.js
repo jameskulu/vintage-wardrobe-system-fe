@@ -41,7 +41,7 @@ const AddItem = () => {
             const newItem = {
                 name,
                 description,
-                price: parseInt(price),
+                price: parseInt(Math.abs(price)),
                 size,
                 color,
                 subCategoryId,
@@ -68,13 +68,14 @@ const AddItem = () => {
     };
 
     const onCategoryChange = async (e) => {
-        const id = e.target.value
+        const id = e.target.value;
         setCategoryId(id);
         try {
             const categoriesResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/categories/${id}`
             );
-            const sortedCategoriesResponse = categoriesResponse.data.data.category.reverse();
+            const sortedCategoriesResponse =
+                categoriesResponse.data.data.category.reverse();
             setSubCategories(sortedCategoriesResponse);
         } catch (err) {
             toast.error(err.response.data.message);

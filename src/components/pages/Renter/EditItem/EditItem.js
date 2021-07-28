@@ -39,7 +39,7 @@ const EditItem = (props) => {
             const updateItem = {
                 name,
                 description,
-                price: parseInt(price),
+                price: parseInt(Math.abs(price)),
                 size,
                 color
             };
