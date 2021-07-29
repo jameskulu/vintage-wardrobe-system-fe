@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 
 const RentOrder = () => {
     const [orders, setOrders] = useState([]);
@@ -54,87 +55,93 @@ const RentOrder = () => {
             <headings>
                 <h2>Rent Orders</h2>
             </headings>
-            <div className="table-responsive">
-                <table class="table">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Item</th>
-                            <th scope="col">Arrival- Return Date</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Customer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orders.map((order) => (
-                            <tr>
-                                <td>
-                                    <img
-                                        src={dress1}
-                                        class="img-fluid img-thumbnail"
-                                        alt="Dress"
-                                    />
-                                </td>
-                                <td>
-                                    <p class="text-uppercase">
-                                        {order.item.name}
-                                    </p>
-                                    <p></p>
-                                    <p>Rs.{order.item.price}</p>
-                                </td>
-                                <td id="date">
-                                    {order.startDate} - {order.endDate}
-                                </td>
 
-                                <td id="price">Rs.{order.totalPrice}</td>
-                                <td>
-                                    <select
-                                        className="form-control form-control-sm"
-                                        value={order.status}
-                                        onChange={(e) =>
-                                            changeStatus(
-                                                e.target.value,
-                                                order.id
-                                            )
-                                        }
-                                    >
-                                        <option disabled value="pending">
-                                            Pending
-                                        </option>
-                                        <option value="approved">
-                                            Approved
-                                        </option>
-                                        <option value="refused">Refused</option>
-                                        <option value="delivered">
-                                            Delivered
-                                        </option>
-                                        <option value="received">
-                                            Received
-                                        </option>
-                                    </select>
-                                    {/* <div
-                                            class="dropdown-menu"
-                                            aria-labelledby="dropdownMenuButton"
-                                        >
-                                            <a class="dropdown-item" href="#">
-                                                Approved
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                Pending
-                                            </a>
-                                        </div> */}
-                                </td>
-                                <td>
-                                    <p>{order.user.firstName} {order.user.lastName}</p>
-                                    <p>{order.phoneNumber}</p>
-                                    <p>{order.address},{order.city}</p>
-                                </td>
+            {orders.length > 0 ? (
+                <div className="table-responsive">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Arrival- Return Date</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Customer</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {orders.map((order) => (
+                                <tr>
+                                    <td>
+                                        <img
+                                            src={dress1}
+                                            class="img-fluid img-thumbnail"
+                                            alt="Dress"
+                                        />
+                                    </td>
+                                    <td>
+                                        <p class="text-uppercase">
+                                            {order.item.name}
+                                        </p>
+                                        <p></p>
+                                        <p>Rs.{order.item.price}</p>
+                                    </td>
+                                    <td id="date">
+                                        {order.startDate} - {order.endDate}
+                                    </td>
+
+                                    <td id="price">Rs.{order.totalPrice}</td>
+                                    <td>
+                                        <select
+                                            className="form-control form-control-sm"
+                                            value={order.status}
+                                            onChange={(e) =>
+                                                changeStatus(
+                                                    e.target.value,
+                                                    order.id
+                                                )
+                                            }
+                                        >
+                                            <option disabled value="pending">
+                                                Pending
+                                            </option>
+                                            <option value="approved">
+                                                Approved
+                                            </option>
+                                            <option value="refused">
+                                                Refused
+                                            </option>
+                                            <option value="delivered">
+                                                Delivered
+                                            </option>
+                                            <option value="received">
+                                                Received
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            {order.user.firstName}{' '}
+                                            {order.user.lastName}
+                                        </p>
+                                        <p>{order.phoneNumber}</p>
+                                        <p>
+                                            {order.address},{order.city}
+                                        </p>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <div className="empty-div">
+                    <p>Your rent orders is empty</p>
+                    <Link to="/">
+                        <button className="btn">Back to home</button>
+                    </Link>
+                </div>
+            )}
         </div>
     );
 };

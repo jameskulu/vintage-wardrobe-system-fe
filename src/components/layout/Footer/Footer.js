@@ -57,7 +57,7 @@ const Footer = () => {
                                         My Profiles
                                     </Link>
 
-                                    <Link to="/order" className="list-group-item ">
+                                    <Link to="/orders" className="list-group-item ">
                                         My Orders
                                     </Link>
                                 </div>

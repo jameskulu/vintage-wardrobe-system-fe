@@ -33,15 +33,15 @@ const ViewItem = () => {
             if (willDelete) {
                 try {
                     const token = localStorage.getItem('auth-token');
+
                     await axios.delete(
                         `${process.env.REACT_APP_API_URL}/api/renter/items/delete/${itemId}`,
                         { headers: { Authorization: 'Bearer ' + token } }
                     );
 
-                    const token2 = localStorage.getItem('auth-token');
                     const itemResponse = await axios.get(
                         `${process.env.REACT_APP_API_URL}/api/renter/items`,
-                        { headers: { Authorization: 'Bearer ' + token2 } }
+                        { headers: { Authorization: 'Bearer ' + token } }
                     );
                     const sortedItemResponse = itemResponse.data.data.reverse();
                     setItems(sortedItemResponse);
@@ -59,59 +59,69 @@ const ViewItem = () => {
             <headings>
                 <h2>My Items</h2>
             </headings>
-            <div className="table-responsive">
-                <table className="table">
-                    <thead className="">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Item</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th colspan="2" scope="col">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {items.map((item) => (
+            {items.length > 0 ? (
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead className="">
                             <tr>
-                                <td>
-                                    <img
-                                        src={dress1}
-                                        className="img-fluid img-thumbnail"
-                                        alt="Sheep"
-                                    />
-                                </td>
-                                <td>
-                                    <Link to={`/items/${item.id}`}>
-                                        <p className="text-uppercase">
-                                            {item.name}
-                                        </p>
-                                    </Link>
-                                    {/* <p>Printed Leona Dress</p> */}
-                                    <p>Rs.{item.price}</p>
-                                </td>
-                                <td></td>
-                                <td></td>
-
-                                <td id="iconedit">
-                                    <Link to={`/renter/items/edit/${item.id}`}>
-                                        <i className="fas fa-edit"></i>
-                                    </Link>
-                                </td>
-                                <td id="icondel">
-                                    <i
-                                        onClick={() => {
-                                            onItemDelete(item.id);
-                                        }}
-                                        className="fas fa-trash-alt"
-                                    ></i>
-                                </td>
+                                <th scope="col"></th>
+                                <th scope="col">Item</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th colspan="2" scope="col">
+                                    Action
+                                </th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {items.map((item) => (
+                                <tr>
+                                    <td>
+                                        <img
+                                            src={dress1}
+                                            className="img-fluid img-thumbnail"
+                                            alt="Sheep"
+                                        />
+                                    </td>
+                                    <td>
+                                        <Link to={`/items/${item.id}`}>
+                                            <p style={{ fontSize: '20px' }}>
+                                                {item.name}
+                                            </p>
+                                        </Link>
+                                        <p>Rs.{item.price}</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td id="iconedit">
+                                        <Link
+                                            to={`/renter/items/edit/${item.id}`}
+                                        >
+                                            <i className="fas fa-edit"></i>
+                                        </Link>
+                                    </td>
+                                    <td id="icondel">
+                                        <i
+                                            onClick={() => {
+                                                onItemDelete(item.id);
+                                            }}
+                                            className="fas fa-trash-alt"
+                                        ></i>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <div className="empty-div">
+                    <p>You have not uploaded any items for rent.</p>
+                    <Link to="/renter/items/add">
+                        <button className="btn">Add An Item</button>
+                    </Link>
+                </div>
+            )}
         </div>
     );
 };

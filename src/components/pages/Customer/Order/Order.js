@@ -31,6 +31,19 @@ const Order = () => {
     }, []);
 
     return (
+        <div className="order-container">
+            <div class="container-fluid cart">
+                <section>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 cart-heading">
+                            <div class="text-center">
+                                <h4 class="text-light text-center cart-title">
+                                    My Orders
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
         <div class="container-fluid cart">
         <section>
@@ -99,8 +112,12 @@ const Order = () => {
       
       </div>
 
-    )
-}
+                       
+                   
+                </div>
+            </div>
+        
+    );
+};
 
-
-export default Order
+export default Order;

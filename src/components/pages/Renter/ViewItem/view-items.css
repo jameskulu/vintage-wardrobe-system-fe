@@ -13,6 +13,7 @@
 .view-items-container .img-thumbnail {
     height: 90px;
     width: 80px;
+    object-fit: contain;
 }
 
 .view-items-container .table thead th {
@@ -20,7 +21,7 @@
 }
 .view-items-container .table td,
 .view-items-container .table th {
-    /* border: none; */
+    vertical-align:middle;
 }
 
 .view-items-container .text-uppercase {
@@ -56,7 +57,7 @@
     background: #8aaae5;
 }
 
-.view-items-container headings h2{
+.view-items-container headings h2 {
     color: white;
 }
 .view-items-container #icondel i {
@@ -66,4 +67,20 @@
 .view-items-container #iconedit i {
     color: #648cd7;
     cursor: pointer;
+}
+
+.view-items-container .empty-div {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgb(175, 175, 175);
+    margin: 70px 70px 20px 70px;
+}
+
+.view-items-container .empty-div button {
+    margin-top: 10px;
+    color: white;
+    background: #8aaae5;
 }
