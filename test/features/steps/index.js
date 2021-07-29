@@ -55,10 +55,8 @@ Given('View Items', async () => {  //viewItems and displaying the details
   await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
   await driver.findElement(By.name('password')).sendKeys('Rijan@23');
   await driver.findElement(By.className('loginbtn')).click();
-  await driver.sleep(delay);
-  await driver.get('https://vintagewardrobe.herokuapp.com/items/eca8d426-97b4-4ee8-9763-5f0de96be83b');
-  await driver.sleep(delay);
-  await driver.findElement(By.className('add-cart')).click();
+  await driver.get('https://vintagewardrobe.herokuapp.com/items/7a146aa1-dabc-4364-bcec-b34a2624a09e');
+  // await driver.findElement(By.className('add-cart')).click();
 });
 
 Given('Upload functionality', async () => {  //viewItems and displaying the details
@@ -104,4 +102,30 @@ Given('View item functionality', async () => {  //viewItems and displaying the d
  await driver.sleep(delay);
  await driver.get('https://vintagewardrobe.herokuapp.com/renter/items');
 
+});
+
+
+Given('Order status funtionality', async () => {
+  
+  let driver = await new Builder().forBrowser('chrome').build();
+ await driver.get('https://vintagewardrobe.herokuapp.com/login');
+ await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+ await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+ await driver.findElement(By.className('loginbtn')).click();
+ await driver.get('https://vintagewardrobe.herokuapp.com/orders');
+//  await driver.sleep(delay);
+//  await driver.quit();
+ const msg=console.log('You are in my orders page');
+ return msg;
+ 
+});
+Given('added cart funtionality', async () => {
+  
+  let driver = await new Builder().forBrowser('chrome').build();
+ await driver.get('https://vintagewardrobe.herokuapp.com/login');
+ await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+ await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+ await driver.findElement(By.className('loginbtn')).click();
+ await driver.get('https://vintagewardrobe.herokuapp.com');
+ await driver.findElement(By.className('fa-shopping-cart')).click();
 });
