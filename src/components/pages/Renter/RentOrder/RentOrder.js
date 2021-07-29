@@ -73,24 +73,29 @@ const RentOrder = () => {
                             {orders.map((order) => (
                                 <tr>
                                     <td>
-                                        <img
-                                            src={dress1}
-                                            class="img-fluid img-thumbnail"
-                                            alt="Dress"
-                                        />
+                                        <Link to={`items/${order.item.id}`}>
+                                            <img
+                                                src={dress1}
+                                                class="img-fluid img-thumbnail"
+                                                alt="Dress"
+                                            />
+                                        </Link>
                                     </td>
                                     <td>
-                                        <p class="text-uppercase">
-                                            {order.item.name}
+                                        <Link to={`items/${order.item.id}`}>
+                                            <p class="text-uppercase">
+                                                {order.item.name}
+                                            </p>
+                                        </Link>
+                                        <p style={{ fontWeight: 'normal' }}>
+                                            Rs. {order.item.price}
                                         </p>
-                                        <p></p>
-                                        <p>Rs.{order.item.price}</p>
                                     </td>
-                                    <td id="date">
+                                    <td>
                                         {order.startDate} - {order.endDate}
                                     </td>
 
-                                    <td id="price">Rs.{order.totalPrice}</td>
+                                    <td id="price">Rs. {order.totalPrice}</td>
                                     <td>
                                         <select
                                             className="form-control form-control-sm"
@@ -136,7 +141,7 @@ const RentOrder = () => {
                 </div>
             ) : (
                 <div className="empty-div">
-                    <p>Your rent orders is empty</p>
+                    <p>Nobody has rented your clothes yet.</p>
                     <Link to="/">
                         <button className="btn">Back to home</button>
                     </Link>

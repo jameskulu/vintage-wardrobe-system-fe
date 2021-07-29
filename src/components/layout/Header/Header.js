@@ -169,7 +169,7 @@ const Header = () => {
                                     <Link className="dropdown-item" to="#">
                                         Manage Profile
                                     </Link>
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="/orders">
                                         My Orders
                                     </Link>
                                     <Link className="dropdown-item" to="#">

@@ -51,7 +51,7 @@ const ItemDetail2 = (props) => {
 
         const days =
             parseInt((endDate - startDate) / (1000 * 60 * 60 * 24), 10) + 1;
-        const totalPrice = singleItem.price * days;
+        const totalPrice = parseFloat(singleItem.price * days);
 
         if (items.every((item) => item.id !== singleItem.id)) {
             items.push({ ...singleItem, startDate, endDate, days, totalPrice });
@@ -151,13 +151,14 @@ const ItemDetail2 = (props) => {
 
                                 <i className="far fa-heart"></i>
                             </div>
+                            <i className="fas fa-tag"></i>{" "}
                             <Link to="">
                                 {singleItem.subCategory
                                     ? singleItem.subCategory.name
                                     : ''}
                             </Link>
                             <p>{singleItem.description}</p>
-                            <span>Rs.{singleItem.price} original retail</span>
+                            <span>Rs. {singleItem.price} original retail</span>
                             <h5 className="mt-3">Rented By:</h5>
                             <div className="seller">
                                 <img
