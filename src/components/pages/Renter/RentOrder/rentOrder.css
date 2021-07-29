@@ -3,9 +3,11 @@
   margin: auto;
   border: 1px solid rgb(163, 163, 163);
   padding: 15px;
+  min-width: 1000px;
 }
 .rent-orders-container .img-thumbnail {
   height: 90px;
+  object-fit: contain;
   width: 80px;
 }
 .rent-orders-container .table .thead-light th {
@@ -55,4 +57,20 @@
 }
 .rent-orders-container .table td:nth-child(2) p {
   font-weight: 900;
+}
+
+.rent-orders-container .empty-div {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgb(175, 175, 175);
+  margin: 0 70px;
+}
+
+.rent-orders-container .empty-div button {
+  margin-top: 10px;
+  color: white;
+  background: #8aaae5;
 }

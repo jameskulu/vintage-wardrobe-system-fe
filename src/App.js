@@ -10,12 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-// import 'bootstrap';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap/dist/js/bootstrap.js';
-// import $ from 'jquery';
-// import Popper from 'popper.js';
-
 import UserContext from './context/UserContext';
 
 // Components
@@ -34,6 +28,10 @@ import AddItem from './components/pages/Renter/AddItem/AddItem';
 import EditItem from './components/pages/Renter/EditItem/EditItem';
 import ViewItem from './components/pages/Renter/ViewItem/ViewItem';
 import RentOrder from './components/pages/Renter/RentOrder/RentOrder';
+import Cart from './components/pages/Customer/Cart/Cart';
+import Order from './components/pages/Customer/Order/Order';
+import Checkout from './components/pages/Customer/Checkout/Checkout';
+import CheckoutComplete from './components/pages/Customer/Checkout/CheckoutComplete';
 
 toast.configure();
 function App() {
@@ -101,6 +99,12 @@ function App() {
                     <Route exact path="/renter/items/add" component={AddItem} />
 
                     <Route exact path="/renter/items" component={ViewItem} />
+
+                    <Route exact path="/cart" component={Cart} />
+                    <Route exact path="/orders" component={Order} />
+
+                    <Route exact path="/checkout" component={Checkout} />
+                    <Route exact path="/checkout/complete" component={CheckoutComplete} />
 
                     <Route
                         exact

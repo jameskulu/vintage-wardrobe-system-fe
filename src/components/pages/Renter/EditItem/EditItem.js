@@ -7,32 +7,15 @@ import '../AddItem/addItem.css';
 const EditItem = (props) => {
     const history = useHistory();
     const itemId = props.match.params.itemId;
-    const [categories, setCategories] = useState([]);
-    const [subCategories, setSubCategories] = useState([]);
     const [disable, setDisable] = useState(false);
 
     const [name, setName] = useState();
     const [description, setDescription] = useState();
     const [price, setPrice] = useState();
-    const [categoryId, setCategoryId] = useState();
-    const [subCategoryId, setSubCategoryId] = useState();
     const [color, setColor] = useState();
     const [size, setSize] = useState();
 
     useEffect(() => {
-        const loadCategories = async () => {
-            const categoriesResponse = await axios.get(
-                `${process.env.REACT_APP_API_URL}/api/categories`
-            );
-            setCategories(categoriesResponse.data.data);
-
-            const subCategoriesResponse = await axios.get(
-                `${process.env.REACT_APP_API_URL}/api/sub-categories`
-            );
-            setSubCategories(subCategoriesResponse.data.data);
-        };
-        loadCategories();
-
         const loadSingleItem = async () => {
             const singleItemResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/items/${itemId}`
@@ -41,8 +24,8 @@ const EditItem = (props) => {
             setName(singleItemResponse.data.data.name);
             setDescription(singleItemResponse.data.data.description);
             setPrice(singleItemResponse.data.data.price);
-            setSubCategoryId(singleItemResponse.data.data.subCategoryId);
-
+            setSize(singleItemResponse.data.data.size);
+            setColor(singleItemResponse.data.data.color);
         };
 
         loadSingleItem();
@@ -56,10 +39,11 @@ const EditItem = (props) => {
             const updateItem = {
                 name,
                 description,
-                price: parseInt(price),
-                subCategoryId,
+                price: parseInt(Math.abs(price)),
+                size,
+                color
             };
-            console.log(updateItem)
+            console.log(updateItem);
 
             const token = localStorage.getItem('auth-token');
             await axios.put(
@@ -139,67 +123,6 @@ const EditItem = (props) => {
                                     onChange={(e) => setPrice(e.target.value)}
                                 />
                             </div>
-                            <div className="form-group">
-                                <label
-                                    for="exampleFormControlSelect1 "
-                                    className="form-title"
-                                >
-                                    Category
-                                </label>
-                                <select
-                                    className="form-control"
-                                    id="exampleFormControlSelect1"
-                                    value={categoryId}
-                                    onChange={(e) =>
-                                        setCategoryId(e.target.value)
-                                    }
-                                >
-                                    <option disabled defaultValue>
-                                        -- select a category --
-                                    </option>
-                                    {categories.map((category) => {
-                                        return (
-                                            <option
-                                                key={category.id}
-                                                value={category.id}
-                                            >
-                                                {category.name}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
-                            </div>
-
-                            <div className="form-group">
-                                <label
-                                    for="exampleFormControlSelect1 "
-                                    className="form-title"
-                                >
-                                    Sub Category
-                                </label>
-                                <select
-                                    className="form-control"
-                                    id="exampleFormControlSelect1"
-                                    value={subCategoryId}
-                                    onChange={(e) =>
-                                        setSubCategoryId(e.target.value)
-                                    }
-                                >
-                                    <option disabled defaultValue>
-                                        -- select a sub category --
-                                    </option>
-                                    {subCategories.map((subCategory) => {
-                                        return (
-                                            <option
-                                                key={subCategory.id}
-                                                value={subCategory.id}
-                                            >
-                                                {subCategory.name}
-                                            </option>
-                                        );
-                                    })}
-                                </select>
-                            </div>
 
                             <div className="form-group">
                                 <label
@@ -214,11 +137,20 @@ const EditItem = (props) => {
                                     value={color}
                                     onChange={(e) => setColor(e.target.value)}
                                 >
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option selected="true" disabled="disabled">
+                                        -- select a color --
+                                    </option>
+                                    <option value="White">White</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Green">Green</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Gray">Gray</option>
+                                    <option value="Pink">Pink</option>
+                                    <option value="Violet">Violet</option>
+                                    <option value="Purple">Purple</option>
+                                    <option value="Maroon">Maroon</option>
                                 </select>
                             </div>
 
@@ -235,26 +167,15 @@ const EditItem = (props) => {
                                     value={size}
                                     onChange={(e) => setSize(e.target.value)}
                                 >
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option selected="true" disabled="disabled">
+                                        -- select a size --
+                                    </option>
+                                    <option>Extra Small</option>
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                    <option>Extra Large</option>
                                 </select>
-                            </div>
-
-                            <div className="form-group">
-                                <label
-                                    for="exampleFormControlFile1 "
-                                    className="form-title"
-                                >
-                                    Images
-                                </label>
-                                <input
-                                    type="file"
-                                    className="form-control-file"
-                                    id="exampleFormControlFile1"
-                                ></input>
                             </div>
 
                             <button

@@ -55,10 +55,41 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/category" className="nav-item-link">
-                                Category
+                            <Link className="nav-item-link active" to="/">
+                                About Us
                             </Link>
                         </li>
+                        
+                        <li className="dropdown">
+                            <Link
+                                className="nav-item-link "
+                                to="#"
+                                id="navbarDropdown3"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                Category
+                            </Link>
+                            <div
+                                className="dropdown-menu"
+                                aria-labelledby="navbarDropdown3"
+                            >
+                                <Link className="dropdown-item" to="">
+                                    Men
+                                </Link>
+
+                                <Link className="dropdown-item" to="">
+                                    Women
+                                </Link>
+
+                                <Link className="dropdown-item" to="">
+                                    Kids
+                                </Link>
+                            </div>
+                        </li>
+
                         {/* {userData.user ? (
                             userData.user.role === 'admin' ? (
                                 <li>
@@ -71,34 +102,37 @@ const Header = () => {
                             <>
                                 <li className="dropdown">
                                     <Link
-                                        className="nav-item-link dropdown-toggle"
+                                        className="nav-item-link "
                                         to="#"
-                                        id="navbarDropdown"
+                                        id="navbarDropdown4"
                                         role="button"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                     >
-                                        Renter
+                                        Rentals
                                     </Link>
                                     <div
                                         className="dropdown-menu"
-                                        aria-labelledby="navbarDropdown"
+                                        aria-labelledby="navbarDropdown4"
                                     >
                                         <Link
                                             className="dropdown-item"
                                             to="/renter/items/add"
                                         >
-                                            Add an item
+                                            Add An Item
                                         </Link>
                                         <Link
                                             className="dropdown-item"
                                             to="/renter/items"
                                         >
-                                            My items
+                                            My Items
                                         </Link>
-                                        <Link className="dropdown-item" to="/renter/order">
-                                            My orders
+                                        <Link
+                                            className="dropdown-item"
+                                            to="/renter/order"
+                                        >
+                                            Rent Orders
                                         </Link>
                                     </div>
                                 </li>
@@ -136,6 +170,12 @@ const Header = () => {
                                         Manage Profile
                                     </Link>
                                     <Link className="dropdown-item" to="#">
+                                        My Orders
+                                    </Link>
+                                    <Link className="dropdown-item" to="#">
+                                        My Wishlist
+                                    </Link>
+                                    <Link className="dropdown-item" to="#">
                                         Change Password
                                     </Link>
                                     <div className="dropdown-divider"></div>
@@ -149,7 +189,9 @@ const Header = () => {
                                     </Link>
                                 </div>
                             </li>
-                        ) : (
+                        ) : null}
+
+                        {userData.user ? null : (
                             <li>
                                 <Link to="/login">
                                     <button>Login</button>
