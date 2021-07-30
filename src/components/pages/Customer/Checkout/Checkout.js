@@ -60,7 +60,7 @@ const Checkout = () => {
     return (
         <div className="checkout-container">
             <heading>
-                <h1 className="text-white">Checkout</h1>
+                <h3 className="text-white">Checkout</h3>
             </heading>
             <h4 id="order-heading" className="mb-3">
                 <b>Your Order</b>
@@ -93,23 +93,11 @@ const Checkout = () => {
                                     <td>{item.startDate}</td>
                                     <td>{item.endDate}</td>
                                     <td>{item.days}</td>
-                                    <td>Rs.{item.price}</td>
-                                    <td>Rs.{item.totalPrice}</td>
+                                    <td>Rs. {item.price}</td>
+                                    <td>Rs. {item.totalPrice}</td>
                                 </tr>
                             ))}
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th>Rs.{totalPrice}</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -162,9 +150,7 @@ const Checkout = () => {
                                     onChange={(e) => setPhone(e.target.value)}
                                 ></input>
                             </div>
-                            <button type="submit" className="btn btn-primary">
-                                <b>SAVE</b>
-                            </button>
+                       
                             <p className="mt-3">
                                 By placing this order, you agree to the{' '}
                                 <strong>
@@ -181,7 +167,7 @@ const Checkout = () => {
                         <h2>Add Billing</h2>
                         <div className="billing-info  ">
                             <p>Sub-total</p>
-                            <p>Rs.{totalPrice}</p>
+                            <p>Rs. {totalPrice}</p>
                         </div>
                         <div className="billing-info ">
                             <p>Shipping</p>
@@ -191,7 +177,7 @@ const Checkout = () => {
 
                         <div className="billing-info ">
                             <p>Order Total</p>
-                            <p>Rs.{totalPrice}</p>
+                            <p>Rs. {totalPrice}</p>
                         </div>
                         <button
                             onClick={orderItems}

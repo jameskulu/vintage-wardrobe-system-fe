@@ -71,8 +71,8 @@ const Cart = () => {
                                             <td>{item.startDate}</td>
                                             <td>{item.endDate}</td>
                                             <td>{item.days}</td>
-                                            <td>Rs.{item.price}</td>
-                                            <td>Rs.{item.totalPrice}</td>
+                                            <td>Rs. {item.price}</td>
+                                            <td>Rs. {item.totalPrice}</td>
                                             <td>
                                                 <button
                                                     style={{
@@ -100,7 +100,7 @@ const Cart = () => {
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                        <th>Rs.{totalPrice}</th>
+                                        <th>Rs. {totalPrice}</th>
                                         <th></th>
                                     </tr>
                                 </tfoot>

@@ -89,7 +89,7 @@ const ViewItem = () => {
                                                 {item.name}
                                             </p>
                                         </Link>
-                                        <p>Rs.{item.price}</p>
+                                        <p style={{fontWeight:"normal"}}>Rs. {item.price}</p>
                                     </td>
                                     <td></td>
                                     <td></td>
