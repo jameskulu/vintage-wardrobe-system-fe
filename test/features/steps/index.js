@@ -16,7 +16,6 @@ Given('Test registration functionality', async () => {
    await driver.findElement(By.className('registerbtn')).click();
    await driver.sleep(delay);
    await driver.quit();
-   await driver.sleep(delay);
 });
 
 Given('Test login functionality', async () => {
@@ -50,13 +49,15 @@ Given('Search functionality', async () => {
 });
 
 Given('View Items', async () => {  //viewItems and displaying the details
-   let driver = await new Builder().forBrowser('chrome').build();
+  let driver = await new Builder().forBrowser('chrome').build();
   await driver.get('https://vintagewardrobe.herokuapp.com/login');
   await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
   await driver.findElement(By.name('password')).sendKeys('Rijan@23');
   await driver.findElement(By.className('loginbtn')).click();
   await driver.get('https://vintagewardrobe.herokuapp.com/items/7a146aa1-dabc-4364-bcec-b34a2624a09e');
-  // await driver.findElement(By.className('add-cart')).click();
+  await driver.findElement(By.tagName('input')).sendKeys(`30/07/2021 - 30/07/2021
+  `);
+  await driver.findElement(By.className('add-cart')).click();
 });
 
 Given('Upload functionality', async () => {  //viewItems and displaying the details
@@ -93,6 +94,7 @@ await driver.get('https://vintagewardrobe.herokuapp.com/renter/items/edit/ec3435
  await driver.findElement(By.className('btn')).click();
 });
 
+//viewing the items after renter upload 
 Given('View item functionality', async () => {  //viewItems and displaying the details
   let driver = await new Builder().forBrowser('chrome').build();
  await driver.get('https://vintagewardrobe.herokuapp.com/login');
@@ -104,7 +106,7 @@ Given('View item functionality', async () => {  //viewItems and displaying the d
 
 });
 
-
+//checking the status of user order
 Given('Order status funtionality', async () => {
   
   let driver = await new Builder().forBrowser('chrome').build();
@@ -112,6 +114,7 @@ Given('Order status funtionality', async () => {
  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
  await driver.findElement(By.className('loginbtn')).click();
+ await driver.sleep(delay);
  await driver.get('https://vintagewardrobe.herokuapp.com/orders');
 //  await driver.sleep(delay);
 //  await driver.quit();
@@ -119,13 +122,64 @@ Given('Order status funtionality', async () => {
  return msg;
  
 });
+
+//adding to cart
 Given('added cart funtionality', async () => {
-  
-  let driver = await new Builder().forBrowser('chrome').build();
+
+ let driver = await new Builder().forBrowser('chrome').build();
  await driver.get('https://vintagewardrobe.herokuapp.com/login');
  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
  await driver.findElement(By.className('loginbtn')).click();
+ await driver.sleep(delay);
+ await driver.get('https://vintagewardrobe.herokuapp.com/items/af169ba8-eaa0-4a12-86ce-8ecadaebe0a9');
+ await driver.findElement(By.tagName('input')).sendKeys(`30/07/2021 - 30/07/2021`, Key.RETURN);
+ await driver.findElement(By.className('add-cart')).click();
+ await driver.sleep(delay);
  await driver.get('https://vintagewardrobe.herokuapp.com');
  await driver.findElement(By.className('fa-shopping-cart')).click();
+});
+
+//payment process
+Given('checkout funtionality', async () => {
+
+  let driver = await new Builder().forBrowser('chrome').build();
+  await driver.get('https://vintagewardrobe.herokuapp.com/login');
+  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+  await driver.findElement(By.className('loginbtn')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com/items/7abab430-b7b0-45c0-8728-a4bf9bbecb4d');
+  await driver.findElement(By.tagName('input')).sendKeys(`30/07/2021 - 30/07/2021
+  `);
+  await driver.findElement(By.className('add-cart')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com');
+  await driver.findElement(By.className('fa-shopping-cart')).click();
+  await driver.findElement(By.className('btn-Checkout')).click();
+  await driver.findElement(By.id('inputAddress')).sendKeys('Gongabu');
+  await driver.findElement(By.id('inputCity')).sendKeys('Kathmandu');
+  await driver.findElement(By.tagName('select')).sendKeys('Nepal');
+  await driver.findElement(By.id('number')).sendKeys('1231231234');
+  await driver.findElement(By.className('btn-primary')).click();
+
+});
+
+
+// remove from cart
+Given('remove cart funtionality', async () => {
+ let driver = await new Builder().forBrowser('chrome').build();
+ await driver.get('https://vintagewardrobe.herokuapp.com/login');
+ await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+ await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+ await driver.findElement(By.className('loginbtn')).click();
+ await driver.sleep(delay);
+ await driver.get('https://vintagewardrobe.herokuapp.com/items/ea1e964d-d460-44a3-8449-861777a5ec5e');
+ await driver.findElement(By.tagName('input')).sendKeys(`30/07/2021 - 30/07/2021`, Key.RETURN);
+ await driver.findElement(By.className('add-cart')).click();
+ await driver.sleep(delay);
+ await driver.get('https://vintagewardrobe.herokuapp.com');
+ await driver.findElement(By.className('fa-shopping-cart')).click();
+ await driver.sleep(delay);
+ await driver.findElement(By.className('fa-times')).click();
 });
