@@ -178,7 +178,9 @@ const Order = () => {
                                                 <button
                                                     type="button"
                                                     class="btn btn-danger"
-                                                    onClick={cancelOrder}
+                                                    onClick={() =>
+                                                        cancelOrder(order.id)
+                                                    }
                                                 >
                                                     Cancel
                                                 </button>
