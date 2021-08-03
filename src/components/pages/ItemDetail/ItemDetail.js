@@ -204,6 +204,7 @@ const ItemDetail = (props) => {
                                     <i
                                         onClick={removeFromWishlist}
                                         className="fas fa-heart"
+                                        id="filled-heart-icon"
                                     ></i>
                                 ) : (
                                     <i
