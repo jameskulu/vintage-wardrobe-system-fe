@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import './itemDetails.css';
 import { Link } from 'react-router-dom';
 
-const ItemDetail2 = (props) => {
+const ItemDetail = (props) => {
     const [singleItem, setSingleItem] = useState([]);
     const itemId = props.match.params.itemId;
 
@@ -17,6 +17,7 @@ const ItemDetail2 = (props) => {
     const [startDate, endDate] = dateRange;
 
     const [isAdded, setIsAdded] = useState();
+    const [isWishlist, setIsWishlist] = useState();
 
     let items = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -24,9 +25,8 @@ const ItemDetail2 = (props) => {
         const loadSingleItem = async () => {
             axios
                 .get(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`)
-                .then((singleItemResponse) => {
+                .then(async (singleItemResponse) => {
                     setSingleItem(singleItemResponse.data.data);
-                    console.log(singleItemResponse.data.data);
 
                     if (
                         items.some(
@@ -37,6 +37,25 @@ const ItemDetail2 = (props) => {
                         setIsAdded(true);
                     } else {
                         setIsAdded(false);
+                    }
+
+                    const token = localStorage.getItem('auth-token');
+                    const wishlist = await axios.get(
+                        `${process.env.REACT_APP_API_URL}/api/users/wishlist`,
+                        { headers: { Authorization: 'Bearer ' + token } }
+                    );
+                    console.log(wishlist.data.data);
+                    if (
+                        wishlist.data.data.some(
+                            (item) =>
+                                item.itemId === singleItemResponse.data.data.id
+                        )
+                    ) {
+                        console.log('hello');
+                        setIsWishlist(true);
+                    } else {
+                        console.log('hey');
+                        setIsWishlist(false);
                     }
                 });
         };
@@ -69,6 +88,38 @@ const ItemDetail2 = (props) => {
         });
         localStorage.setItem('cart', JSON.stringify(filteredItems));
         toast.success('Item removed from cart.');
+    };
+
+    const addToWishlist = async () => {
+        try {
+            const data = {
+                itemId,
+            };
+            const token = localStorage.getItem('auth-token');
+            await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/users/wishlist/add`,
+                data,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            setIsWishlist(true)
+            toast.success('Added to wishlist.');
+        } catch (err) {
+            toast.error(err.response.data.message);
+        }
+    };
+
+    const removeFromWishlist = async () => {
+        try {
+            const token = localStorage.getItem('auth-token');
+            await axios.delete(
+                `${process.env.REACT_APP_API_URL}/api/users/wishlist/remove/${itemId}`,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            setIsWishlist(false)
+            toast.success('Removed from wishlist.');
+        } catch (err) {
+            toast.error(err.response.data.message);
+        }
     };
 
     return (
@@ -149,9 +200,19 @@ const ItemDetail2 = (props) => {
                             <div className="pname">
                                 <h3>{singleItem.name}</h3>
 
-                                <i className="far fa-heart"></i>
+                                {isWishlist ? (
+                                    <i
+                                        onClick={removeFromWishlist}
+                                        className="fas fa-heart"
+                                    ></i>
+                                ) : (
+                                    <i
+                                        onClick={addToWishlist}
+                                        className="far fa-heart"
+                                    ></i>
+                                )}
                             </div>
-                            <i className="fas fa-tag"></i>{" "}
+                            <i className="fas fa-tag"></i>{' '}
                             <Link to="">
                                 {singleItem.subCategory
                                     ? singleItem.subCategory.name
@@ -248,4 +309,4 @@ const ItemDetail2 = (props) => {
     );
 };
 
-export default ItemDetail2;
+export default ItemDetail;
