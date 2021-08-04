@@ -1,0 +1,54 @@
+.aboutUs{
+    background: #8AAAE5;
+   }
+   
+   .aboutUs-title{
+        font-weight: lighter;
+    font-style: poppins;
+    margin: 20px;
+   }
+   
+   
+   .heading{
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+   }
+   
+   .heading-img{
+        margin-left: 70px;
+   }
+   
+   
+   .img-fluid{
+        width: 100;
+   }
+   
+   
+   .img-thumbnail{
+        border: whitesmoke;
+        margin: 10px;
+        height: 70px;
+   
+   }
+   
+   .description-Section{
+        margin: 10px;
+   }
+   
+   .media{
+        margin: 30px;
+   }
+   
+   @media (max-width:1000px) {
+     .img-fluid {
+       display: none;
+       
+     }
+   }
+   
+   
+   
+   
+   

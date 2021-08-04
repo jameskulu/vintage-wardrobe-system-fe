@@ -32,6 +32,8 @@ import Cart from './components/pages/Customer/Cart/Cart';
 import Order from './components/pages/Customer/Order/Order';
 import Checkout from './components/pages/Customer/Checkout/Checkout';
 import CheckoutComplete from './components/pages/Customer/Checkout/CheckoutComplete';
+import About from './components/pages/AboutUs/About';
+import Wishlist from './components/pages/Customer/Wishlist/Wishlist';
 
 toast.configure();
 function App() {
@@ -113,6 +115,8 @@ function App() {
                     />
 
                     <Route exact path="/renter/order" component={RentOrder} />
+                    <Route exact path="/aboutus" component={About} />
+                    <Route exact path="/wishlist" component={Wishlist} />
 
                     <Route exact path="/s" component={SearchPage} />
                     <Footer />
