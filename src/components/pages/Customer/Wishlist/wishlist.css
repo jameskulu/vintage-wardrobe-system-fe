@@ -30,7 +30,9 @@
     margin: 20px;
 }
 
-
+.wishlist-container i{
+    cursor: pointer;
+}
 .wishlist-container table td,
 .wishlist-container table th {
     border: none;
@@ -68,5 +70,7 @@
 
 .wishlist-container .empty-div button {
     margin-top: 10px;
+    color: white;
+    background: #8aaae5;
 }
 
