@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { toast } from 'react-toastify';
 import './itemDetails.css';
+import Review from './Review';
 import { Link } from 'react-router-dom';
 
 const ItemDetail2 = (props) => {
@@ -240,11 +241,15 @@ const ItemDetail2 = (props) => {
                                     )}
                                 </div>
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
             </div>
+            <Review></Review>
         </div>
+        
     );
 };
 
