@@ -63,7 +63,7 @@ const Header = () => {
                         <li className="dropdown">
                             <Link
                                 className="nav-item-link "
-                                to="#"
+                                to="/category"
                                 id="navbarDropdown3"
                                 role="button"
                                 data-toggle="dropdown"
