@@ -11,26 +11,38 @@ const Review = () => {
       };
 
     return(
-    <div>
+    <div class="review-container">
 
         
-        <div class="container review-box">
-        <h5 class="title-text"> Give Reviews</h5>
-            <div class= "row border rating-field  col-md-5">
+        <div class="container  text-center align-items-center review-box">
+            
+           
+            <div class= "row  rating-field col-lg-8 offset-lg-2 ">
+                <div>
+                    <h5 class="title-text text-left"> Give Reviews</h5>
+
+                    <div class="row border">
+                    <div class="stars">
                     <ReactStars
+                        starSpacing="15px"
                         count={5}
                         onChange={ratingChanged}
                         size={50}
                         activeColor="#ffd700"
                     />,
+                    </div>
                     <input class="form-control form-control-lg review-field " type="text" placeholder="Enter your review here"></input>
                     
                         <button type="button" class="btn btn-review ">Share Review</button>
-                   
+
+                    </div>
+
+                </div>
+ 
             </div> 
         </div>
 
-        <div class="container review-section">
+        <div class="container col-md-12 review-section">
             <h5 class="title-text"> Rating and Reviews</h5>
             <div class= "row border rating-field ">
 
