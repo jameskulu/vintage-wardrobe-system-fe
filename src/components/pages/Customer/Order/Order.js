@@ -107,8 +107,8 @@ const Order = () => {
                                         </td>
                                         <td>
                                             <p>
-                                                {order.user.firstName}{' '}
-                                                {order.user.lastName}
+                                                {order.item.user.firstName}{' '}
+                                                {order.item.user.lastName}
                                             </p>
                                         </td>
                                         <td>
@@ -178,7 +178,9 @@ const Order = () => {
                                                 <button
                                                     type="button"
                                                     class="btn btn-danger"
-                                                    onClick={cancelOrder}
+                                                    onClick={() =>
+                                                        cancelOrder(order.id)
+                                                    }
                                                 >
                                                     Cancel
                                                 </button>
