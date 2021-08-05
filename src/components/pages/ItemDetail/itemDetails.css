@@ -78,12 +78,17 @@
     font-size: 20px;
 }
 .item-detail .pname {
-    width: 30vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
 }
+.item-detail .pname i{
+    cursor: pointer;
+    font-size: 20px;
+}
+
 .item-detail .product-detail {
     width: 350px;
 }

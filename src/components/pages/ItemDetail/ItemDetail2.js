@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import d from '../../../images/d.jpg';
 import d1 from '../../../images/d1.jpg';
 import d2 from '../../../images/d2.jpg';
@@ -7,11 +7,13 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { toast } from 'react-toastify';
 import './itemDetails.css';
-import Review from './Review';
 import { Link } from 'react-router-dom';
+import UserContext from '../../../context/UserContext';
 
 const ItemDetail = (props) => {
+    const { userData } = useContext(UserContext);
     const [singleItem, setSingleItem] = useState([]);
+    const [reviews, setReviews] = useState([]);
     const itemId = props.match.params.itemId;
 
     const [dateRange, setDateRange] = useState([null, null]);
@@ -19,6 +21,8 @@ const ItemDetail = (props) => {
 
     const [isAdded, setIsAdded] = useState();
     const [isWishlist, setIsWishlist] = useState();
+    const [isReviewed, setIsReviewed] = useState();
+    const [review, setReview] = useState();
 
     let items = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -45,21 +49,53 @@ const ItemDetail = (props) => {
                         `${process.env.REACT_APP_API_URL}/api/users/wishlist`,
                         { headers: { Authorization: 'Bearer ' + token } }
                     );
-                    console.log(wishlist.data.data);
                     if (
                         wishlist.data.data.some(
                             (item) =>
                                 item.itemId === singleItemResponse.data.data.id
                         )
                     ) {
-                        console.log('hello');
                         setIsWishlist(true);
                     } else {
-                        console.log('hey');
                         setIsWishlist(false);
                     }
                 });
         };
+
+        const loadReviews = async () => {
+            const token = localStorage.getItem('auth-token');
+            const reviewResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/reviews/${itemId}`,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            const sortedReviewsResponse = reviewResponse.data.data.reverse();
+            setReviews(sortedReviewsResponse);
+
+            const itemReviewResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/reviews/reviewed`,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+
+            const userResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/users`,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+
+            if (
+                itemReviewResponse.data.data.some(
+                    (review) =>
+                        review.itemId === itemId &&
+                        review.userId === userResponse.data.id &&
+                        review.isReviewed === false
+                )
+            ) {
+                setIsReviewed(true);
+            } else {
+                setIsReviewed(false);
+            }
+        };
+
+        loadReviews();
         loadSingleItem();
     }, []);
 
@@ -102,7 +138,7 @@ const ItemDetail = (props) => {
                 data,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            setIsWishlist(true)
+            setIsWishlist(true);
             toast.success('Added to wishlist.');
         } catch (err) {
             toast.error(err.response.data.message);
@@ -116,8 +152,34 @@ const ItemDetail = (props) => {
                 `${process.env.REACT_APP_API_URL}/api/users/wishlist/remove/${itemId}`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            setIsWishlist(false)
+            setIsWishlist(false);
             toast.success('Removed from wishlist.');
+        } catch (err) {
+            toast.error(err.response.data.message);
+        }
+    };
+
+    const addReview = async () => {
+        try {
+            const token = localStorage.getItem('auth-token');
+            const newReview = {
+                text: review,
+                rating: 5,
+                itemId,
+            };
+            await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/reviews/new`,
+                newReview,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            const reviewResponse = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/reviews/${itemId}`,
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            const sortedReviewsResponse = reviewResponse.data.data.reverse();
+            setReviews(sortedReviewsResponse);
+            setIsReviewed(false)
+            toast.success('Review is added successfully.');
         } catch (err) {
             toast.error(err.response.data.message);
         }
@@ -303,15 +365,36 @@ const ItemDetail = (props) => {
                                     )}
                                 </div>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>
             </div>
-            <Review></Review>
+
+            <h3>Review</h3>
+
+            {isReviewed ? (
+                <>
+                    <input
+                        type="text"
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
+                    />
+                    <button onClick={addReview}>Add review</button>
+                </>
+            ) : null}
+
+            <div>
+                {reviews.map((review) => (
+                    <div>
+                        <h4>
+                            {review.user.firstName} {review.user.lastName}
+                        </h4>
+                        <p>{review.text}</p>
+                        <p>Rating: {review.rating}</p>
+                    </div>
+                ))}
+            </div>
         </div>
-        
     );
 };
 

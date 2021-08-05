@@ -18,7 +18,6 @@ const ViewItem = () => {
             );
             const sortedItemResponse = itemResponse.data.data.reverse();
             setItems(sortedItemResponse);
-            console.log(sortedItemResponse);
         };
         displayItems();
     }, []);
