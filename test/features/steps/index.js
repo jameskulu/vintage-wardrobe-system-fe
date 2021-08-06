@@ -211,3 +211,4 @@ Given('view and remove wishlist funtionality', {timeout: 2 * 5000},async () => {
   await driver.sleep(delay);
   await driver.findElement(By.className('swal-button--confirm')).click();
 });
+
