@@ -119,7 +119,7 @@ function App() {
                     <Route exact path="/renter/order" component={RentOrder} />
                     <Route exact path="/aboutus" component={About} />
                     <Route exact path="/wishlist" component={Wishlist} />
-                    <Route exact path="/category" component={Category} />
+                <Route exact path="/category/:categoryName" component={Category} />
                     
 
                     <Route exact path="/s" component={SearchPage} />

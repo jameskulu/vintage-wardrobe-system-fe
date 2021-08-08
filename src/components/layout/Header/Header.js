@@ -63,7 +63,7 @@ const Header = () => {
                         <li className="dropdown">
                             <Link
                                 className="nav-item-link "
-                                to="/category"
+                                to="#"
                                 id="navbarDropdown3"
                                 role="button"
                                 data-toggle="dropdown"
@@ -76,15 +76,15 @@ const Header = () => {
                                 className="dropdown-menu"
                                 aria-labelledby="navbarDropdown3"
                             >
-                                <Link className="dropdown-item" to="">
+                                <Link className="dropdown-item" to="/category/Men">
                                     Men
                                 </Link>
 
-                                <Link className="dropdown-item" to="">
+                                <Link className="dropdown-item" to="/category/Women">
                                     Women
                                 </Link>
 
-                                <Link className="dropdown-item" to="">
+                                <Link className="dropdown-item" to="/category/Kids">
                                     Kids
                                 </Link>
                             </div>
