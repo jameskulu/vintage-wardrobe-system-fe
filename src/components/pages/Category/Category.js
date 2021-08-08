@@ -85,8 +85,8 @@ const Category = (props) => {
             <div class="container">
                 <div class="row">
                     <div class="col-5 col-sm-3">
-                        <h1>Categories</h1>
-                        <p>
+                        <h1>Category</h1>
+                        <p className="mt-3">
                             <Link to="/category/Men">Men</Link>
                         </p>
                         <p>
@@ -119,7 +119,7 @@ const Category = (props) => {
                             </div>
                         ))}
 
-                        <h3>Price</h3>
+                        <h3>Price (Rs)</h3>
                         <Slider
                             value={priceSlider}
                             onChange={onSliderChange}
@@ -186,30 +186,38 @@ const Category = (props) => {
                     </div>
                     <div class="col-sm-9 col-7">
                         <div class="row product-section">
-                            {filteredItems.map((item) => (
-                                <div class="card">
-                                    <Link to={`/items/${item.id}`}>
-                                        <img
-                                            class="card-img-top"
-                                            src={img1}
-                                            alt="Card cap"
-                                        />
-                                    </Link>
-                                    <div class="card-body">
-                                        <Link to={`/items/${item.id}`}>
-                                            <h5 class="card-title">
-                                                {item.name}
-                                            </h5>
-                                        </Link>
-                                        <p class="card-text">
-                                            {item.subCategory.name}
-                                        </p>
-                                        <h5 class="card-title">
-                                            Rs. {item.price} To Rent
-                                        </h5>
-                                    </div>
-                                </div>
-                            ))}
+                            {filteredItems.length > 0 ? (
+                                <>
+                                    {filteredItems.map((item) => (
+                                        <div class="card">
+                                            <Link to={`/items/${item.id}`}>
+                                                <img
+                                                    class="card-img-top"
+                                                    src={img1}
+                                                    alt="Card cap"
+                                                />
+                                            </Link>
+                                            <div class="card-body">
+                                                <Link to={`/items/${item.id}`}>
+                                                    <h5 class="card-title">
+                                                        {item.name}
+                                                    </h5>
+                                                </Link>
+                                                <p class="card-text">
+                                                    {item.subCategory.name}
+                                                </p>
+                                                <h5 class="card-title">
+                                                    Rs. {item.price} To Rent
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </>
+                            ) : (
+                                <p>
+                                    No items available in {categoryName} section
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>
