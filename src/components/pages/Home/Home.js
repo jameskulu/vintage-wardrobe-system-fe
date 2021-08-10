@@ -48,21 +48,44 @@ const Home = () => {
 
                 <div className="row text-center">
                     <div className="col-md-4">
-                        <img
-                            src={woman}
-                            className="img-thumbnail"
-                            alt={woman}
-                        />
-                        <h4 className="my-3">Women</h4>
+                        <Link
+                            style={{ textDecoration: 'none' }}
+                            to="/category/Women"
+                        >
+                            <img
+                                src={woman}
+                                className="img-thumbnail"
+                                alt={woman}
+                            />
+                            <h4 className="my-3">Women</h4>
+                        </Link>
                     </div>
                     <div className="col-md-4">
-                        <img src={men} alt="..." className="img-thumbnail" />
-                        <h4 className="my-3">Mens</h4>
+                        <Link
+                            style={{ textDecoration: 'none' }}
+                            to="/category/Men"
+                        >
+                            <img
+                                src={men}
+                                alt="..."
+                                className="img-thumbnail"
+                            />
+                            <h4 className="my-3">Mens</h4>
+                        </Link>
                     </div>
                     <div className="col-md-4">
-                        <img src={kids} alt="..." className="img-thumbnail " />
+                        <Link
+                            style={{ textDecoration: 'none' }}
+                            to="/category/Kids"
+                        >
+                            <img
+                                src={kids}
+                                alt="..."
+                                className="img-thumbnail "
+                            />
 
-                        <h4 className="my-3">Kids</h4>
+                            <h4 className="my-3">Kids</h4>
+                        </Link>
                     </div>
                 </div>
             </section>
