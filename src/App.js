@@ -35,6 +35,7 @@ import CheckoutComplete from './components/pages/Customer/Checkout/CheckoutCompl
 import About from './components/pages/AboutUs/About';
 import Wishlist from './components/pages/Customer/Wishlist/Wishlist';
 import Category from './components/pages/Category/Category';
+import ChangePassword from './components/pages/ChangePassword/ChangePassword';
 
 
 toast.configure();
@@ -120,6 +121,8 @@ function App() {
                     <Route exact path="/aboutus" component={About} />
                     <Route exact path="/wishlist" component={Wishlist} />
                 <Route exact path="/category/:categoryName" component={Category} />
+
+                <Route exact path="/changepassword" component={ChangePassword} />
                     
 
                     <Route exact path="/s" component={SearchPage} />
