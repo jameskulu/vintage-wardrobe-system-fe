@@ -166,7 +166,7 @@ const Header = () => {
                                     className="dropdown-menu"
                                     aria-labelledby="navbarDropdown2"
                                 >
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="/myprofile">
                                         Manage Profile
                                     </Link>
                                     <Link className="dropdown-item" to="/orders">
