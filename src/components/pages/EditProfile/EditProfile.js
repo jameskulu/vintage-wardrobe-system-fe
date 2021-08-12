@@ -45,7 +45,7 @@ const EditProfile =()=>{
                 const editProfile = {
                     firstName,
                     lastName,
-                    email,
+                    
                     gender,
                     address,
                     city,
