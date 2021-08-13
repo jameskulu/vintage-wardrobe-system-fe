@@ -2,118 +2,132 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import './changePassword.css'
+import './changePassword.css';
 
 const ChangePassword = () => {
-
     const [oldPassword, setOldPassword] = useState();
     const [newPassword, setNewPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
-    const history = useHistory();
 
-  
+    const history = useHistory();
 
     const onChangePassword = async (e) => {
         e.preventDefault();
-        
-        try {
 
+        try {
             const updatePassword = {
                 oldPassword,
                 newPassword,
-                
             };
-            console.log(updatePassword)
 
-            
-            if(newPassword==confirmPassword){
-
-            const token = localStorage.getItem('auth-token');
-            console.log(token)
-            await axios.put(
-                `${process.env.REACT_APP_API_URL}/api/users/profile/change-password`,
-                updatePassword,
-                { headers: { Authorization: 'Bearer ' + token } }
-            );
-            toast.success('Password Changed Successfully');
-            history.push('/myprofile');
+            if (newPassword === confirmPassword) {
+                const token = localStorage.getItem('auth-token');
+                await axios.put(
+                    `${process.env.REACT_APP_API_URL}/api/users/profile/change-password`,
+                    updatePassword,
+                    { headers: { Authorization: 'Bearer ' + token } }
+                );
+                toast.success('Password Changed Successfully');
+                history.push('/profile');
+            } else {
+                toast.error('New password and confirm password did not match');
             }
-            else{
-                toast.error("New password didn't match")
-            }
-           
-            
         } catch (err) {
-            
             toast.error(err.response.data.message);
         }
     };
 
-
-    return(
-        <div class="container-fluid">
-
-
-                        <section>
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 change-password-background" >
-                                    <div class="text-center">
-                                        <h4 class="text-light text-center change-password-title">Change Password</h4>
-
-                                    </div>
-                                
-                                        
-                                </div>
+    return (
+        <div className="change-password-container">
+            <div class="container-fluid">
+                <section>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 change-password-background">
+                            <div class="text-center">
+                                <h4 class="text-light text-center change-password-title">
+                                    Change Password
+                                </h4>
                             </div>
-                        
-                        </section>
+                        </div>
+                    </div>
+                </section>
 
+                <div class="row">
+                    <div class=" col-md-12 col-sm-12">
+                        <form class=" col-md-6 offset-md-3 ">
+                            <div class="form-group">
+                                <label
+                                    for="formGroupExampleInput"
+                                    class="font-weight-bold"
+                                >
+                                    {' '}
+                                    Old Password
+                                </label>
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="oldPassword"
+                                    placeholder="Enter Old Password"
+                                    value={oldPassword}
+                                    onChange={(e) =>
+                                        setOldPassword(e.target.value)
+                                    }
+                                />
+                            </div>
 
-                        <div class="row"> 
-			<div class=" col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label
+                                    for="formGroupExampleInput"
+                                    class="font-weight-bold"
+                                >
+                                    {' '}
+                                    New Password
+                                </label>
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="newPassword"
+                                    placeholder="Enter New Password"
+                                    value={newPassword}
+                                    onChange={(e) =>
+                                        setNewPassword(e.target.value)
+                                    }
+                                />
+                            </div>
 
-	<form class=" col-md-6 offset-md-3 " >
-				  <div class="form-group">
-				    <label for="formGroupExampleInput" class="font-weight-bold"> Old Password</label>
-				    <input type="password" class="form-control" id="oldPassword" placeholder="Enter Old Password"
-                     value={oldPassword}
-                     onChange={(e) => setOldPassword(e.target.value)}/>
-				  </div>
+                            <div class="form-group">
+                                <label
+                                    for="formGroupExampleInput"
+                                    class="font-weight-bold"
+                                >
+                                    {' '}
+                                    Cofirm Password
+                                </label>
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="confirmPassword"
+                                    placeholder="Re-enter Password"
+                                    value={confirmPassword}
+                                    onChange={(e) =>
+                                        setConfirmPassword(e.target.value)
+                                    }
+                                />
+                            </div>
 
-                  <div class="form-group">
-				    <label for="formGroupExampleInput" class="font-weight-bold"> New Password</label>
-				    <input type="password" class="form-control" id="newPassword" placeholder="Enter New Password"
-                     value={newPassword}
-                     onChange={(e) => setNewPassword(e.target.value)}/>
-				  </div>
-		
-
-                  <div class="form-group">
-				    <label for="formGroupExampleInput" class="font-weight-bold"> Cofirm Password</label>
-				    <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter Password"
-                         value={confirmPassword}
-                         onChange={(e) => setConfirmPassword(e.target.value)}/>
-                    
-				  </div>
-		
-		
-				  
-				  <button type="button" class="btn password-btn col-md-12 " onClick={onChangePassword}>Change Password</button>
-				      
-
-	</form>
-
-			</div>
-		</div>
-
-                        
-
-
-
-
+                            <button
+                                type="button"
+                                class="btn password-btn col-md-12 "
+                                onClick={onChangePassword}
+                            >
+                                Change Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+    );
+};
 
-    )
-}
-
-export default ChangePassword
+export default ChangePassword;

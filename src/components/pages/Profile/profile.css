@@ -1,14 +1,4 @@
-:root {
-    --bg: #8aaae5;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins";
-  }
-  heading {
+.profile-container heading {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,64 +6,66 @@
     height: 120px;
     font-size: 26px;
     color: white;
-  }
-  .img {
+}
+.profile-container .img {
     display: flex;
     justify-content: center;
     width: 100%;
     margin: 40px 0;
-  }
-  .edit-btn {
+}
+.profile-container .img img {
+    object-fit: cover;
+}
+.profile-container .edit-btn {
     width: fit-content;
     position: relative;
-  }
-  .row {
+}
+.profile-container .row {
     display: flex;
     justify-content: center;
-  }
-  #updatebtn {
+}
+.profile-container #updatebtn {
     width: 100%;
-  }
-  .name-row {
+}
+.profile-container .name-row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  .name-row div {
+}
+.profile-container .name-row div {
     display: flex;
-  }
-  .n1,
-  .n2 {
+}
+.profile-container .n1,
+.profile-container .n2 {
     display: flex;
     flex-direction: row;
-  }
-  
-  .n1 p,
-  .n2 p {
+}
+
+.profile-container .n1 p,
+.profile-container .n2 p {
     font-weight: 500;
     font-size: 1rem;
-  }
-  .information {
+}
+.profile-container .information {
     padding: 10px;
-  }
-  .a p {
+}
+.profile-container .a p {
     font-size: clamp(1rem, 1vw, 2rem);
-  }
-  .a,
-  .b,
-  .c,
-  .d,
-  .e {
+}
+.profile-container .a,
+.profile-container .b,
+.profile-container .c,
+.profile-container .d,
+.profile-container .e {
     display: flex;
     flex-wrap: wrap;
-  }
-  label {
+}
+.profile-container label {
     font-weight: 600;
     margin-right: 5px;
-  }
-  #profilebtn {
+}
+.profile-container #profilebtn {
     background: #8aaae5;
     width: 100%;
-  }
-  
+}

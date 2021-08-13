@@ -1,4 +1,15 @@
-.edit-profile-container heading {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap");
+:root {
+  --bg: #8aaae5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+heading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,30 +18,27 @@
   font-size: 26px;
   color: white;
 }
-.edit-profile-container .img {
+.img {
   display: flex;
   justify-content: center;
   width: 100%;
   margin: 40px 0;
 }
-.edit-profile-container .img img{
-  object-fit: cover;
-}
-.edit-profile-container .row {
+.row {
   display: flex;
   justify-content: center;
 }
-.edit-profile-container #updatebtn {
+#updatebtn {
   background: #82a0d8;
   border: none;
   outline: none;
   width: 100%;
 }
-.edit-profile-container .edit-btn {
+.edit-btn {
   width: fit-content;
   position: relative;
 }
-.edit-profile-container .butn {
+.butn {
   position: absolute;
   top: 78%;
   left: 76%;
@@ -43,10 +51,10 @@
   border-radius: 80%;
   outline: none;
 }
-.edit-profile-container i {
+i {
   font-size: 10px;
 }
-.edit-profile-container label {
+label {
   font-weight: 600;
   margin-right: 5px;
 }
