@@ -175,7 +175,7 @@ const Header = () => {
                                     <Link className="dropdown-item" to="/wishlist">
                                         My Wishlist
                                     </Link>
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="/changepassword">
                                         Change Password
                                     </Link>
                                     <div className="dropdown-divider"></div>
