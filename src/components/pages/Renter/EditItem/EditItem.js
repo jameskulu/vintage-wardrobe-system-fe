@@ -20,7 +20,7 @@ const EditItem = (props) => {
             const singleItemResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/items/${itemId}`
             );
-
+            console.log(singleItemResponse)
             setName(singleItemResponse.data.data.name);
             setDescription(singleItemResponse.data.data.description);
             setPrice(singleItemResponse.data.data.price);

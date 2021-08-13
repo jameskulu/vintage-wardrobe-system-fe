@@ -36,6 +36,8 @@ import About from './components/pages/AboutUs/About';
 import Wishlist from './components/pages/Customer/Wishlist/Wishlist';
 import Category from './components/pages/Category/Category';
 import ChangePassword from './components/pages/ChangePassword/ChangePassword';
+import EditProfile from './components/pages/EditProfile/EditProfile';
+import Profile from './components/pages/Profile/Profile';
 
 
 toast.configure();
@@ -123,6 +125,9 @@ function App() {
                 <Route exact path="/category/:categoryName" component={Category} />
 
                 <Route exact path="/changepassword" component={ChangePassword} />
+                <Route exact path="/editprofile" component={EditProfile} />
+
+                <Route exact path="/myprofile" component={Profile} />
                     
 
                     <Route exact path="/s" component={SearchPage} />
