@@ -246,3 +246,38 @@ Given('filter funtionality', {timeout: 4 * 5000},async () => {
 //   await driver.findElement(By.className('btn-review')).click();
 // });
 
+Given('view profile funtionality', {timeout: 4 * 5000},async () => {
+
+  let driver = await new Builder().forBrowser('chrome').build();
+  await driver.get('https://vintagewardrobe.herokuapp.com/login');
+  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+  await driver.findElement(By.className('loginbtn')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com');
+  await driver.sleep(delay);
+  await driver.findElement(By.id('navbarDropdown2')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com/myprofile');
+  // await driver.sleep(delay);
+  // await driver.findElement(By.id('sub-category-Tshirt')).click();
+  // await driver.findElement(By.className('grid-color-2')).click();
+});
+
+Given('edit profile funtionality', {timeout: 4 * 5000},async () => {
+
+  let driver = await new Builder().forBrowser('chrome').build();
+  await driver.get('https://vintagewardrobe.herokuapp.com/login');
+  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+  await driver.findElement(By.className('loginbtn')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com');
+  await driver.sleep(delay);
+  await driver.findElement(By.id('navbarDropdown2')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com/myprofile');
+  await driver.sleep(delay);
+  await driver.findElement(By.id('profilebtn')).click();
+  // await driver.findElement(By.className('grid-color-2')).click();
+});
