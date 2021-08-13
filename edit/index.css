@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap");
+:root {
+  --bg: #8aaae5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  height: 120px;
+  font-size: 26px;
+  color: white;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 40px 0;
+}
+.edit-btn {
+  width: fit-content;
+  position: relative;
+}
+.row {
+  display: flex;
+  justify-content: center;
+}
+#updatebtn {
+  width: 100%;
+}
+.name-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.name-row div {
+  display: flex;
+}
+.n1,
+.n2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.n1 p,
+.n2 p {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.information {
+  padding: 10px;
+}
+.a p {
+  font-size: clamp(1rem, 1vw, 2rem);
+}
+.a,
+.b,
+.c,
+.d,
+.e {
+  display: flex;
+  flex-wrap: wrap;
+}
+label {
+  font-weight: 600;
+  margin-right: 5px;
+}
+#profilebtn {
+  background: #8aaae5;
+  width: 100%;
+}
