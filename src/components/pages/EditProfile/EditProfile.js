@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import UserContext from '../../../context/UserContext';
 import axios from 'axios';
 import './editProfile.css';
+import User from '../../../images/user.png';
 
 const EditProfile = () => {
     const { userData, setUserData } = useContext(UserContext);
@@ -15,6 +16,8 @@ const EditProfile = () => {
     const [address, setAddress] = useState();
     const [city, setCity] = useState();
     const [country, setCountry] = useState();
+    const [image, setImage] = useState();
+    const [viewImage, setViewImage] = useState();
 
     useEffect(() => {
         const loadUserDetails = async () => {
@@ -30,6 +33,8 @@ const EditProfile = () => {
             setAddress(userDetailsResponse.data.data.address);
             setCity(userDetailsResponse.data.data.city);
             setCountry(userDetailsResponse.data.data.country);
+            setImage(userDetailsResponse.data.data.profilePicURL);
+            setViewImage(userDetailsResponse.data.data.profilePicURL);
         };
 
         loadUserDetails();
@@ -38,19 +43,20 @@ const EditProfile = () => {
     const onEditProfile = async (e) => {
         e.preventDefault();
         try {
-            const editProfile = {
-                firstName,
-                lastName,
-                gender,
-                address,
-                city,
-                country,
-            };
+            console.log(image);
+            const updateUser = new FormData();
+            updateUser.append('image', image);
+            updateUser.append('firstName', firstName);
+            updateUser.append('lastName', lastName);
+            updateUser.append('gender', gender);
+            updateUser.append('address', address);
+            updateUser.append('city', city);
+            updateUser.append('country', country);
 
             const token = localStorage.getItem('auth-token');
             const userResponse = await axios.put(
                 `${process.env.REACT_APP_API_URL}/api/users/profile/edit`,
-                editProfile,
+                updateUser,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
             setUserData({
@@ -65,6 +71,11 @@ const EditProfile = () => {
         }
     };
 
+    const changeImage = (e) => {
+        setImage(e.target.files[0]);
+        setViewImage(URL.createObjectURL(e.target.files[0]));
+    };
+
     return (
         <div className="edit-profile-container">
             <div class="container">
@@ -72,119 +83,128 @@ const EditProfile = () => {
                     <div class="img">
                         <div class="edit-btn">
                             <img
-                                src="https://prestigeportraits.com/wp-content/themes/prestige/assets/build/images/galleries/gallery-2/gallery-image-3.jpg"
+                                src={viewImage === null ? User : viewImage}
                                 class="rounded-circle mx-auto d-block"
                                 alt=""
                                 width="130"
                                 height="140"
                             />
-                            <button class="butn btn-primary">
+                            <input
+                                id="editprofileinput"
+                                type="file"
+                                style={{ display: 'none' }}
+                            />
+                            {/* <button class="butn btn-primary">
                                 <i class="fas fa-pen"></i>
-                            </button>
+                            </button> */}
+                            <label class="butn btn-primary" for="fusk">
+                                <i class="fas fa-pen"></i>
+                            </label>
+                            <input
+                                onChange={(e) => changeImage(e)}
+                                id="fusk"
+                                type="file"
+                                style={{ display: 'none' }}
+                            />
                         </div>
                     </div>
                     <div class="form-info col-sm-8 col-md-7">
                         <form>
-                            <form>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Firstname">
-                                            First Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="Firstname"
-                                            placeholder="First Name"
-                                            value={firstName}
-                                            onChange={(e) =>
-                                                setFirstName(e.target.value)
-                                            }
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="Lastname">Last Name</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="Lastname"
-                                            placeholder="Last Name"
-                                            value={lastName}
-                                            onChange={(e) =>
-                                                setLastName(e.target.value)
-                                            }
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Phone Number">Gender</label>
-                                    {/* <input
-                                    type="text"
-                                    class="form-control"
-                                    id="Phone Number"
-                                    placeholder="Phone Number"
-                                    value={gender}
-                                /> */}
-                                    <select
-                                        class="form-control"
-                                        onChange={(e) =>
-                                            setGender(e.target.value)
-                                        }
-                                        name=""
-                                        id=""
-                                    >
-                                        <option value="ma">Male</option>
-                                        <option value="fe">Female</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Address">Address</label>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Firstname">First Name</label>
                                     <input
                                         type="text"
                                         class="form-control"
-                                        id="Address"
-                                        value={address}
+                                        id="Firstname"
+                                        placeholder="First Name"
+                                        value={firstName}
                                         onChange={(e) =>
-                                            setAddress(e.target.value)
+                                            setFirstName(e.target.value)
                                         }
                                     />
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="City">City</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="City"
-                                            value={city}
-                                            onChange={(e) =>
-                                                setCity(e.target.value)
-                                            }
-                                        />
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="Country">Country</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="Country"
-                                            value={country}
-                                            onChange={(e) =>
-                                                setCountry(e.target.value)
-                                            }
-                                        />
-                                    </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Lastname">Last Name</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="Lastname"
+                                        placeholder="Last Name"
+                                        value={lastName}
+                                        onChange={(e) =>
+                                            setLastName(e.target.value)
+                                        }
+                                    />
                                 </div>
-                                <button
-                                    type="submit"
-                                    onClick={onEditProfile}
-                                    id="updatebtn"
-                                    class="btn btn-primary mt-3"
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Phone Number">Gender</label>
+                                <select
+                                    class="form-control"
+                                    onChange={(e) => setGender(e.target.value)}
+                                    value={gender}
+                                    name=""
+                                    id=""
                                 >
-                                    Update
-                                </button>
-                            </form>
+                                    <option value="ma">Male</option>
+                                    <option value="fe">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address">Address</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="Address"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
+                                />
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="City">City</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="City"
+                                        value={city}
+                                        onChange={(e) =>
+                                            setCity(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Country">Country</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="Country"
+                                        value={country}
+                                        onChange={(e) =>
+                                            setCountry(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                {/* <div class="form-group col-md-6">
+                                    <label for="Image">Image</label>
+                                    <input
+                                        type="file"
+                                        onChange={(e) =>
+                                            setImage(e.target.files[0])
+                                        }
+                                    />
+                                </div> */}
+                            </div>
+                            <button
+                                type="submit"
+                                onClick={onEditProfile}
+                                id="updatebtn"
+                                class="btn btn-primary mt-3"
+                            >
+                                Update
+                            </button>
                         </form>
                     </div>
                 </div>
