@@ -215,7 +215,7 @@ const Category = (props) => {
                                 </>
                             ) : (
                                 <p>
-                                    No items available in {categoryName} section
+                                    No items available
                                 </p>
                             )}
                         </div>

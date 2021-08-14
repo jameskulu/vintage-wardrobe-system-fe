@@ -123,7 +123,7 @@ function App() {
                     />
 
                     <Route exact path="/renter/order" component={RentOrder} />
-                    <Route exact path="/aboutus" component={About} />
+                    <Route exact path="/about-us" component={About} />
                     <Route exact path="/wishlist" component={Wishlist} />
                     <Route
                         exact

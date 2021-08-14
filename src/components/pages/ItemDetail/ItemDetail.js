@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { toast } from 'react-toastify';
 import './itemDetails.css';
 import { Link } from 'react-router-dom';
+import User from '../../../images/user.png';
 import UserContext from '../../../context/UserContext';
 import ReactStars from 'react-rating-stars-component';
 import './review.css';
@@ -299,7 +300,15 @@ const ItemDetail = (props) => {
                                 <h5 className="mt-3">Rented By:</h5>
                                 <div className="seller">
                                     <img
-                                        src={d1}
+                                        src={
+                                            singleItem.user
+                                                ? singleItem.user
+                                                      .profilePicURL === null
+                                                    ? User
+                                                    : singleItem.user
+                                                          .profilePicURL
+                                                : null
+                                        }
                                         width="120px"
                                         ascpect-ratio="1/1"
                                         alt=""
@@ -437,7 +446,12 @@ const ItemDetail = (props) => {
                                 <div class="row border rating-field ">
                                     <div class="col-md-0 user-details">
                                         <img
-                                            src={morrison}
+                                            src={
+                                                review.user.profilePicURL ===
+                                                null
+                                                    ? User
+                                                    : review.user.profilePicURL
+                                            }
                                             class="rounded-circle user-img"
                                             alt="Cinque Terre"
                                         />
