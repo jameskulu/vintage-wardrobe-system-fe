@@ -60,6 +60,8 @@ Given('View Items', {timeout: 2 * 5000}, async () => {  //viewItems and displayi
   await driver.findElement(By.className('add-cart')).click();
 });
 
+
+//------------------Not Completed------------------------//
 // Given('Upload functionality', {timeout: 2 * 5000}, async () => {  //viewItems and displaying the details
 //   let driver = await new Builder().forBrowser('chrome').build();
 //  await driver.get('https://vintagewardrobe.herokuapp.com/login');
@@ -95,6 +97,9 @@ Given('View Items', {timeout: 2 * 5000}, async () => {  //viewItems and displayi
 //  await driver.findElement(By.id('formGroupExampleInput2')).sendKeys('Rs 2000');
 //  await driver.findElement(By.className('btn')).click();
 // });
+
+
+//----------------------------------------------------------------------------
 
 //viewing the items after renter upload 
 Given('View item functionality', {timeout: 2 * 5000},async () => {  //viewItems and displaying the details
@@ -259,12 +264,9 @@ Given('view profile funtionality', {timeout: 4 * 5000},async () => {
   await driver.findElement(By.id('navbarDropdown2')).click();
   await driver.sleep(delay);
   await driver.get('https://vintagewardrobe.herokuapp.com/myprofile');
-  // await driver.sleep(delay);
-  // await driver.findElement(By.id('sub-category-Tshirt')).click();
-  // await driver.findElement(By.className('grid-color-2')).click();
 });
 
-Given('edit profile funtionality', {timeout: 4 * 5000},async () => {
+Given('edit profile funtionality', {timeout: 5 * 5000},async () => {
 
   let driver = await new Builder().forBrowser('chrome').build();
   await driver.get('https://vintagewardrobe.herokuapp.com/login');
@@ -276,8 +278,15 @@ Given('edit profile funtionality', {timeout: 4 * 5000},async () => {
   await driver.sleep(delay);
   await driver.findElement(By.id('navbarDropdown2')).click();
   await driver.sleep(delay);
-  await driver.get('https://vintagewardrobe.herokuapp.com/myprofile');
+  await driver.get('https://vintagewardrobe.herokuapp.com/profile');
   await driver.sleep(delay);
   await driver.findElement(By.id('profilebtn')).click();
-  // await driver.findElement(By.className('grid-color-2')).click();
+  await driver.sleep(delay);
+  await driver.findElement(By.id('Lastname')).clear();
+  await driver.findElement(By.id('Lastname')).sendKeys('Gurung');
+  await driver.findElement(By.id('Country')).clear();
+  await driver.findElement(By.id('Country')).sendKeys('Kathmandu, Nepal');
+  await driver.findElement(By.id('updatebtn')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com/profile');
 });
