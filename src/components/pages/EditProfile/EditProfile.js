@@ -43,7 +43,6 @@ const EditProfile = () => {
     const onEditProfile = async (e) => {
         e.preventDefault();
         try {
-            console.log(image);
             const updateUser = new FormData();
             updateUser.append('image', image);
             updateUser.append('firstName', firstName);
