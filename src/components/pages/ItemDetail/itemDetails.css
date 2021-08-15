@@ -129,6 +129,7 @@
     width: 80px;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    object-fit: cover;
 }
 .item-detail .seller span {
     margin-left: 10px;

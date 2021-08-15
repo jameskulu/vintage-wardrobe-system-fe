@@ -28,7 +28,7 @@ const About = () => {
                                 A community that shares more than just clothes.
                             </h3>
 
-                            <p class="text-left">
+                            <p class="text-left mt-3">
                                 We’re not just a closet; we’re a community — one
                                 that swaps everything from clothes, to
                                 inspiration and ideas. When we’re able to wear

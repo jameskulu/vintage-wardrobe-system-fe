@@ -1,59 +1,64 @@
-:root {
-  --bg: #8aaae5;
+.edit-profile-container heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+    height: 120px;
+    font-size: 26px;
+    color: white;
+}
+.edit-profile-container .img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 40px 0;
+}
+.edit-profile-container .img img {
+    object-fit: cover;
+}
+.edit-profile-container .row {
+    display: flex;
+    justify-content: center;
+}
+.edit-profile-container #updatebtn {
+    background: #82a0d8;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.edit-profile-container .edit-btn {
+    width: fit-content;
+    position: relative;
+}
+.edit-profile-container .butn {
+    position: absolute;
+    top: 78%;
+    left: 76%;
+    background-color: var(--bg);
+    color: white;
+    font-size: 16px;
+    padding: 3px 9px;
+    border: none;
+    cursor: pointer;
+    border-radius: 80%;
+    outline: none;
+}
+.edit-profile-container i {
+    font-size: 10px;
+}
+.edit-profile-container label {
+    font-weight: 600;
+    margin-right: 5px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins";
+.edit-profile-container .edit-profile-label {
+    cursor: pointer;
+    padding: 28px 10px;
+    color: rgb(24, 24, 24);
+    background: rgb(201, 201, 201);
+    border-radius: 50%;
 }
-heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--bg);
-  height: 120px;
-  font-size: 26px;
-  color: white;
-}
-.img {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 40px 0;
-}
-.row {
-  display: flex;
-  justify-content: center;
-}
-#updatebtn {
-  background: #82a0d8;
-  border: none;
-  outline: none;
-  width: 100%;
-}
-.edit-btn {
-  width: fit-content;
-  position: relative;
-}
-.butn {
-  position: absolute;
-  top: 78%;
-  left: 76%;
-  background-color: var(--bg);
-  color: white;
-  font-size: 16px;
-  padding: 3px 9px;
-  border: none;
-  cursor: pointer;
-  border-radius: 80%;
-  outline: none;
-}
-i {
-  font-size: 10px;
-}
-label {
-  font-weight: 600;
-  margin-right: 5px;
+
+.edit-profile-container .edit-profile-input {
+    display: none;
 }

@@ -39,7 +39,6 @@ import ChangePassword from './components/pages/ChangePassword/ChangePassword';
 import EditProfile from './components/pages/EditProfile/EditProfile';
 import Profile from './components/pages/Profile/Profile';
 
-
 toast.configure();
 function App() {
     const [userData, setUserData] = useState({
@@ -111,7 +110,11 @@ function App() {
                     <Route exact path="/orders" component={Order} />
 
                     <Route exact path="/checkout" component={Checkout} />
-                    <Route exact path="/checkout/complete" component={CheckoutComplete} />
+                    <Route
+                        exact
+                        path="/checkout/complete"
+                        component={CheckoutComplete}
+                    />
 
                     <Route
                         exact
@@ -120,15 +123,22 @@ function App() {
                     />
 
                     <Route exact path="/renter/order" component={RentOrder} />
-                    <Route exact path="/aboutus" component={About} />
+                    <Route exact path="/about-us" component={About} />
                     <Route exact path="/wishlist" component={Wishlist} />
-                <Route exact path="/category/:categoryName" component={Category} />
+                    <Route
+                        exact
+                        path="/category/:categoryName"
+                        component={Category}
+                    />
 
-                <Route exact path="/changepassword" component={ChangePassword} />
-                <Route exact path="/editprofile" component={EditProfile} />
+                    <Route
+                        exact
+                        path="/change-password"
+                        component={ChangePassword}
+                    />
+                    <Route exact path="/edit-profile" component={EditProfile} />
 
-                <Route exact path="/myprofile" component={Profile} />
-                    
+                    <Route exact path="/profile" component={Profile} />
 
                     <Route exact path="/s" component={SearchPage} />
                     <Footer />
