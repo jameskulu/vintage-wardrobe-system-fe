@@ -5,6 +5,7 @@ import './footer.css';
 const Footer = () => {
     return (
         <footer>
+             <div className="container-fluid text-center ">
             <div className="row">
                 <div className="col-md-12 col-sm-12">
                     <div className="row">
@@ -15,7 +16,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="container-fluid text-center ">
+                   
                         <div className="row">
                             <div className="col-md-4 mt-md-0 mt-3">
                                 <div className="list-group">
@@ -64,7 +65,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+               
             </div>
 
             <section className="copyright">
@@ -78,6 +79,7 @@ const Footer = () => {
                     </div>
                 </div>
             </section>
+            </div>
         </footer>
     );
 };
