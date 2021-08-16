@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 
 const Header = () => {
     const { userData, setUserData } = useContext(UserContext);
-    console.log(userData);
     const history = useHistory();
     const toggleMenu = () => {
         document.getElementById('navbar').classList.toggle('toggle');
@@ -55,7 +54,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link className="nav-item-link active" to="/aboutUs">
+                            <Link className="nav-item-link active" to="/about-us">
                                 About Us
                             </Link>
                         </li>
@@ -76,15 +75,15 @@ const Header = () => {
                                 className="dropdown-menu"
                                 aria-labelledby="navbarDropdown3"
                             >
-                                <Link className="dropdown-item" to="">
+                                <Link className="dropdown-item" to="/category/Men">
                                     Men
                                 </Link>
 
-                                <Link className="dropdown-item" to="">
+                                <Link className="dropdown-item" to="/category/Women">
                                     Women
                                 </Link>
 
-                                <Link className="dropdown-item" to="">
+                                <Link className="dropdown-item" to="/category/Kids">
                                     Kids
                                 </Link>
                             </div>
@@ -166,16 +165,16 @@ const Header = () => {
                                     className="dropdown-menu"
                                     aria-labelledby="navbarDropdown2"
                                 >
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="/profile">
                                         Manage Profile
                                     </Link>
                                     <Link className="dropdown-item" to="/orders">
                                         My Orders
                                     </Link>
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="/wishlist">
                                         My Wishlist
                                     </Link>
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="/change-password">
                                         Change Password
                                     </Link>
                                     <div className="dropdown-divider"></div>

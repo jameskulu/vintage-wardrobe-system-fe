@@ -107,8 +107,8 @@ const Order = () => {
                                         </td>
                                         <td>
                                             <p>
-                                                {order.user.firstName}{' '}
-                                                {order.user.lastName}
+                                                {order.item.user.firstName}{' '}
+                                                {order.item.user.lastName}
                                             </p>
                                         </td>
                                         <td>

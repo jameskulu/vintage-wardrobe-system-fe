@@ -17,6 +17,7 @@ const AddItem = () => {
     const [subCategoryId, setSubCategoryId] = useState();
     const [color, setColor] = useState();
     const [size, setSize] = useState();
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         const loadCategories = async () => {
@@ -38,19 +39,27 @@ const AddItem = () => {
         setDisable(true);
 
         try {
-            const newItem = {
-                name,
-                description,
-                price: parseInt(Math.abs(price)),
-                size,
-                color,
-                subCategoryId,
-            };
-            // const newItem = new FormData() // new line
-            // newItem.append('name', name)
-            // newItem.append('description', description)
-            // newItem.append('price', price)
-            // newItem.append('subCategoryId', subCategoryId)
+            // const newItem = {
+            //     name,
+            //     description,
+            //     price: parseInt(Math.abs(price)),
+            //     size,
+            //     color,
+            //     subCategoryId,
+            //     images
+            // };
+            const newItem = new FormData(); // new line
+            newItem.append('name', name);
+            newItem.append('description', description);
+            newItem.append('price', parseInt(Math.abs(price)));
+            newItem.append('size', size);
+            newItem.append('color', color);
+            newItem.append('subCategoryId', subCategoryId);
+            newItem.append('images', images);
+
+            for (let i = 0; i < images.length; i++) {
+                newItem.append('images', images[i]);
+            }
 
             const token = localStorage.getItem('auth-token');
             await axios.post(
@@ -271,9 +280,11 @@ const AddItem = () => {
                                 </label>
                                 <input
                                     type="file"
+                                    multiple
+                                    onChange={(e) => setImages(e.target.files)}
                                     className="form-control-file"
                                     id="exampleFormControlFile1"
-                                ></input>
+                                />
                             </div>
 
                             <button

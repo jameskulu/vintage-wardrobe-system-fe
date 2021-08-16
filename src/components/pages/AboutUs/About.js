@@ -1,9 +1,9 @@
-import './about.css'
-import fashion from '../../../images/fashion.png'
-import flex from '../../../images/flex.png'
-import sustain from '../../../images/sustain.png'
-import tag from '../../../images/tag.png'
-import clothing from '../../../images/clothing.jpg'
+import './about.css';
+import fashion from '../../../images/fashion.png';
+import flex from '../../../images/flex.png';
+import sustain from '../../../images/sustain.png';
+import tag from '../../../images/tag.png';
+import clothing from '../../../images/clothing.jpg';
 
 const About = () => {
     return (
