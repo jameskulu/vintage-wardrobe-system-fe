@@ -1,54 +1,54 @@
-.aboutUs{
-    background: #8AAAE5;
-   }
-   
-   .aboutUs-title{
-        font-weight: lighter;
-    font-style: poppins;
-    margin: 20px;
-   }
-   
-   
-   .heading{
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-top: 50px;
-        margin-bottom: 50px;
-   }
-   
-   .heading-img{
-        margin-left: 70px;
-   }
-   
-   
-   .img-fluid{
-        width: 100;
-   }
-   
-   
-   .img-thumbnail{
-        border: whitesmoke;
-        margin: 10px;
-        height: 70px;
-   
-   }
-   
-   .description-Section{
-        margin: 10px;
-   }
-   
-   .media{
-        margin: 30px;
-   }
-   
-   @media (max-width:1000px) {
-     .img-fluid {
-       display: none;
-       
-     }
-   }
-   
-   
-   
-   
-   
+
+.about-container .aboutUs{
+     background: #8AAAE5;
+    }
+    
+    .about-container .aboutUs-title{
+         font-weight: lighter;
+     font-style: poppins;
+     margin: 20px;
+    }
+    
+    
+    .about-container .heading{
+         margin-left: 20px;
+         margin-right: 20px;
+         margin-top: 50px;
+         margin-bottom: 50px;
+    }
+    
+    .about-container .img-fluid{
+         width: 100;
+    }
+    
+    
+    .about-container .img-thumbnail{
+         border: whitesmoke;
+         margin: 10px;
+         height: 70px;
+    
+    }
+    
+    .about-container .description-Section{
+         margin: 10px;
+    }
+    
+    .about-container .media{
+         margin: 40px;
+    }
+    
+    .about-container .mx-4{
+         margin-top: 30px;
+    }
+    
+    /*@media (max-width:1000px) {
+      .img-fluid {
+        display: none;
+        
+      }
+    }*/
+    
+    
+    
+    
+    

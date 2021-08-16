@@ -77,6 +77,7 @@ function App() {
                     <Header />
 
                     <Route exact path="/" component={Home} />
+                    
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/Signup" component={Signup} />
                     <Route
