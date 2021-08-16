@@ -10,7 +10,6 @@ const Items = ({ items }) => {
             {items.map((item) => (
                 <div key={item.id} className="single-latest-released">
                     <Link to={`/items/${item.id}`}>
-                        {console.log}
                         <img
                             src={
                                 item.images.length < 1
