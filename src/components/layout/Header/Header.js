@@ -58,7 +58,7 @@ const Header = () => {
                                 About Us
                             </Link>
                         </li>
-                        
+
                         <li className="dropdown">
                             <Link
                                 className="nav-item-link "
@@ -89,13 +89,16 @@ const Header = () => {
                             </div>
                         </li>
 
-                        {/* {userData.user ? (
-                            userData.user.role === 'admin' ? (
-                                <li>
-                                    <Link to="/admin">Admin</Link>
-                                </li>
-                            ) : null
-                        ) : null} */}
+                        {
+                            userData.user ?
+                                userData.user.role === 'admin' ?
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/admin">Admin</Link></li>
+                                    :
+                                    null
+                                :
+                                null
+                        }
 
                         {userData.user ? (
                             <>
