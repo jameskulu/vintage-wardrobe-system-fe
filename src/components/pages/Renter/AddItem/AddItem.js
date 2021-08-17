@@ -17,6 +17,7 @@ const AddItem = () => {
     const [subCategoryId, setSubCategoryId] = useState();
     const [color, setColor] = useState();
     const [size, setSize] = useState();
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         const loadCategories = async () => {
@@ -38,19 +39,27 @@ const AddItem = () => {
         setDisable(true);
 
         try {
-            const newItem = {
-                name,
-                description,
-                price: parseInt(Math.abs(price)),
-                size,
-                color,
-                subCategoryId,
-            };
-            // const newItem = new FormData() // new line
-            // newItem.append('name', name)
-            // newItem.append('description', description)
-            // newItem.append('price', price)
-            // newItem.append('subCategoryId', subCategoryId)
+            // const newItem = {
+            //     name,
+            //     description,
+            //     price: parseInt(Math.abs(price)),
+            //     size,
+            //     color,
+            //     subCategoryId,
+            //     images
+            // };
+            const newItem = new FormData(); // new line
+            newItem.append('name', name);
+            newItem.append('description', description);
+            newItem.append('price', parseInt(Math.abs(price)));
+            newItem.append('size', size);
+            newItem.append('color', color);
+            newItem.append('subCategoryId', subCategoryId);
+            newItem.append('images', images);
+
+            for (let i = 0; i < images.length; i++) {
+                newItem.append('images', images[i]);
+            }
 
             const token = localStorage.getItem('auth-token');
             await axios.post(
@@ -109,7 +118,7 @@ const AddItem = () => {
                                 </label>
                                 <input
                                     className="form-control"
-                                    id="formGroupExampleInput"
+                                    id="itemName"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
@@ -123,7 +132,7 @@ const AddItem = () => {
                                 </label>
                                 <textarea
                                     className="form-control"
-                                    id="exampleFormControlTextarea1"
+                                    id="itemDescription"
                                     rows="3"
                                     value={description}
                                     onChange={(e) =>
@@ -141,7 +150,7 @@ const AddItem = () => {
                                 <input
                                     type="number"
                                     className="form-control"
-                                    id="formGroupExampleInput2"
+                                    id="itemPrice"
                                     value={price}
                                     onChange={(e) => setPrice(e.target.value)}
                                 />
@@ -155,7 +164,7 @@ const AddItem = () => {
                                 </label>
                                 <select
                                     className="form-control"
-                                    id="exampleFormControlSelect1"
+                                    id="itemCategory"
                                     value={categoryId}
                                     onChange={(e) =>
                                         onCategoryChange(e, categoryId)
@@ -186,7 +195,7 @@ const AddItem = () => {
                                 </label>
                                 <select
                                     className="form-control"
-                                    id="exampleFormControlSelect1"
+                                    id="itemSubcategory"
                                     value={subCategoryId}
                                     onChange={(e) =>
                                         setSubCategoryId(e.target.value)
@@ -217,7 +226,7 @@ const AddItem = () => {
                                 </label>
                                 <select
                                     className="form-control"
-                                    id="exampleFormControlSelect1"
+                                    id="itemColor"
                                     value={color}
                                     onChange={(e) => setColor(e.target.value)}
                                 >
@@ -247,7 +256,7 @@ const AddItem = () => {
                                 </label>
                                 <select
                                     className="form-control"
-                                    id="exampleFormControlSelect1"
+                                    id="itemSize"
                                     value={size}
                                     onChange={(e) => setSize(e.target.value)}
                                 >
@@ -271,15 +280,18 @@ const AddItem = () => {
                                 </label>
                                 <input
                                     type="file"
+                                    multiple
+                                    onChange={(e) => setImages(e.target.files)}
                                     className="form-control-file"
-                                    id="exampleFormControlFile1"
-                                ></input>
+                                    id="itemImage"
+                                />
                             </div>
 
                             <button
                                 disabled={disable}
                                 onClick={onItemAdd}
                                 type="button"
+                                id = "btnAdd"
                                 className="btn edit col-md-12"
                             >
                                 Upload

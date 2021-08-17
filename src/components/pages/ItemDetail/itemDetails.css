@@ -198,6 +198,21 @@
     padding-right: 15px;
 }
 
+.item-detail .main-detail-image-ul{
+    display: flex;
+    justify-content: center;
+}
+
+.item-detail .main-detail-image-ul img{
+    width: 400px;
+    text-align: center;
+    object-fit: cover;
+}
+
+.item-detail .imgslider img{
+    object-fit: cover;
+}
+
 @media screen and (max-width: 992px) {
     .item-detail .container {
         margin: 20px;

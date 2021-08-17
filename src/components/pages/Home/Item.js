@@ -1,14 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import dress1 from '../../../images/dress1.jpg';
+import NoImage from '../../../images/noimage.jpg';
 
 const Items = ({ items }) => {
+    console.log(items);
     return (
         <>
             {items.map((item) => (
                 <div key={item.id} className="single-latest-released">
                     <Link to={`/items/${item.id}`}>
-                        <img src={dress1} alt="" />
+                        <img
+                            src={
+                                item.images.length < 1
+                                    ? NoImage
+                                    : item.images[0].imageURL
+                            }
+                            alt=""
+                        />
                     </Link>
                     <div className="movie-info">
                         <h4>

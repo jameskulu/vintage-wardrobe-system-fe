@@ -48,44 +48,21 @@ const Home = () => {
 
                 <div className="row text-center">
                     <div className="col-md-4">
-                        <Link
-                            style={{ textDecoration: 'none' }}
-                            to="/category/Women"
-                        >
-                            <img
-                                src={woman}
-                                className="img-thumbnail"
-                                alt={woman}
-                            />
-                            <h4 className="my-3">Women</h4>
-                        </Link>
+                        <img
+                            src={woman}
+                            className="img-thumbnail"
+                            alt={woman}
+                        />
+                        <h4 className="my-3">Women</h4>
                     </div>
                     <div className="col-md-4">
-                        <Link
-                            style={{ textDecoration: 'none' }}
-                            to="/category/Men"
-                        >
-                            <img
-                                src={men}
-                                alt="..."
-                                className="img-thumbnail"
-                            />
-                            <h4 className="my-3">Mens</h4>
-                        </Link>
+                        <img src={men} alt="..." className="img-thumbnail" />
+                        <h4 className="my-3">Mens</h4>
                     </div>
                     <div className="col-md-4">
-                        <Link
-                            style={{ textDecoration: 'none' }}
-                            to="/category/Kids"
-                        >
-                            <img
-                                src={kids}
-                                alt="..."
-                                className="img-thumbnail "
-                            />
+                        <img src={kids} alt="..." className="img-thumbnail " />
 
-                            <h4 className="my-3">Kids</h4>
-                        </Link>
+                        <h4 className="my-3">Kids</h4>
                     </div>
                 </div>
             </section>
