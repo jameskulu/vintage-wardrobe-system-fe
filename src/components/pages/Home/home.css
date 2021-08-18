@@ -4,7 +4,7 @@
     height: 80vh;
     display: flex;
     justify-content: center;
-    background: url('../../../images/background.jpg');
+    background: url('../../../images/dress.jpg');
     background-attachment: fixed;
     background-position: center 0;
     background-repeat: no-repeat;
@@ -17,7 +17,7 @@
 }
 
 .homepage .img-thumbnail {
-    width: 70%;
+    width: 80%;
     height: 70%;
     border: white;
 }
@@ -76,7 +76,7 @@
 }
 
 .homepage button {
-    background-color: #8aaae5;
+    background-color: #6aab9c;
     color: white;
     padding: 16px 0px;
     margin: 30px 0;
@@ -88,6 +88,7 @@
     border-radius: 4px;
     text-align: center;
     font-size: 20px;
+    box-shadow: 2px 2px 1px #7b92be;
 }
 
 .homepage .bg button {
@@ -104,7 +105,7 @@
 }
 
 .homepage .bg button:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .homepage #offer button {
