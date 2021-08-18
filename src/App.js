@@ -43,6 +43,8 @@ import Admin from './components/admin/Admin';
 
 import ProtectedAdminRoute from './middleware/ProtectedAdminRoute'
 import UserAdmin from './components/admin/User/User';
+import AddUser from './components/admin/User/AddUser';
+import EditUser from './components/admin/User/EditUser';
 
 toast.configure();
 function App() {
@@ -80,18 +82,22 @@ function App() {
         checkLoggedIn();
     }, []);
 
+    // const isAdmin = () => {
+    //     if (userData.user) {
+    //       if (userData.user.role === 'admin') {
+    //         return true
+    //       }
+    //       else {
+    //         return false
+    //       }
+    //     }
+    //     else {
+    //       return false
+    //     }
+    //   }
+
     const isAdmin = () => {
-        if (userData.user) {
-          if (userData.user.role === 'admin') {
-            return true
-          }
-          else {
-            return false
-          }
-        }
-        else {
-          return false
-        }
+        return true
       }
 
     return (
@@ -190,6 +196,8 @@ function App() {
                     {/* Admin */}
                     <ProtectedAdminRoute exact path='/admin' component={Admin} isAdmin={isAdmin()} />
                     <ProtectedAdminRoute exact path='/admin/users' component={UserAdmin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/users/add' component={AddUser} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/users/edit/:userId' component={EditUser} isAdmin={isAdmin()} />
 
                     <Route exact path={['/',
                         '/login',
