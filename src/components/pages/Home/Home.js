@@ -48,19 +48,33 @@ const Home = () => {
 
                 <div className="row text-center">
                     <div className="col-md-4">
-                        <img
-                            src={woman}
-                            className="img-thumbnail"
-                            alt={woman}
-                        />
+                        <Link to="/category/Women">
+                            <img
+                                src={woman}
+                                className="img-thumbnail"
+                                alt={woman}
+                            />
+                        </Link>
                         <h4 className="my-3">Women</h4>
                     </div>
                     <div className="col-md-4">
-                        <img src={men} alt="..." className="img-thumbnail" />
+                        <Link to="/category/Men">
+                            <img
+                                src={men}
+                                alt="..."
+                                className="img-thumbnail"
+                            />
+                        </Link>
                         <h4 className="my-3">Men</h4>
                     </div>
                     <div className="col-md-4">
-                        <img src={kids} alt="..." className="img-thumbnail " />
+                        <Link to="/category/Kids">
+                            <img
+                                src={kids}
+                                alt="..."
+                                className="img-thumbnail "
+                            />
+                        </Link>
 
                         <h4 className="my-3">Kids</h4>
                     </div>

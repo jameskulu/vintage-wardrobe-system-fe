@@ -2,6 +2,8 @@ import './cart.css';
 import dress1 from '../../../../images/dress1.jpg';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import NoImage from '../../../../images/noimage.jpg';
+
 const Cart = () => {
     const items = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -55,16 +57,22 @@ const Cart = () => {
                                     {cartItems.map((item) => (
                                         <tr>
                                             <td>
-                                                <Link to={`items/${item.id}`}>
+                                                <Link to={`/items/${item.id}`}>
                                                     <img
                                                         className="img-thumbnail"
-                                                        src={dress1}
+                                                        src={
+                                                            item.images.length <
+                                                            1
+                                                                ? NoImage
+                                                                : item.images[0]
+                                                                      .imageURL
+                                                        }
                                                         alt=""
                                                     />
                                                 </Link>
                                             </td>
                                             <td>
-                                                <Link to={`items/${item.id}`}>
+                                                <Link to={`/items/${item.id}`}>
                                                     {item.name}
                                                 </Link>
                                             </td>
