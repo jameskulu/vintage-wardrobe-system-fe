@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './home.css';
-import woman from '../../../images/woman.jpg';
-import kids from '../../../images/kids.png';
-import men from '../../../images/men.jpg';
+import woman from '../../../images/w.jpg';
+import kids from '../../../images/kidss.jpg';
+import men from '../../../images/man.png';
 import dress1 from '../../../images/dress1.jpg';
 import dress2 from '../../../images/dress2.jpg';
 import dress3 from '../../../images/dress3.jpg';
@@ -32,7 +32,7 @@ const Home = () => {
                     <div className="row h-100">
                         <div className="col-md-12 col-sm-12 text-center my-auto">
                             <Link to="/renter/items/add">
-                                <button className="">Rent your Clothes</button>
+                                <button className="">Rent your clothes</button>
                             </Link>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ const Home = () => {
             <section id="rent">
                 <div className="row mt-5">
                     <div className="col-md-12 col-sm-12">
-                        <h2>Rent Clothing</h2>
+                        <h2>Rent your clothing for</h2>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@ const Home = () => {
                     </div>
                     <div className="col-md-4">
                         <img src={men} alt="..." className="img-thumbnail" />
-                        <h4 className="my-3">Mens</h4>
+                        <h4 className="my-3">Men</h4>
                     </div>
                     <div className="col-md-4">
                         <img src={kids} alt="..." className="img-thumbnail " />
