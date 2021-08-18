@@ -172,7 +172,7 @@ const AddUser = () => {
                             onClick={(e) => setRole(e.target.value)}
                         />
                     </div>
-                    <div>
+                    <div> 
                         <label htmlFor="admin">Admin</label>
                         <input
                             className="ml-2"
