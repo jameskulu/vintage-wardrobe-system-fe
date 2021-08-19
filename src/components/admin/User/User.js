@@ -18,7 +18,9 @@ const UserAdmin = () => {
                 { headers: { Authorization: 'Bearer ' + token } }
             );
             const sortedUsersRes = usersRes.data.data.reverse();
+            console.log(sortedUsersRes)
             setUsers(sortedUsersRes);
+            
         };
 
         loadUsers();
