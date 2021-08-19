@@ -221,6 +221,7 @@ function App() {
                         '/wishlist',
                         '/edit-profile',
                         '/profile',
+                        '/change-password',
                         '/s',
                     ]}
                         component={Footer} />
