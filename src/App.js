@@ -45,6 +45,9 @@ import ProtectedAdminRoute from './middleware/ProtectedAdminRoute'
 import UserAdmin from './components/admin/User/User';
 import AddUser from './components/admin/User/AddUser';
 import EditUser from './components/admin/User/EditUser';
+import ItemAdmin from './components/admin/Item/Item'
+import AddItemAdmin from './components/admin/Item/AddItemAdmin';
+import EditItemAdmin from './components/admin/Item/EditItemAdmin';
 
 toast.configure();
 function App() {
@@ -198,6 +201,10 @@ function App() {
                     <ProtectedAdminRoute exact path='/admin/users' component={UserAdmin} isAdmin={isAdmin()} />
                     <ProtectedAdminRoute exact path='/admin/users/add' component={AddUser} isAdmin={isAdmin()} />
                     <ProtectedAdminRoute exact path='/admin/users/edit/:userId' component={EditUser} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/item' component={ItemAdmin} isAdmin={isAdmin()} />
+
+                    <ProtectedAdminRoute exact path='/admin/items/add' component={AddItemAdmin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/items/edit/:itemId' component={EditItemAdmin} isAdmin={isAdmin()} />
 
                     <Route exact path={['/',
                         '/login',
