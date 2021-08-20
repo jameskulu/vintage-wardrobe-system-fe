@@ -256,10 +256,6 @@ const AddItemAdmin =() =>{
                     />
                 </div>
 
-        
-
-             
-
                 <button className="btn btn-lg btn-success btn-block text-uppercase mt-4" >
                     Add
                 </button>
