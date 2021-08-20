@@ -68,7 +68,7 @@ const Admin = (props) => {
                         </Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/admin/category">
+                        <Link class="nav-link" to="/admin/categories">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span>Categories</span>
                         </Link>
@@ -135,12 +135,12 @@ const Admin = (props) => {
                                         <div class="card-body-icon">
                                             <i class="fas fa-fw fa-list"></i>
                                         </div>
-                                        <Link class="nav-link" to="/admin/category">
+                                        <Link class="nav-link" to="/admin/categories">
                                         <div class="mr-4 text-white">Categories</div> </Link>
                                         
                                     </div>
                                     <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <Link class="nav-link" to="/admin/category">
+                                    <Link class="nav-link" to="/admin/categories">
                                         <span class="float-left text-white">View Details</span>
                                         </Link>
                                         <span class="float-right">
