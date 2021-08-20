@@ -6,7 +6,6 @@ import UserContext from '../../context/UserContext'
 import { toast } from 'react-toastify'
 
 
-
 const Admin = (props) => {
     const history = useHistory()
     const { userData, setUserData } = useContext(UserContext) 
@@ -44,9 +43,9 @@ const Admin = (props) => {
                 <ul class="navbar-nav ml-auto ml-md-0">
                  
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <Link class="nav-link dropdown-toggle" to="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-circle fa-fw"></i>
-                        </a>
+                        </Link>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                            
                     
@@ -64,34 +63,27 @@ const Admin = (props) => {
                     <li class="nav-item active">
                         <Link class="nav-link" to="/admin/users">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>User</span>
+                            <span className="text-light ml-2">User</span>
                         </Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/admin/category">
+                        <Link class="nav-link" to="/admin/categories">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Categories</span>
+                            <span className="text-light ml-2">Categories</span>
                         </Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/admin/food">
+                        <Link class="nav-link" to="/admin/sub-categories">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Sub-Categories</span>
+                            <span className="text-light ml-2">Sub-Categories</span>
                         </Link>
                     </li>
                     <li class="nav-item">
                         <Link class="nav-link" to="/admin/item">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Items</span>
+                            <span className="text-light ml-2">Items</span>
                         </Link>
                     </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" to="/admin/food">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Orders</span>
-                        </Link>
-                    </li>
-
 
                 </ul>
 
@@ -135,12 +127,12 @@ const Admin = (props) => {
                                         <div class="card-body-icon">
                                             <i class="fas fa-fw fa-list"></i>
                                         </div>
-                                        <Link class="nav-link" to="/admin/category">
+                                        <Link class="nav-link" to="/admin/categories">
                                         <div class="mr-4 text-white">Categories</div> </Link>
                                         
                                     </div>
                                     <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <Link class="nav-link" to="/admin/category">
+                                    <Link class="nav-link" to="/admin/categories">
                                         <span class="float-left text-white">View Details</span>
                                         </Link>
                                         <span class="float-right">

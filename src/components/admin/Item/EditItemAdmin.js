@@ -43,13 +43,14 @@ const EditItemAdmin = (props) => {
         e.preventDefault();
 
         try {
-            const updatedItem = new FormData();
-
-            updatedItem.append('name', name);
-            updatedItem.append('description', description);
-            updatedItem.append('color', color);
-            updatedItem.append('price', price);
-            updatedItem.append('size', size);
+            const updatedItem = {
+                name,
+                description,
+                color,
+                price,
+                size,
+            };
+            console.log(updatedItem)
 
             const token = localStorage.getItem('auth-token');
             await axios.put(

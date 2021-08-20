@@ -40,8 +40,8 @@ const AddItemAdmin = () => {
             newItem.append('description', description);
             newItem.append('price', parseInt(Math.abs(price)));
             newItem.append('color', color);
-            newItem.append('subCategoryId', subCategoryId);
             newItem.append('size', size);
+            newItem.append('subCategoryId', subCategoryId);
             newItem.append('images', images);
 
 

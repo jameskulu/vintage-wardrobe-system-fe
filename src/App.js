@@ -48,6 +48,12 @@ import EditUser from './components/admin/User/EditUser';
 import ItemAdmin from './components/admin/Item/Item'
 import AddItemAdmin from './components/admin/Item/AddItemAdmin';
 import EditItemAdmin from './components/admin/Item/EditItemAdmin';
+import AdminCategory from './components/admin/Category/AdminCategory';
+import AddCategoryAdmin from './components/admin/Category/AddCategoryAdmin';
+import EditCategoryAdmin from './components/admin/Category/EditCategoryAdmin';
+import SubCategory from './components/admin/SubCategory/SubCategory';
+import AddSubCategory from './components/admin/SubCategory/AddSubCategory';
+import EditSubCategory from './components/admin/SubCategory/EditSubCategory';
 
 toast.configure();
 function App() {
@@ -202,11 +208,18 @@ function App() {
                     <ProtectedAdminRoute exact path='/admin/users' component={UserAdmin} isAdmin={isAdmin()} />
                     <ProtectedAdminRoute exact path='/admin/users/add' component={AddUser} isAdmin={isAdmin()} />
                     <ProtectedAdminRoute exact path='/admin/users/edit/:userId' component={EditUser} isAdmin={isAdmin()} />
+                    
                     <ProtectedAdminRoute exact path='/admin/item' component={ItemAdmin} isAdmin={isAdmin()} />
-
                     <ProtectedAdminRoute exact path='/admin/items/add' component={AddItemAdmin} isAdmin={isAdmin()} />
                     <ProtectedAdminRoute exact path='/admin/items/edit/:itemId' component={EditItemAdmin} isAdmin={isAdmin()} />
 
+                    <ProtectedAdminRoute exact path='/admin/categories' component={AdminCategory} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/categories/add' component={AddCategoryAdmin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/categories/edit/:categoryId' component={EditCategoryAdmin} isAdmin={isAdmin()} />
+
+                    <ProtectedAdminRoute exact path='/admin/sub-categories' component={SubCategory} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/sub-categories/add' component={AddSubCategory} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/sub-categories/edit/:subCategoryId' component={EditSubCategory} isAdmin={isAdmin()} />
                     <Route exact path={['/',
                         '/login',
                         '/signup',
