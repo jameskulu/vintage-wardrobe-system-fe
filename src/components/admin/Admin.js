@@ -74,7 +74,7 @@ const Admin = (props) => {
                         </Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/admin/food">
+                        <Link class="nav-link" to="/admin/sub-categories">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span>Sub-Categories</span>
                         </Link>
