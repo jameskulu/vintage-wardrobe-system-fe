@@ -88,7 +88,7 @@ const AddItemAdmin = () => {
                         <label htmlFor="inpuTFirstname">Name</label>
                         <input
                             type="text"
-                            id="inpuTFirstname"
+                            id="inpuTFirstname name"
                             className="form-control"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -100,7 +100,7 @@ const AddItemAdmin = () => {
                         <label htmlFor="inpuTFirstname">Description</label>
                         <input
                             type="text"
-                            id="inpuTFirstname"
+                            id="inpuTFirstname description"
                             className="form-control"
                             value={description}
                             required
@@ -112,7 +112,7 @@ const AddItemAdmin = () => {
                         <label htmlFor="inpuTFirstname">Price</label>
                         <input
                             type="text"
-                            id="inpuTFirstname"
+                            id="inpuTFirstname price"
                             className="form-control"
                             value={price}
                             required
