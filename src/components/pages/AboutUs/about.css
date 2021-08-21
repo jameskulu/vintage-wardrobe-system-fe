@@ -1,44 +1,54 @@
-.about-us-container .aboutUs {
-    background: #8aaae5;
-}
 
-.about-us-container .aboutUs-title {
-    font-weight: lighter;
-    font-style: poppins;
-    margin: 20px;
-}
-
-.about-us-container .heading {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.about-us-container .heading-img {
-    margin-left: 70px;
-}
-
-.about-us-container .img-fluid {
-    width: 100;
-}
-
-.about-us-container .img-thumbnail {
-    border: whitesmoke;
-    margin: 10px;
-    height: 70px;
-}
-
-.about-us-container .description-Section {
-    margin: 10px;
-}
-
-.about-us-container .media {
-    margin: 30px;
-}
-
-@media (max-width: 1000px) {
-     .about-us-container .img-fluid {
-        display: none;
+.about-container .aboutUs{
+     background: #8AAAE5;
     }
-}
+    
+    .about-container .aboutUs-title{
+         font-weight: lighter;
+     font-style: poppins;
+     margin: 20px;
+    }
+    
+    
+    .about-container .heading{
+         margin-left: 20px;
+         margin-right: 20px;
+         margin-top: 50px;
+         margin-bottom: 50px;
+    }
+    
+    .about-container .img-fluid{
+         width: 100;
+    }
+    
+    
+    .about-container .img-thumbnail{
+         border: whitesmoke;
+         margin: 10px;
+         height: 70px;
+    
+    }
+    
+    .about-container .description-Section{
+         margin: 10px;
+    }
+    
+    .about-container .media{
+         margin: 40px;
+    }
+    
+    .about-container .mx-4{
+         margin-top: 30px;
+    }
+    
+    /*@media (max-width:1000px) {
+      .img-fluid {
+        display: none;
+        
+      }
+    }*/
+    
+    
+    
+    
+    

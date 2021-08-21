@@ -4,10 +4,12 @@ import d from '../../../images/d.jpg';
 import d1 from '../../../images/d1.jpg';
 import d2 from '../../../images/d2.jpg';
 import DatePicker from 'react-datepicker';
+import NoImage from '../../../images/noimage.jpg';
 import 'react-datepicker/dist/react-datepicker.css';
 import { toast } from 'react-toastify';
 import './itemDetails.css';
 import { Link } from 'react-router-dom';
+import User from '../../../images/user.png';
 import UserContext from '../../../context/UserContext';
 import ReactStars from 'react-rating-stars-component';
 import './review.css';
@@ -36,6 +38,7 @@ const ItemDetail = (props) => {
                 .get(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`)
                 .then(async (singleItemResponse) => {
                     setSingleItem(singleItemResponse.data.data);
+                    console.log(singleItemResponse.data.data);
 
                     if (
                         items.some(
@@ -214,42 +217,109 @@ const ItemDetail = (props) => {
                         <div className="col-md-7 image">
                             <div className="col-xs-4 col-md-3 mt-md-0 mt-3 imgslider">
                                 <ul>
-                                    <li>
-                                        <a href="#slide1">
-                                            <img src={d} alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#slide2">
-                                            <img src={d1} alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#slide3">
-                                            <img src={d2} alt="" />
-                                        </a>
-                                    </li>
+                                    {singleItem.images ? (
+                                        singleItem.images.length > 0 ? (
+                                            <li>
+                                                <a href="#slide1">
+                                                    <img
+                                                        src={
+                                                            singleItem.images[0]
+                                                                .imageURL
+                                                        }
+                                                        alt=""
+                                                    />
+                                                </a>
+                                            </li>
+                                        ) : (
+                                            <li>
+                                                <a href="#slide1">
+                                                    <img src={NoImage} alt="" />
+                                                </a>
+                                            </li>
+                                        )
+                                    ) : null}
+
+                                    {singleItem.images ? (
+                                        singleItem.images.length > 1 ? (
+                                            <li>
+                                                <a href="#slide2">
+                                                    <img
+                                                        src={
+                                                            singleItem.images[1]
+                                                                .imageURL
+                                                        }
+                                                        alt=""
+                                                    />
+                                                </a>
+                                            </li>
+                                        ) : null
+                                    ) : null}
+
+                                    {singleItem.images ? (
+                                        singleItem.images.length > 2 ? (
+                                            <li>
+                                                <a href="#slide3">
+                                                    <img
+                                                        src={
+                                                            singleItem.images[2]
+                                                                .imageURL
+                                                        }
+                                                        alt=""
+                                                    />
+                                                </a>
+                                            </li>
+                                        ) : null
+                                    ) : null}
                                 </ul>
                             </div>
 
-                            <div
-                                className="
-                            col-xs-12 col-sm-9 col-md-9
-                            mt-md-0 mt-3
-                            productimg
-                            text-center
-                        "
-                            >
-                                <ul>
-                                    <li id="slide1">
-                                        <img src={d} alt="" />
-                                    </li>
-                                    <li id="slide2">
-                                        <img src={d1} alt="" />
-                                    </li>
-                                    <li id="slide3">
-                                        <img src={d2} alt="" />
-                                    </li>
+                            <div className="col-xs-12 col-sm-9 col-md-9 mt-md-0 mt-3 productimg text-center">
+                                <ul class="main-detail-image-ul">
+                                    {singleItem.images ? (
+                                        singleItem.images.length > 0 ? (
+                                            <li id="slide1">
+                                                <img
+                                                    src={
+                                                        singleItem.images[0]
+                                                            .imageURL
+                                                    }
+                                                    alt=""
+                                                />
+                                            </li>
+                                        ) : (
+                                            <li id="slide1">
+                                                <img src={NoImage} alt="" />
+                                            </li>
+                                        )
+                                    ) : null}
+
+                                    {singleItem.images ? (
+                                        singleItem.images.length > 1 ? (
+                                            <li id="slide2">
+                                                <img
+                                                    src={
+                                                        singleItem.images[1]
+                                                            .imageURL
+                                                    }
+                                                    alt=""
+                                                />
+                                            </li>
+                                        ) : null
+                                    ) : null}
+
+                                    {singleItem.images ? (
+                                        singleItem.images.length > 2 ? (
+                                            <li id="slide3">
+                                                <img
+                                                    src={
+                                                        singleItem.images[2]
+                                                            .imageURL
+                                                    }
+                                                    alt=""
+                                                />
+                                            </li>
+                                        ) : null
+                                    ) : null}
                                 </ul>
                             </div>
                         </div>
@@ -299,7 +369,15 @@ const ItemDetail = (props) => {
                                 <h5 className="mt-3">Rented By:</h5>
                                 <div className="seller">
                                     <img
-                                        src={d1}
+                                        src={
+                                            singleItem.user
+                                                ? singleItem.user
+                                                      .profilePicURL === null
+                                                    ? User
+                                                    : singleItem.user
+                                                          .profilePicURL
+                                                : null
+                                        }
                                         width="120px"
                                         ascpect-ratio="1/1"
                                         alt=""
@@ -437,7 +515,12 @@ const ItemDetail = (props) => {
                                 <div class="row border rating-field ">
                                     <div class="col-md-0 user-details">
                                         <img
-                                            src={morrison}
+                                            src={
+                                                review.user.profilePicURL ===
+                                                null
+                                                    ? User
+                                                    : review.user.profilePicURL
+                                            }
                                             class="rounded-circle user-img"
                                             alt="Cinque Terre"
                                         />

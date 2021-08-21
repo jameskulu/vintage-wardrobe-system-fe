@@ -1,11 +1,10 @@
 import './category.css';
-import img1 from '../../../images/1.jpg';
-import img2 from '../../../images/2.jpg';
-import img3 from '../../../images/3.jpg';
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Slider } from '@material-ui/core';
+import NoImage from '../../../images/noimage.jpg';
 
 const Category = (props) => {
     const { categoryName } = props.match.params;
@@ -25,6 +24,7 @@ const Category = (props) => {
             );
             const sortedItemResponse = itemResponse.data.data.reverse();
             setItems(sortedItemResponse);
+            console.log(sortedItemResponse);
             setFilteredItems(sortedItemResponse);
 
             const categoriesResponse = await axios.get(
@@ -193,8 +193,13 @@ const Category = (props) => {
                                             <Link to={`/items/${item.id}`}>
                                                 <img
                                                     class="card-img-top"
-                                                    src={img1}
-                                                    alt="Card cap"
+                                                    src={
+                                                        item.images.length < 1
+                                                            ? NoImage
+                                                            : item.images[0]
+                                                                  .imageURL
+                                                    }
+                                                    alt=""
                                                 />
                                             </Link>
                                             <div class="card-body">
@@ -214,9 +219,7 @@ const Category = (props) => {
                                     ))}
                                 </>
                             ) : (
-                                <p>
-                                    No items available in {categoryName} section
-                                </p>
+                                <p>No items available</p>
                             )}
                         </div>
                     </div>

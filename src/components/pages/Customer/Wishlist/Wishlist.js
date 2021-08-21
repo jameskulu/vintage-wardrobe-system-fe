@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
+import NoImage from '../../../../images/noimage.jpg'
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
@@ -92,16 +93,22 @@ const Wishlist = () => {
                                 {wishlist.map((wish) => (
                                     <tr>
                                         <td>
-                                            <Link to={`items/${wish.item.id}`}>
+                                            <Link to={`/items/${wish.item.id}`}>
+                                    
                                                 <img
-                                                    src={dress1}
-                                                    class="img-fluid img-thumbnail"
-                                                    alt="Dress"
-                                                />
+                                                class="img-fluid img-thumbnail"
+                                                src={
+                                                    wish.item.images.length < 1
+                                                        ? NoImage
+                                                        : wish.item.images[0]
+                                                              .imageURL
+                                                }
+                                                alt=""
+                                            />
                                             </Link>
                                         </td>
                                         <td>
-                                            <Link to={`items/${wish.item.id}`}>
+                                            <Link to={`/items/${wish.item.id}`}>
                                                 <p class="text-uppercase">
                                                     {wish.item.name}
                                                 </p>

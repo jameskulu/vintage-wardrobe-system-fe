@@ -38,7 +38,7 @@ footer .link {
     color: black;
 }
 
-footer .copyright {
+footer .copyright .row {
     background-color: #8aaae5;
     margin-top: 30px;
 }

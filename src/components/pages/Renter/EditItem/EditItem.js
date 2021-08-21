@@ -86,7 +86,7 @@ const EditItem = (props) => {
                                 </label>
                                 <input
                                     className="form-control"
-                                    id="formGroupExampleInput"
+                                    id="etName"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
@@ -100,7 +100,7 @@ const EditItem = (props) => {
                                 </label>
                                 <textarea
                                     className="form-control"
-                                    id="exampleFormControlTextarea1"
+                                    id="etDescription"
                                     rows="3"
                                     value={description}
                                     onChange={(e) =>
@@ -118,7 +118,7 @@ const EditItem = (props) => {
                                 <input
                                     type="number"
                                     className="form-control"
-                                    id="formGroupExampleInput2"
+                                    id="etPrice"
                                     value={price}
                                     onChange={(e) => setPrice(e.target.value)}
                                 />
@@ -133,7 +133,7 @@ const EditItem = (props) => {
                                 </label>
                                 <select
                                     className="form-control"
-                                    id="exampleFormControlSelect1"
+                                    id="etColor"
                                     value={color}
                                     onChange={(e) => setColor(e.target.value)}
                                 >
@@ -163,7 +163,7 @@ const EditItem = (props) => {
                                 </label>
                                 <select
                                     className="form-control"
-                                    id="exampleFormControlSelect1"
+                                    id="etSize"
                                     value={size}
                                     onChange={(e) => setSize(e.target.value)}
                                 >
@@ -182,6 +182,7 @@ const EditItem = (props) => {
                                 disabled={disable}
                                 onClick={onItemUpdate}
                                 type="button"
+                                id ="btnUpdateItem"
                                 className="btn edit col-md-12"
                             >
                                 Update
