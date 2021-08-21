@@ -107,7 +107,7 @@ const AddSubCategory =()=>{
 
 
                 <button className="btn btn-lg btn-success btn-block text-uppercase mt-4" >
-                    Add Sub-Category
+                    Add
                 </button>
             </form>
         </div>

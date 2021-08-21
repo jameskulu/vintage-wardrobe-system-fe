@@ -1,10 +1,11 @@
 import './cart.css';
-import dress1 from '../../../../images/dress1.jpg';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NoImage from '../../../../images/noimage.jpg';
+import UserContext from '../../../../context/UserContext';
 
 const Cart = () => {
+    const { userData } = useContext(UserContext);
     const items = JSON.parse(localStorage.getItem('cart')) || [];
 
     const [cartItems, setCartItems] = useState(items);
@@ -127,7 +128,7 @@ const Cart = () => {
 
                     {cartItems.length > 0 ? (
                         <div className="proceed-checkout-div">
-                            <Link to="/checkout">
+                            <Link to={userData.user === undefined ? '/login' : '/checkout'}>
                                 <button
                                     type="button"
                                     className="btn btn-Checkout"
