@@ -63,7 +63,7 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">First Name</label>
                         <input
                             type="text"
-                            id="inpuTFirstname"
+                            id="inpuTFirstname fname"
                             className="form-control"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
@@ -75,7 +75,7 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">Last Name</label>
                         <input
                             type="text"
-                            id="inpuTFirstname"
+                            id="inpuTFirstname lname"
                             className="form-control"
                             value={lastName}
                             required
@@ -87,7 +87,7 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">Email</label>
                         <input
                             type="text"
-                            id="inpuTFirstname"
+                            id="inpuTFirstname email"
                             className="form-control"
                             value={email}
                             required
@@ -99,7 +99,7 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">Password</label>
                         <input
                             type="password"
-                            id="inpuTFirstname"
+                            id="inpuTFirstname password"
                             className="form-control"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -109,7 +109,7 @@ const AddUser = () => {
                     <div class="form-group">
                         <label for="Phone Number">Gender</label>
                         <select
-                            class="form-control"
+                            class="form-control gender"
                             onChange={(e) => setGender(e.target.value)}
                             value={gender}
                         >
@@ -123,6 +123,7 @@ const AddUser = () => {
                         <input
                             type="text"
                             className="form-control"
+                            id="address"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
@@ -133,6 +134,7 @@ const AddUser = () => {
                         <input
                             type="text"
                             className="form-control"
+                            id="city"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
@@ -143,6 +145,7 @@ const AddUser = () => {
                         <input
                             type="text"
                             className="form-control"
+                            id="country"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
