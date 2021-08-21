@@ -48,7 +48,7 @@ const ItemAdmin = () => {
                 <div class="card-body">
                     <Link to="/admin/items/add">
                         <button className="btn btn-success mb-4">
-                            Add Items
+                            Add Item
                         </button>
                     </Link>
                     <div class="table-responsive">
