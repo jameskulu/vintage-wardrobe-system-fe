@@ -306,19 +306,24 @@ const { delay } = require('../utils/constant');
 Given('add user funtionality', {timeout: 5 * 5000},async () => {
 
   let driver = await new Builder().forBrowser('chrome').build();
+  await driver.get('https://vintagewardrobe.herokuapp.com/login');
+  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+  await driver.findElement(By.className('loginbtn')).click();
+  await driver.sleep(delay);
   await driver.get('https://vintagewardrobe.herokuapp.com/admin');
   await driver.sleep(delay);
   await driver.get('https://vintagewardrobe.herokuapp.com/admin/users');
   await driver.sleep(1500);
   await driver.findElement(By.className('btn-success')).click();
-  await driver.findElement(By.id('inpuTFirstname')).sendKeys('Sandesh');
-  // await driver.findElement(By.id('inpuTLastname')).sendKeys('Shrestha');
-  // await driver.findElement(By.id('inpuTEmail')).sendKeys('sandesh18shrestha@gmail.com');
-  // await driver.findElement(By.id('inpuTPassword')).sendKeys('Sandesh@23');
-  // await driver.findElement(By.id('inpuTGender')).sendKeys('Male');
-  // await driver.findElement(By.id('inpuTAddress')).sendKeys('Gorkha, Nepal');
-  // await driver.findElement(By.id('inpuTCity')).sendKeys('Gorkha');
-  // await driver.findElement(By.id('inpuTCountry')).sendKeys('Nepal');
+  await driver.findElement(By.className('fname')).sendKeys('Sandesh');
+  await driver.findElement(By.className('lname')).sendKeys('Shrestha');
+  await driver.findElement(By.className('email')).sendKeys('sandesh18shrestha@gmail.com');
+  await driver.findElement(By.className('password')).sendKeys('Sandesh@23');
+  await driver.findElement(By.className('gender')).sendKeys('Male');
+  await driver.findElement(By.className('address')).sendKeys('Gorkha, Nepal');
+  await driver.findElement(By.className('city')).sendKeys('Gorkha');
+  await driver.findElement(By.className('country')).sendKeys('Nepal');
   await driver.findElement(By.id('user')).click();
   await driver.findElement(By.className('btn-block')).click();
 
@@ -329,12 +334,36 @@ Given('add user funtionality', {timeout: 5 * 5000},async () => {
 Given('add category funtionality', {timeout: 5 * 5000},async () => {
 
   let driver = await new Builder().forBrowser('chrome').build();
+  await driver.get('https://vintagewardrobe.herokuapp.com/login');
+  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+  await driver.findElement(By.className('loginbtn')).click();
+  await driver.sleep(delay);
   await driver.get('https://vintagewardrobe.herokuapp.com/admin');
   await driver.sleep(delay);
   await driver.get('https://vintagewardrobe.herokuapp.com/admin/categories');
   await driver.sleep(1500);
   await driver.findElement(By.className('btn-success')).click();
   await driver.findElement(By.id('inpuTFirstname')).sendKeys('Aged');
+  await driver.sleep(delay);
+  await driver.findElement(By.className('btn-block')).click();
+});
+
+Given('add subcategory funtionality', {timeout: 5 * 5000},async () => {
+
+  let driver = await new Builder().forBrowser('chrome').build();
+  await driver.get('https://vintagewardrobe.herokuapp.com/login');
+  await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+  await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+  await driver.findElement(By.className('loginbtn')).click();
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com/admin');
+  await driver.sleep(delay);
+  await driver.get('https://vintagewardrobe.herokuapp.com/admin/sub-categories');
+  await driver.sleep(1500);
+  await driver.findElement(By.className('btn-success')).click();
+  await driver.findElement(By.id('inpuTFirstname')).sendKeys('slipppersss');
+  await driver.findElement(By.id('itemCategory')).sendKeys('Kids');
   await driver.sleep(delay);
   await driver.findElement(By.className('btn-block')).click();
 });
