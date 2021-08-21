@@ -73,6 +73,7 @@ const SubCategory = ()=>{
                                     <tr>
                                         
                                         <td>{subCategories.name} </td>
+                                    
                                         <td>{subCategories.category.name}</td>
                                         
                                         

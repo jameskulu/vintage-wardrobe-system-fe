@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './home.css';
 import woman from '../../../images/w.jpg';
 import kids from '../../../images/kidss.jpg';
 import men from '../../../images/man.png';
-import dress1 from '../../../images/dress1.jpg';
-import dress2 from '../../../images/dress2.jpg';
-import dress3 from '../../../images/dress3.jpg';
-import dress4 from '../../../images/dress4.jpg';
 import axios from 'axios';
 import Item from './Item';
 import { Link } from 'react-router-dom';
+import UserContext from '../../../context/UserContext';
 
 const Home = () => {
     const [latestItems, setLatestItems] = useState([]);
+    const { userData } = useContext(UserContext);
 
     useEffect(() => {
         const displayItems = async () => {
@@ -31,7 +29,7 @@ const Home = () => {
                 <div className="container ">
                     <div className="row h-100">
                         <div className="col-md-12 col-sm-12 text-center my-auto">
-                            <Link to="/renter/items/add">
+                            <Link to={userData.user === undefined ? '/login' : '/renter/items/add'}>
                                 <button className="">Rent your clothes</button>
                             </Link>
                         </div>
@@ -102,7 +100,9 @@ const Home = () => {
 
                         <div className="row">
                             <div className="col-md-12 col-sm-12 text-center">
-                                <button className="">Browse Now</button>
+                                <Link to="/category/Men">
+                                    <button className="">Browse Now</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
