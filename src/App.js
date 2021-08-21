@@ -39,6 +39,22 @@ import ChangePassword from './components/pages/ChangePassword/ChangePassword';
 import EditProfile from './components/pages/EditProfile/EditProfile';
 import Profile from './components/pages/Profile/Profile';
 
+import Admin from './components/admin/Admin';
+
+import ProtectedAdminRoute from './middleware/ProtectedAdminRoute'
+import UserAdmin from './components/admin/User/User';
+import AddUser from './components/admin/User/AddUser';
+import EditUser from './components/admin/User/EditUser';
+import ItemAdmin from './components/admin/Item/Item'
+import AddItemAdmin from './components/admin/Item/AddItemAdmin';
+import EditItemAdmin from './components/admin/Item/EditItemAdmin';
+import AdminCategory from './components/admin/Category/AdminCategory';
+import AddCategoryAdmin from './components/admin/Category/AddCategoryAdmin';
+import EditCategoryAdmin from './components/admin/Category/EditCategoryAdmin';
+import SubCategory from './components/admin/SubCategory/SubCategory';
+import AddSubCategory from './components/admin/SubCategory/AddSubCategory';
+import EditSubCategory from './components/admin/SubCategory/EditSubCategory';
+
 toast.configure();
 function App() {
     const [userData, setUserData] = useState({
@@ -75,16 +91,59 @@ function App() {
         checkLoggedIn();
     }, []);
 
+    // const isAdmin = () => {
+    //     if (userData.user) {
+    //       if (userData.user.role === 'admin') {
+    //         return true
+    //       }
+    //       else {
+    //         return false
+    //       }
+    //     }
+    //     else {
+    //       return false
+    //     }
+    //   }
+
+    const isAdmin = () => {
+        return true
+      }
+
     return (
         <BrowserRouter>
             <UserContext.Provider value={{ userData, setUserData }}>
                 <div className="App">
-                    <Header />
+
+                    <Route exact path={['/',
+                        '/login',
+                        '/signup',
+                        '/forgot-password',
+                        '/reset-password/:token',
+                        '/verify-email/:token',
+                        '/items/:itemId',
+                        '/renter/items/add',
+                        '/renter/items',
+                        '/cart',
+                        '/orders',
+                        '/checkout',
+                        '/renter/items/edit/:itemId',
+                        '/checkout',
+                        '/checkout/complete',
+                        '/renter/order',
+                        '/category/:categoryName',
+                        '/about-us',
+                        '/wishlist',
+                        '/edit-profile',
+                        '/profile',
+                        '/change-password',
+                        '/s',
+                    ]}
+                        component={Header} />
 
                     <Route exact path="/" component={Home} />
                     
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/Signup" component={Signup} />
+                    <Route exact path="/signup" component={Signup} />
                     <Route
                         exact
                         path="/forgot-password"
@@ -142,7 +201,50 @@ function App() {
                     <Route exact path="/profile" component={Profile} />
 
                     <Route exact path="/s" component={SearchPage} />
-                    <Footer />
+
+
+                    {/* Admin */}
+                    <ProtectedAdminRoute exact path='/admin' component={Admin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/users' component={UserAdmin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/users/add' component={AddUser} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/users/edit/:userId' component={EditUser} isAdmin={isAdmin()} />
+                    
+                    <ProtectedAdminRoute exact path='/admin/item' component={ItemAdmin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/items/add' component={AddItemAdmin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/items/edit/:itemId' component={EditItemAdmin} isAdmin={isAdmin()} />
+
+                    <ProtectedAdminRoute exact path='/admin/categories' component={AdminCategory} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/categories/add' component={AddCategoryAdmin} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/categories/edit/:categoryId' component={EditCategoryAdmin} isAdmin={isAdmin()} />
+
+                    <ProtectedAdminRoute exact path='/admin/sub-categories' component={SubCategory} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/sub-categories/add' component={AddSubCategory} isAdmin={isAdmin()} />
+                    <ProtectedAdminRoute exact path='/admin/sub-categories/edit/:subCategoryId' component={EditSubCategory} isAdmin={isAdmin()} />
+                    <Route exact path={['/',
+                        '/login',
+                        '/signup',
+                        '/forgot-password',
+                        '/reset-password/:token',
+                        '/verify-email/:token',
+                        '/items/:itemId',
+                        '/renter/items/add',
+                        '/renter/items',
+                        '/cart',
+                        '/orders',
+                        '/checkout',
+                        '/renter/items/edit/:itemId',
+                        '/checkout',
+                        '/checkout/complete',
+                        '/renter/order',
+                        '/category/:categoryName',
+                        '/about-us',
+                        '/wishlist',
+                        '/edit-profile',
+                        '/profile',
+                        '/change-password',
+                        '/s',
+                    ]}
+                        component={Footer} />
                 </div>
             </UserContext.Provider>
         </BrowserRouter>

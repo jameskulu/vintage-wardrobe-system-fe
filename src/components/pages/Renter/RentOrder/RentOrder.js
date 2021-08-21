@@ -5,6 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
+import NoImage from '../../../../images/noimage.jpg';
 
 const RentOrder = () => {
     const [orders, setOrders] = useState([]);
@@ -73,16 +74,21 @@ const RentOrder = () => {
                             {orders.map((order) => (
                                 <tr>
                                     <td>
-                                        <Link to={`items/${order.item.id}`}>
+                                        <Link to={`/items/${order.item.id}`}>
                                             <img
-                                                src={dress1}
                                                 class="img-fluid img-thumbnail"
-                                                alt="Dress"
+                                                src={
+                                                    order.item.images.length < 1
+                                                        ? NoImage
+                                                        : order.item.images[0]
+                                                              .imageURL
+                                                }
+                                                alt=""
                                             />
                                         </Link>
                                     </td>
                                     <td>
-                                        <Link to={`items/${order.item.id}`}>
+                                        <Link to={`/items/${order.item.id}`}>
                                             <p class="text-uppercase">
                                                 {order.item.name}
                                             </p>

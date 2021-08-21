@@ -48,7 +48,7 @@ const AddItem = () => {
             //     subCategoryId,
             //     images
             // };
-            const newItem = new FormData(); // new line
+            const newItem = new FormData();
             newItem.append('name', name);
             newItem.append('description', description);
             newItem.append('price', parseInt(Math.abs(price)));
