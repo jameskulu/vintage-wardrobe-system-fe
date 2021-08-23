@@ -135,7 +135,7 @@ const Header = () => {
                                             className="dropdown-item"
                                             to="/renter/items/add"
                                         >
-                                            Add An Item
+                                            Add an Item
                                         </Link>
                                         <Link
                                             className="dropdown-item"
