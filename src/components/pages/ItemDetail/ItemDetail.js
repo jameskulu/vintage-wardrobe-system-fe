@@ -128,7 +128,7 @@ const ItemDetail = (props) => {
         }
         localStorage.setItem('cart', JSON.stringify(items));
         toast.success('Item added to cart.');
-        setCartData(items.length)
+        setCartData(items.length);
     };
 
     const removeFromCart = () => {
@@ -139,7 +139,7 @@ const ItemDetail = (props) => {
         });
         localStorage.setItem('cart', JSON.stringify(filteredItems));
         toast.success('Item removed from cart.');
-        setCartData(filteredItems.length)
+        setCartData(filteredItems.length);
     };
 
     const addToWishlist = async () => {
@@ -367,8 +367,16 @@ const ItemDetail = (props) => {
                                 {singleItem.subCategory
                                     ? singleItem.subCategory.name
                                     : ''}
+                                <hr />
                                 <p>{singleItem.description}</p>
+                                <hr />
                                 <p>
+                                    <strong>Color :</strong> {singleItem.color}
+                                </p>
+                                <p>
+                                    <strong>Size :</strong> {singleItem.size}
+                                </p>
+                                <p className='mt-4'>
                                     <span className="font-weight-bold">
                                         Rs. {singleItem.price}
                                     </span>{' '}
