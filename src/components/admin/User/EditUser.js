@@ -152,7 +152,7 @@ const EditUser = (props) => {
                         <label>City</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control city"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
@@ -162,7 +162,7 @@ const EditUser = (props) => {
                         <label>Country</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control country"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
