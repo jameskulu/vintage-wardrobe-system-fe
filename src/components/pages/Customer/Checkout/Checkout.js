@@ -23,7 +23,8 @@ const Checkout = () => {
         );
     }, []);
 
-    const orderItems = async () => {
+    const orderItems = async (e) => {
+        e.preventDefault();
         const items = [];
         cartItems.forEach((item) => {
             items.push({
@@ -45,15 +46,11 @@ const Checkout = () => {
                 { items },
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            toast.success('Order successfully placed', {
-                position: toast.POSITION.BOTTOM_RIGHT,
-            });
+            toast.success('Order successfully placed');
             localStorage.setItem('cart', JSON.stringify([]));
             history.push('/checkout/complete');
         } catch (err) {
-            toast.error(err.response.data.message, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-            });
+            toast.error(err.response.data.message);
         }
     };
 
@@ -101,13 +98,14 @@ const Checkout = () => {
                     </table>
                 </div>
             </div>
-            <div className="Buttom">
+            <form onSubmit={orderItems} className="Buttom">
                 <div className="shipping-info col-sm-12 col-md-6">
-                    <form>
+                    <div>
                         <div className="form-row col-sm-12 col-md-12">
                             <h3 className="mb-4">Add Shipping Information</h3>
                             <div className="form-group">
                                 <input
+                                    required
                                     type="text"
                                     className="form-control"
                                     id="inputAddress"
@@ -119,6 +117,7 @@ const Checkout = () => {
                             </div>
                             <div className="form-group">
                                 <input
+                                    required
                                     type="text"
                                     className="form-control"
                                     id="inputCity"
@@ -129,6 +128,7 @@ const Checkout = () => {
                                 />
                             </div>
                             <select
+                                required
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
                                 className="form-control mb-3"
@@ -141,6 +141,7 @@ const Checkout = () => {
 
                             <div className="form-group">
                                 <input
+                                    required
                                     type="text"
                                     className="form-control"
                                     id="number"
@@ -150,7 +151,7 @@ const Checkout = () => {
                                     onChange={(e) => setPhone(e.target.value)}
                                 ></input>
                             </div>
-                       
+
                             <p className="mt-3">
                                 By placing this order, you agree to the{' '}
                                 <strong>
@@ -159,7 +160,7 @@ const Checkout = () => {
                                 .
                             </p>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 <div className="billing col-sm-12 col-md-6">
@@ -179,11 +180,7 @@ const Checkout = () => {
                             <p>Order Total</p>
                             <p>Rs. {totalPrice}</p>
                         </div>
-                        <button
-                            onClick={orderItems}
-                            type="submit"
-                            className="btn btn-primary"
-                        >
+                        <button type="submit" className="btn btn-primary">
                             <b>PLACE ORDER</b>
                         </button>
                         <div className="terms">
@@ -192,7 +189,7 @@ const Checkout = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };

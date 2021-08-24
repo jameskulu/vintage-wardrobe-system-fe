@@ -1,22 +1,23 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import d from '../../../images/d.jpg';
-import d1 from '../../../images/d1.jpg';
-import d2 from '../../../images/d2.jpg';
 import DatePicker from 'react-datepicker';
 import NoImage from '../../../images/noimage.jpg';
 import 'react-datepicker/dist/react-datepicker.css';
 import { toast } from 'react-toastify';
 import './itemDetails.css';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import User from '../../../images/user.png';
 import UserContext from '../../../context/UserContext';
+import CartContext from '../../../context/CartContext';
 import ReactStars from 'react-rating-stars-component';
 import './review.css';
-import morrison from '../../../images/morrison.jpg';
 
 const ItemDetail = (props) => {
+    const history = useHistory();
     const { userData } = useContext(UserContext);
+    const { cartData, setCartData } = useContext(CartContext);
+
     const [singleItem, setSingleItem] = useState([]);
     const [reviews, setReviews] = useState([]);
     const itemId = props.match.params.itemId;
@@ -127,6 +128,7 @@ const ItemDetail = (props) => {
         }
         localStorage.setItem('cart', JSON.stringify(items));
         toast.success('Item added to cart.');
+        setCartData(items.length);
     };
 
     const removeFromCart = () => {
@@ -137,9 +139,14 @@ const ItemDetail = (props) => {
         });
         localStorage.setItem('cart', JSON.stringify(filteredItems));
         toast.success('Item removed from cart.');
+        setCartData(filteredItems.length);
     };
 
     const addToWishlist = async () => {
+        if (userData.user === undefined) {
+            return history.push('/login');
+        }
+
         try {
             const data = {
                 itemId,
@@ -357,16 +364,25 @@ const ItemDetail = (props) => {
                                     )}
                                 </div>
                                 <i className="fas fa-tag"></i>{' '}
-                                <Link to="">
-                                    {singleItem.subCategory
-                                        ? singleItem.subCategory.name
-                                        : ''}
-                                </Link>
+                                {singleItem.subCategory
+                                    ? singleItem.subCategory.name
+                                    : ''}
+                                <hr />
                                 <p>{singleItem.description}</p>
-                                <span>
-                                    Rs. {singleItem.price} original retail
-                                </span>
-                                <h5 className="mt-3">Rented By:</h5>
+                                <hr />
+                                <p>
+                                    <strong>Color :</strong> {singleItem.color}
+                                </p>
+                                <p>
+                                    <strong>Size :</strong> {singleItem.size}
+                                </p>
+                                <p className='mt-4'>
+                                    <span className="font-weight-bold">
+                                        Rs. {singleItem.price}
+                                    </span>{' '}
+                                    original retail
+                                </p>
+                                <h6 className="mt-3">Rented By:</h6>
                                 <div className="seller">
                                     <img
                                         src={
@@ -401,7 +417,17 @@ const ItemDetail = (props) => {
                                         <h6>$40 - $60</h6>
                                     </div>
                                     <div className="detailimg">
-                                        <img src={d1} alt="" />
+                                        {singleItem.images ? (
+                                            singleItem.images.length > 1 ? (
+                                                <img
+                                                    src={
+                                                        singleItem.images[0]
+                                                            .imageURL
+                                                    }
+                                                    alt=""
+                                                />
+                                            ) : null
+                                        ) : null}
                                     </div>
                                 </div>
 

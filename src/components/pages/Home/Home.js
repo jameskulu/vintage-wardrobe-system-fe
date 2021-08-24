@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './home.css';
-import woman from '../../../images/woman.jpg';
-import kids from '../../../images/kids.png';
-import men from '../../../images/men.jpg';
-import dress1 from '../../../images/dress1.jpg';
-import dress2 from '../../../images/dress2.jpg';
-import dress3 from '../../../images/dress3.jpg';
-import dress4 from '../../../images/dress4.jpg';
+import woman from '../../../images/w.jpg';
+import kids from '../../../images/kidss.jpg';
+import men from '../../../images/man.png';
 import axios from 'axios';
 import Item from './Item';
 import { Link } from 'react-router-dom';
+import UserContext from '../../../context/UserContext';
 
 const Home = () => {
     const [latestItems, setLatestItems] = useState([]);
+    const { userData } = useContext(UserContext);
 
     useEffect(() => {
         const displayItems = async () => {
@@ -31,8 +29,8 @@ const Home = () => {
                 <div className="container ">
                     <div className="row h-100">
                         <div className="col-md-12 col-sm-12 text-center my-auto">
-                            <Link to="/renter/items/add">
-                                <button className="">Rent your Clothes</button>
+                            <Link to={userData.user === undefined ? '/login' : '/renter/items/add'}>
+                                <button className="">Rent your clothes</button>
                             </Link>
                         </div>
                     </div>
@@ -42,25 +40,39 @@ const Home = () => {
             <section id="rent">
                 <div className="row mt-5">
                     <div className="col-md-12 col-sm-12">
-                        <h2>Rent Clothing</h2>
+                        <h2>Rent your clothing for</h2>
                     </div>
                 </div>
 
                 <div className="row text-center">
                     <div className="col-md-4">
-                        <img
-                            src={woman}
-                            className="img-thumbnail"
-                            alt={woman}
-                        />
+                        <Link to="/category/Women">
+                            <img
+                                src={woman}
+                                className="img-thumbnail"
+                                alt={woman}
+                            />
+                        </Link>
                         <h4 className="my-3">Women</h4>
                     </div>
                     <div className="col-md-4">
-                        <img src={men} alt="..." className="img-thumbnail" />
-                        <h4 className="my-3">Mens</h4>
+                        <Link to="/category/Men">
+                            <img
+                                src={men}
+                                alt="..."
+                                className="img-thumbnail"
+                            />
+                        </Link>
+                        <h4 className="my-3">Men</h4>
                     </div>
                     <div className="col-md-4">
-                        <img src={kids} alt="..." className="img-thumbnail " />
+                        <Link to="/category/Kids">
+                            <img
+                                src={kids}
+                                alt="..."
+                                className="img-thumbnail "
+                            />
+                        </Link>
 
                         <h4 className="my-3">Kids</h4>
                     </div>
@@ -88,7 +100,9 @@ const Home = () => {
 
                         <div className="row">
                             <div className="col-md-12 col-sm-12 text-center m-2">
-                                <button className="">Browse Now</button>
+                                <Link to="/category/Men">
+                                    <button className="">Browse Now</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

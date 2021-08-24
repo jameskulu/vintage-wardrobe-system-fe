@@ -1,8 +1,13 @@
 import './cart.css';
-import dress1 from '../../../../images/dress1.jpg';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import NoImage from '../../../../images/noimage.jpg';
+import UserContext from '../../../../context/UserContext';
+import CartContext from '../../../../context/CartContext';
+
 const Cart = () => {
+    const { userData } = useContext(UserContext);
+    const { cartData, setCartData } = useContext(CartContext);
     const items = JSON.parse(localStorage.getItem('cart')) || [];
 
     const [cartItems, setCartItems] = useState(items);
@@ -19,6 +24,7 @@ const Cart = () => {
         setCartItems(filteredItems);
         setTotalPrice((prevData) => prevData - totalPrice);
         localStorage.setItem('cart', JSON.stringify(filteredItems));
+        setCartData(filteredItems.length)
     };
     return (
         <div className="cart-container">
@@ -55,16 +61,22 @@ const Cart = () => {
                                     {cartItems.map((item) => (
                                         <tr>
                                             <td>
-                                                <Link to={`items/${item.id}`}>
+                                                <Link to={`/items/${item.id}`}>
                                                     <img
                                                         className="img-thumbnail"
-                                                        src={dress1}
+                                                        src={
+                                                            item.images.length <
+                                                            1
+                                                                ? NoImage
+                                                                : item.images[0]
+                                                                      .imageURL
+                                                        }
                                                         alt=""
                                                     />
                                                 </Link>
                                             </td>
                                             <td>
-                                                <Link to={`items/${item.id}`}>
+                                                <Link to={`/items/${item.id}`}>
                                                     {item.name}
                                                 </Link>
                                             </td>
@@ -119,7 +131,7 @@ const Cart = () => {
 
                     {cartItems.length > 0 ? (
                         <div className="proceed-checkout-div">
-                            <Link to="/checkout">
+                            <Link to={userData.user === undefined ? '/login' : '/checkout'}>
                                 <button
                                     type="button"
                                     className="btn btn-Checkout"

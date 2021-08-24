@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import './header.css';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from '../../../context/UserContext';
+import CartContext from '../../../context/CartContext';
 import Logo from '../../../images/logo.png';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 
 const Header = () => {
     const { userData, setUserData } = useContext(UserContext);
+    const { cartData } = useContext(CartContext);
     const history = useHistory();
     const toggleMenu = () => {
         document.getElementById('navbar').classList.toggle('toggle');
@@ -54,7 +56,10 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link className="nav-item-link active" to="/about-us">
+                            <Link
+                                className="nav-item-link active"
+                                to="/about-us"
+                            >
                                 About Us
                             </Link>
                         </li>
@@ -75,30 +80,38 @@ const Header = () => {
                                 className="dropdown-menu"
                                 aria-labelledby="navbarDropdown3"
                             >
-                                <Link className="dropdown-item" to="/category/Men">
+                                <Link
+                                    className="dropdown-item"
+                                    to="/category/Men"
+                                >
                                     Men
                                 </Link>
 
-                                <Link className="dropdown-item" to="/category/Women">
+                                <Link
+                                    className="dropdown-item"
+                                    to="/category/Women"
+                                >
                                     Women
                                 </Link>
 
-                                <Link className="dropdown-item" to="/category/Kids">
+                                <Link
+                                    className="dropdown-item"
+                                    to="/category/Kids"
+                                >
                                     Kids
                                 </Link>
                             </div>
                         </li>
 
-                        {
-                            userData.user ?
-                                userData.user.role === 'admin' ?
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/admin">Admin</Link></li>
-                                    :
-                                    null
-                                :
-                                null
-                        }
+                        {userData.user ? (
+                            userData.user.role === 'admin' ? (
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/admin">
+                                        Admin
+                                    </Link>
+                                </li>
+                            ) : null
+                        ) : null}
 
                         {userData.user ? (
                             <>
@@ -122,7 +135,7 @@ const Header = () => {
                                             className="dropdown-item"
                                             to="/renter/items/add"
                                         >
-                                            Add An Item
+                                            Add an Item
                                         </Link>
                                         <Link
                                             className="dropdown-item"
@@ -143,8 +156,14 @@ const Header = () => {
                         <li>
                             <Link to="/cart" className="nav-item-link">
                                 <i className="fas fa-shopping-cart"></i>
+                                {cartData > 0 ? (
+                                    <span class="badge badge-danger">
+                                        {cartData}
+                                    </span>
+                                ) : null}
                             </Link>
                         </li>
+
                         <li>
                             <Link to="/s" className="nav-item-link">
                                 <i className="fas fa-search"></i>
@@ -168,16 +187,28 @@ const Header = () => {
                                     className="dropdown-menu"
                                     aria-labelledby="navbarDropdown2"
                                 >
-                                    <Link className="dropdown-item" to="/profile">
+                                    <Link
+                                        className="dropdown-item"
+                                        to="/profile"
+                                    >
                                         Manage Profile
                                     </Link>
-                                    <Link className="dropdown-item" to="/orders">
+                                    <Link
+                                        className="dropdown-item"
+                                        to="/orders"
+                                    >
                                         My Orders
                                     </Link>
-                                    <Link className="dropdown-item" to="/wishlist">
+                                    <Link
+                                        className="dropdown-item"
+                                        to="/wishlist"
+                                    >
                                         My Wishlist
                                     </Link>
-                                    <Link className="dropdown-item" to="/change-password">
+                                    <Link
+                                        className="dropdown-item"
+                                        to="/change-password"
+                                    >
                                         Change Password
                                     </Link>
                                     <div className="dropdown-divider"></div>

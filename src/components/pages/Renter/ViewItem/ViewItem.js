@@ -5,6 +5,7 @@ import './view-items.css';
 import dress1 from '../../../../images/dress1.jpg';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
+import NoImage from '../../../../images/noimage.jpg';
 
 const ViewItem = () => {
     const [items, setItems] = useState([]);
@@ -76,11 +77,18 @@ const ViewItem = () => {
                             {items.map((item) => (
                                 <tr>
                                     <td>
-                                        <img
-                                            src={dress1}
-                                            className="img-fluid img-thumbnail"
-                                            alt="Sheep"
-                                        />
+                                        <Link to={`/items/${item.id}`}>
+                                            <img
+                                                class="img-fluid img-thumbnail"
+                                                src={
+                                                    item.images.length < 1
+                                                        ? NoImage
+                                                        : item.images[0]
+                                                              .imageURL
+                                                }
+                                                alt=""
+                                            />
+                                        </Link>
                                     </td>
                                     <td>
                                         <Link to={`/items/${item.id}`}>
@@ -88,7 +96,9 @@ const ViewItem = () => {
                                                 {item.name}
                                             </p>
                                         </Link>
-                                        <p style={{fontWeight:"normal"}}>Rs. {item.price}</p>
+                                        <p style={{ fontWeight: 'normal' }}>
+                                            Rs. {item.price}
+                                        </p>
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -117,7 +127,7 @@ const ViewItem = () => {
                 <div className="empty-div">
                     <p>You have not uploaded any items for rent.</p>
                     <Link to="/renter/items/add">
-                        <button className="btn">Add An Item</button>
+                        <button className="btn">Add an Item</button>
                     </Link>
                 </div>
             )}

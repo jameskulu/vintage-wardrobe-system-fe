@@ -48,7 +48,7 @@ const AddItem = () => {
             //     subCategoryId,
             //     images
             // };
-            const newItem = new FormData(); // new line
+            const newItem = new FormData();
             newItem.append('name', name);
             newItem.append('description', description);
             newItem.append('price', parseInt(Math.abs(price)));
@@ -99,7 +99,7 @@ const AddItem = () => {
                         <div className="col-md-12 col-sm-12 add-item">
                             <div className="text-center">
                                 <h4 className="text-light text-center add-item-text">
-                                    Add An Item
+                                    Add an Item
                                 </h4>
                             </div>
                         </div>

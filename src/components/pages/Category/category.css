@@ -62,6 +62,12 @@
     display: flex;
     justify-content: flex-start;
 }
+.category-container .product-section img {
+    object-fit: contain;
+    border-radius: 5px;
+    height: 300px;
+    width: 100%;
+}
 .category-container .card {
     margin: 10px 5px;
     width: 30%;

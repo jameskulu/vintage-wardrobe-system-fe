@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import dress1 from '../../../images/dress1.jpg';
 import NoImage from '../../../images/noimage.jpg';
 
 const Items = ({ items }) => {
-    console.log(items);
     return (
         <>
             {items.map((item) => (
@@ -25,11 +23,9 @@ const Items = ({ items }) => {
                         </h4>
                         <i className="fas fa-tag"></i>
                         <span>
-                            <Link to={`genres/${item.genre}`}>
-                                {item.subCategory ? item.subCategory.name : ''}
-                            </Link>
+                            {item.subCategory ? item.subCategory.name : ''}
                         </span>
-                        <h6>Rs.{item.price}</h6>
+                        <h6>Rs.{item.price} To Rent</h6>
                     </div>
                 </div>
             ))}
