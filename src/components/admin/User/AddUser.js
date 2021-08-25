@@ -63,8 +63,8 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">First Name</label>
                         <input
                             type="text"
-                            id="inpuTFirstname fname"
-                            className="form-control"
+                            id="inpuTFirstname"
+                            className="form-control fname"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                             required
@@ -75,8 +75,8 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">Last Name</label>
                         <input
                             type="text"
-                            id="inpuTFirstname lname"
-                            className="form-control"
+                            id="inpuTFirstname"
+                            className="form-control lname"
                             value={lastName}
                             required
                             onChange={(e) => setLastName(e.target.value)}
@@ -87,8 +87,8 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">Email</label>
                         <input
                             type="text"
-                            id="inpuTFirstname email"
-                            className="form-control"
+                            id="inpuTFirstname"
+                            className="form-control email"
                             value={email}
                             required
                             onChange={(e) => setEmail(e.target.value)}
@@ -99,8 +99,8 @@ const AddUser = () => {
                         <label htmlFor="inpuTFirstname">Password</label>
                         <input
                             type="password"
-                            id="inpuTFirstname password"
-                            className="form-control"
+                            id="inpuTFirstname"
+                            className="form-control password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />

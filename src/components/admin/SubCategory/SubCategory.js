@@ -89,7 +89,7 @@ const SubCategory = ()=>{
                                                 onClick={() => {
                                                     if (
                                                         window.confirm(
-                                                            'Are you sure want to delete this Sub-Category ?'
+                                                            'Are you sure want to delete this sub category ?'
                                                         )
                                                     ) {
                                                         onSubCategoryDelete(

@@ -3,9 +3,11 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NoImage from '../../../../images/noimage.jpg';
 import UserContext from '../../../../context/UserContext';
+import CartContext from '../../../../context/CartContext';
 
 const Cart = () => {
     const { userData } = useContext(UserContext);
+    const { cartData, setCartData } = useContext(CartContext);
     const items = JSON.parse(localStorage.getItem('cart')) || [];
 
     const [cartItems, setCartItems] = useState(items);
@@ -22,6 +24,7 @@ const Cart = () => {
         setCartItems(filteredItems);
         setTotalPrice((prevData) => prevData - totalPrice);
         localStorage.setItem('cart', JSON.stringify(filteredItems));
+        setCartData(filteredItems.length)
     };
     return (
         <div className="cart-container">

@@ -9,12 +9,14 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import User from '../../../images/user.png';
 import UserContext from '../../../context/UserContext';
+import CartContext from '../../../context/CartContext';
 import ReactStars from 'react-rating-stars-component';
 import './review.css';
 
 const ItemDetail = (props) => {
     const history = useHistory();
     const { userData } = useContext(UserContext);
+    const { cartData, setCartData } = useContext(CartContext);
 
     const [singleItem, setSingleItem] = useState([]);
     const [reviews, setReviews] = useState([]);
@@ -126,6 +128,7 @@ const ItemDetail = (props) => {
         }
         localStorage.setItem('cart', JSON.stringify(items));
         toast.success('Item added to cart.');
+        setCartData(items.length);
     };
 
     const removeFromCart = () => {
@@ -136,6 +139,7 @@ const ItemDetail = (props) => {
         });
         localStorage.setItem('cart', JSON.stringify(filteredItems));
         toast.success('Item removed from cart.');
+        setCartData(filteredItems.length);
     };
 
     const addToWishlist = async () => {
@@ -363,10 +367,20 @@ const ItemDetail = (props) => {
                                 {singleItem.subCategory
                                     ? singleItem.subCategory.name
                                     : ''}
+                                <hr />
                                 <p>{singleItem.description}</p>
+                                <hr />
                                 <p>
-                                    <span className="font-weight-bold">Rs. {singleItem.price}</span> original
-                                    retail
+                                    <strong>Color :</strong> {singleItem.color}
+                                </p>
+                                <p>
+                                    <strong>Size :</strong> {singleItem.size}
+                                </p>
+                                <p className='mt-4'>
+                                    <span className="font-weight-bold">
+                                        Rs. {singleItem.price}
+                                    </span>{' '}
+                                    original retail
                                 </p>
                                 <h6 className="mt-3">Rented By:</h6>
                                 <div className="seller">
@@ -403,19 +417,17 @@ const ItemDetail = (props) => {
                                         <h6>$40 - $60</h6>
                                     </div>
                                     <div className="detailimg">
-                                        <img
-                                            src={
-                                                singleItem.user
-                                                    ? singleItem.user
-                                                          .profilePicURL ===
-                                                      null
-                                                        ? User
-                                                        : singleItem.user
-                                                              .profilePicURL
-                                                    : null
-                                            }
-                                            alt=""
-                                        />
+                                        {singleItem.images ? (
+                                            singleItem.images.length > 1 ? (
+                                                <img
+                                                    src={
+                                                        singleItem.images[0]
+                                                            .imageURL
+                                                    }
+                                                    alt=""
+                                                />
+                                            ) : null
+                                        ) : null}
                                     </div>
                                 </div>
 

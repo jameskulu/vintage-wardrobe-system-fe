@@ -127,7 +127,7 @@ const ViewItem = () => {
                 <div className="empty-div">
                     <p>You have not uploaded any items for rent.</p>
                     <Link to="/renter/items/add">
-                        <button className="btn">Add An Item</button>
+                        <button className="btn">Add an Item</button>
                     </Link>
                 </div>
             )}
