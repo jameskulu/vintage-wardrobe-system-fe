@@ -81,14 +81,14 @@ const Home = () => {
                         <div className="text-center" id="forColor">
                             <h2>New Customer Exclusive</h2>
                             <h3>
-                                Access Designer Deals On Of Pre-Loved Clothing
-                                And Accessories.
+                                Access Designer Deals on pre-loved clothing
+                                and accessories.
                             </h3>
                         </div>
 
                         <div className="row">
                             <div className="col-md-12 col-sm-12 text-center">
-                                <button className="">Browse Now</button>
+                                <button className=""><b>Browse Now</b></button>
                             </div>
                         </div>
                     </div>
