@@ -30,7 +30,7 @@ const Home = () => {
                     <div className="row h-100">
                         <div className="col-md-12 col-sm-12 text-center my-auto">
                             <Link to={userData.user === undefined ? '/login' : '/renter/items/add'}>
-                                <button className="">Rent your clothes</button>
+                                <button className="home-button">Rent your clothes</button>
                             </Link>
                         </div>
                     </div>
@@ -86,12 +86,11 @@ const Home = () => {
                 </div>
             </div>
 
-            <section id="offer">
+            {/* <section id="offer">
                 <div className="row">
                     <div className="col-md-12 col-sm-12" id="offercaraousel">
                         <div className="text-center" id="forColor">
                             <h2>New Customer Exclusive</h2>
-
                             <h3>
                                 Access Designer Deals on pre-loved clothing
                                 and accessories.
@@ -107,7 +106,8 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
+
         </div>
     );
 };
