@@ -13,7 +13,7 @@ const About = () => {
 
             <div class="col col-12 col-sm-12 col-md-12 aboutUs p-0">
 			<headings class="aboutUs">
-                <h2>My Items</h2>
+                <h2>About Us</h2>
             </headings>               
             </div>
 
