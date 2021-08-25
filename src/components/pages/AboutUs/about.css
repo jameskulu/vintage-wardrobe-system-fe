@@ -1,12 +1,14 @@
 
 .about-container .aboutUs{
      background: #8AAAE5;
+     height:110px;
+     margin-bottom: 40px;
     }
     
     .about-container .aboutUs-title{
          font-weight: lighter;
      font-style: poppins;
-     margin: 20px;
+     margin: 40px;
     }
 
     .about-container headings {
@@ -47,6 +49,10 @@
     }
     
     .about-container .mx-4{
+         margin-top: 30px;
+    }
+    .about-container .rent h3{
+         color: #6aab9c;
          margin-top: 30px;
     }
     

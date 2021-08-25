@@ -46,13 +46,13 @@ const Footer = () => {
                                         to="/cart"
                                         className="list-group-item "
                                     >
-                                        Cart
+                                        My Cart
                                     </Link>
                                     <Link
                                         to="/category/Men"
                                         className="list-group-item "
                                     >
-                                        Category
+                                        Categories
                                     </Link>
 
                                     {userData.user !== undefined ? (
@@ -61,7 +61,7 @@ const Footer = () => {
                                                 to="/renter/items/add"
                                                 className="list-group-item "
                                             >
-                                                Add an Item
+                                                Add An Item
                                             </Link>
                                             <Link
                                                 to="/renter/items"
@@ -92,6 +92,8 @@ const Footer = () => {
                                         >
                                             Manage Profile
                                         </Link>
+
+                                        
 
                                         <Link
                                             to="/orders"
