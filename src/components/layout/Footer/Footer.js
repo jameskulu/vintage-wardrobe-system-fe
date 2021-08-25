@@ -38,10 +38,10 @@ const Footer = () => {
                                         Rentals
                                     </p>
                                     <Link to="/add/item" className="list-group-item ">
-                                        Add An Item
+                                        Upload an Item
                                     </Link>
                                     <Link to="#" className="list-group-item ">
-                                        Rent Items
+                                        Items For Rent
                                     </Link>
                                     <Link to="#" className="list-group-item ">
                                         Rent Orders
