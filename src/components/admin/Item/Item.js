@@ -1,39 +1,38 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Admin from '../Admin';
-import { withRouter } from 'react-router-dom';
-import User from '../../../images/user.png';
+import axios from 'axios';
+import NoImage from '../../../images/noimage.jpg';
 
-const UserAdmin = () => {
-    const [users, setUsers] = useState([]);
+const ItemAdmin = () => {
+    const [items, setItems] = useState([]);
     const [deleted, setDeleted] = useState([]);
 
     useEffect(() => {
-        const loadUsers = async () => {
+        const loadItems = async () => {
             const token = localStorage.getItem('auth-token');
-            const usersRes = await axios.get(
-                `${process.env.REACT_APP_API_URL}/api/admin/users`,
+            const itemRes = await axios.get(
+                `${process.env.REACT_APP_API_URL}/api/admin/items`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedUsersRes = usersRes.data.data.reverse();
-            console.log(sortedUsersRes)
-            setUsers(sortedUsersRes);
-            
+            const sortedItemsRes = itemRes.data.data.reverse();
+
+            setItems(sortedItemsRes);
         };
 
-        loadUsers();
+        loadItems();
     }, [deleted]);
 
-    const onUserDelete = async (id) => {
+    const onItemDelete = async (id) => {
         try {
             const token = localStorage.getItem('auth-token');
             await axios.delete(
-                `${process.env.REACT_APP_API_URL}/api/admin/users/delete/${id}`,
+                `${process.env.REACT_APP_API_URL}/api/admin/items/delete/${id}`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            toast.success('User is deleted.');
+            toast.success('Item has been deleted.');
             setDeleted((prevValue) => !prevValue);
         } catch (err) {
             toast.error(err.response.data.msg);
@@ -44,12 +43,12 @@ const UserAdmin = () => {
         <Admin>
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fas fa-table"></i>Users Table
+                    <i class="fas fa-table"></i>Items Table
                 </div>
                 <div class="card-body">
-                    <Link to="/admin/users/add">
+                    <Link to="/admin/items/add">
                         <button className="btn btn-success mb-4">
-                            Add User
+                            Add Item
                         </button>
                     </Link>
                     <div class="table-responsive">
@@ -63,35 +62,40 @@ const UserAdmin = () => {
                                 <tr>
                                     <th>Image</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Gender</th>
-                                    <th>Address</th>
-                                    <th>City</th>
-                                    <th>Country</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Color</th>
+                                    <th>Size</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {users.map((user) => {
+                                {items.map((item) => {
                                     return (
                                         <tr>
-                                            <td><img width="70" src={user.profilePicURL || User } alt="" /></td>
-                                            <td>{user.firstName} {user.lastName}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.role}</td>
                                             <td>
-                                                {user.gender === 'ma'
-                                                    ? 'Male'
-                                                    : 'Female'}
+                                                <img
+                                                    width="70"
+                                                    src={
+                                                        item.images.length < 1
+                                                            ? NoImage
+                                                            : item.images[0]
+                                                                  .imageURL
+                                                    }
+                                                    alt=""
+                                                />
                                             </td>
-                                            <td>{user.address}</td>
-                                            <td>{user.city}</td>
-                                            <td>{user.country}</td>
+                                            <td>{item.name} </td>
+                                            <td>{item.description}</td>
+                                            <td>{item.price}</td>
+
+                                            <td>{item.color}</td>
+                                            <td>{item.size}</td>
+
                                             <td>
                                                 <Link
-                                                    to={`/admin/users/edit/${user.id}`}
+                                                    to={`/admin/items/edit/${item.id}`}
                                                     className="text-primary"
                                                 >
                                                     Update{' '}
@@ -101,11 +105,11 @@ const UserAdmin = () => {
                                                     onClick={() => {
                                                         if (
                                                             window.confirm(
-                                                                'Are you sure want to delete this food ?'
+                                                                'Are you sure want to delete this Item ?'
                                                             )
                                                         ) {
-                                                            onUserDelete(
-                                                                user.id
+                                                            onItemDelete(
+                                                                item.id
                                                             );
                                                         }
                                                     }}
@@ -126,4 +130,4 @@ const UserAdmin = () => {
     );
 };
 
-export default withRouter(UserAdmin);
+export default withRouter(ItemAdmin);

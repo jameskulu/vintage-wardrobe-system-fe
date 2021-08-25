@@ -5,6 +5,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import NoImage from '../../../../images/noimage.jpg';
 
 const Order = () => {
     const [myOrders, setMyOrders] = useState([]);
@@ -89,9 +90,14 @@ const Order = () => {
                                                 to={`/items/${order.item.id}`}
                                             >
                                                 <img
-                                                    src={dress1}
                                                     class="img-fluid img-thumbnail"
-                                                    alt="Dress"
+                                                    src={
+                                                        order.item.images.length < 1
+                                                            ? NoImage
+                                                            : order.item.images[0]
+                                                                  .imageURL
+                                                    }
+                                                    alt=""
                                                 />
                                             </Link>
                                         </td>
