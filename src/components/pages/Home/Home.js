@@ -92,6 +92,7 @@ const Home = () => {
                     <div className="col-md-12 col-sm-12" id="offercaraousel">
                         <div className="text-center" id="forColor">
                             <h2>New Customer Exclusive</h2>
+
                             <h3>
                                 Access Designer Deals on pre-loved clothing
                                 and accessories.
@@ -99,7 +100,7 @@ const Home = () => {
                         </div>
 
                         <div className="row">
-                            <div className="col-md-12 col-sm-12 text-center">
+                            <div className="col-md-12 col-sm-12 text-center m-2">
                                 <Link to="/category/Men">
                                     <button className="">Browse Now</button>
                                 </Link>

@@ -12,10 +12,14 @@ const About = () => {
         <div class="row p-0 m-0">
 
             <div class="col col-12 col-sm-12 col-md-12 aboutUs p-0">
-                <h4 class="text-light text-center aboutUs-title">About Us</h4>                 
+			<headings class="aboutUs">
+                <h2>My Items</h2>
+            </headings>               
             </div>
 
-			<div class="col col-12 col-sm-12 col-md-6 align-items-center px-5 mt-2">
+
+			<div class="col col-12 col-sm-12 col-md-6 align-items-center px-5 mt-5 mb-5">
+
 				<h3 class="font-weight-bold text-left ">A community that shares more than just clothes. </h3>
 
 				<p class="text-left">
@@ -28,12 +32,13 @@ const About = () => {
 			</div>
 
 
-			<div class="col col-12 col-sm-12 col-md-6 m-0 p-0 px-5 mt-3">
+			<div class="col col-12 col-sm-12 col-md-6 m-0 p-0 px-5 mt-5 mb-5">
+
 				<img src={clothing} class="img-fluid"/>
 			</div>
 			
 							
-			<div class="media col-md-6 col-12 px-5 py-3 m-0 ">
+			<div class="media col-md-6 col-12 px-5 py-3 m-0 mb-5 ">
 				<img class="align-self-start mr-3 img-thumbnail" src={fashion} alt="Generic placeholder image"/>
 				<div class="media-body">
 					<h5 class="mt-0">Fashion Freedom</h5>
@@ -41,27 +46,33 @@ const About = () => {
 				</div>
 			</div>
 
-			<div class="media col-md-6 offset-md-4 col-12 px-5 py-3 m-0 ">
-				<img class="align-self-start mr-3 img-thumbnail" src={flex} alt="Generic placeholder image"/>
-				<div class="media-body">
-					<h5 class="mt-0">Total Flexibility</h5>
-					<p>Let's be real: your style, size, and budget change over time. Now, your closet can too.</p>
-				</div>
-			</div>
-
-			<div class="media col-md-6 col-12 px-5 py-3 m-0 ">
+			<div class="media col-md-6 offset-md-4 col-12 px-5 py-3 m-0 mb-5">
 				<img class="align-self-start mr-3 img-thumbnail" src={tag} alt="Generic placeholder image"/>
 				<div class="media-body">
-					<h5 class="mt-0">Forget the Price Tag</h5>
-					<p>Finally the solution to wearing everything you want, no purchase necessary.</p>
+
+					<h5 class="mt-0">Total Flexibility</h5>
+					<p>Let's be real: your style, size, and budget change over time. Now, your closet can too.</p>
+
 				</div>
 			</div>
 
-			<div class="media col-md-6 offset-md-4 col-12 px-5 py-3 m-0 ">
+			<div class="media col-md-6 col-12 px-5 py-3 m-0 mb-5 ">
+				<img class="align-self-start mr-3 img-thumbnail" src={flex} alt="Generic placeholder image"/>
+				<div class="media-body">
+
+					<h5 class="mt-0">Forget the Price Tag</h5>
+					<p>Finally the solution to wearing everything you want, no purchase necessary.</p>
+
+				</div>
+			</div>
+
+			<div class="media col-md-6 offset-md-4 col-12 px-5 py-3 m-0 mb-5 ">
 				<img class="align-self-start mr-3 img-thumbnail" src={sustain} alt="Generic placeholder image"/>
 				<div class="media-body">
+
 					<h5 class="mt-0">Sustainable Footprint</h5>
 					<p>Most clothes we buy end up in the back of closets or landfills. Power the sharing economy and rent instead.</p>
+
 				</div>
 			</div>
 			
