@@ -93,7 +93,7 @@ function App() {
         };
 
         const cart = async () => {
-            let cartNumber = JSON.parse(localStorage.getItem('cart')).length;
+            let cartNumber = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')).length : 0;
             setCartData(cartNumber);
         };
         

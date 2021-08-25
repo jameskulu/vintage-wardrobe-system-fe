@@ -67,6 +67,13 @@
 .homepage #rent h2 {
     text-align: center;
 }
+.homepage #rent h2:hover {
+    color:#8aaae5;
+}
+.homepage #rent .my-3:hover {
+    color:#6aab9c;
+    text-decoration: none;
+}
 
 .homepage .btn-browse {
     padding: 15px 40px;
@@ -74,6 +81,8 @@
     color: #8aaae5;
     margin-bottom: 50px;
 }
+
+
 
 .homepage button {
     background-color: #6aab9c;
@@ -110,19 +119,24 @@
     box-shadow: 2px 2px 1px #6bac9d;
 }
 
+.homepage .container h2:hover{
+    color: #8aaae5;
+
+}
+
+
 .homepage #offer button {
     background-color: #ffffff;
     color: #8aaae5;
     padding: 16px 0px;
-    border: none;
+    border: 1px solid #8aaae5;
     /* text-transform: uppercase; */
     width: 350px;
     margin-bottom: 50px;
-    margin-top:5px;
+    margin-top:50px;
     cursor: pointer;
     border-radius: 4px;
     text-align: center;
-    box-shadow: 2px 2px 1px #d3d6d6;
     font-size: 20px;
 }
 
@@ -130,6 +144,7 @@
     background-color: #8aaae5;
     color: #ffffff;
     border: 1px solid #fff;
+    box-shadow: 2px 2px 2px #f2f1f5;
 }
 
 .homepage #offer h2{
@@ -168,6 +183,11 @@
     border: 0.5px solid rgb(235, 235, 235);
 }
 
+.outer-latest-released .latest-released .single-latest-released:hover {
+    
+    box-shadow: 3px 3px 2px rgb(239, 243, 243);
+}
+
 .outer-latest-released .latest-released .single-latest-released img {
     object-fit: contain;
     border-radius: 5px;
@@ -175,21 +195,27 @@
     width: 100%;
 }
 
+
 .outer-latest-released .latest-released .single-latest-released img:hover {
     opacity: 0.95;
+    height: 350px;
 }
 
 .outer-latest-released .latest-released .single-latest-released .movie-info {
     padding: 20px 0;
+    color: #6aab9c;
+    
 }
 
 .outer-latest-released .latest-released .single-latest-released .movie-info h2:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .outer-latest-released .latest-released .single-latest-released .movie-info span {
-    text-decoration: underline;
-    margin-left: 5px;
+    text-decoration: none;
+    margin-left: 7px;
+    margin-top: 35px;
+    
 }
 
 .outer-latest-released .latest-released .single-latest-released .movie-info h6 {

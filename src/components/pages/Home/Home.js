@@ -61,9 +61,8 @@ const Home = () => {
                                 src={men}
                                 alt="..."
                                 className="img-thumbnail"
-                            />
-                        </Link>
-                        <h4 className="my-3">Men</h4>
+                            /></Link>
+                        <h4 className="my-3">Men</h4> 
                     </div>
                     <div className="col-md-4">
                         <Link to="/category/Kids">
@@ -80,7 +79,7 @@ const Home = () => {
             </section>
 
             <div className="container outer-latest-released">
-                <h2>Latest Released</h2>
+                <h2>New Arrivals</h2>
 
                 <div className="latest-released">
                     <Item items={latestItems} />
@@ -92,6 +91,7 @@ const Home = () => {
                     <div className="col-md-12 col-sm-12" id="offercaraousel">
                         <div className="text-center" id="forColor">
                             <h2>New Customer Exclusive</h2>
+
                             <h3>
                                 Access Designer Deals on pre-loved clothing
                                 and accessories.
@@ -99,7 +99,7 @@ const Home = () => {
                         </div>
 
                         <div className="row">
-                            <div className="col-md-12 col-sm-12 text-center">
+                            <div className="col-md-12 col-sm-12 text-center m-2">
                                 <Link to="/category/Men">
                                     <button className="">Browse Now</button>
                                 </Link>

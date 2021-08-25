@@ -10,14 +10,23 @@
      font-style: poppins;
      margin: 40px;
     }
+
+    .about-container headings {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 110px;
+     background: #8aaae5;
     
+ }
+ 
+ .about-container headings h2 {
+     color: white;
+ }
     
-    .about-container .heading{
-         margin-left: 20px;
-         margin-right: 20px;
-         margin-top: 50px;
-         margin-bottom: 50px;
-    }
+
+    
+   
     
     .about-container .img-fluid{
          width: 100;

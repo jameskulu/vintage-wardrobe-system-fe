@@ -96,7 +96,7 @@ header .inner-header nav ul li button{
     border-bottom: 2px solid var(--mainColor);
 } */
 
-@media (max-width: 980px) {
+@media (max-width: 1200px) {
     header .inner-header nav .fa-bars {
         display: flex;
     }
