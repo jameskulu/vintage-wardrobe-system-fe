@@ -61,9 +61,8 @@ const Home = () => {
                                 src={men}
                                 alt="..."
                                 className="img-thumbnail"
-                            />
-                        </Link>
-                        <h4 className="my-3">Men</h4>
+                            /></Link>
+                        <h4 className="my-3">Men</h4> 
                     </div>
                     <div className="col-md-4">
                         <Link to="/category/Kids">
@@ -80,7 +79,7 @@ const Home = () => {
             </section>
 
             <div className="container outer-latest-released">
-                <h2>Latest Released</h2>
+                <h2>New Arrivals</h2>
 
                 <div className="latest-released">
                     <Item items={latestItems} />

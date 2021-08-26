@@ -90,7 +90,7 @@ const Footer = () => {
                                             to="/profile"
                                             className="list-group-item "
                                         >
-                                            Manage Profile
+                                            My Profile
                                         </Link>
 
                                         
@@ -109,12 +109,7 @@ const Footer = () => {
                                             My Wishlist
                                         </Link>
 
-                                        <Link
-                                            to="/change-password"
-                                            className="list-group-item "
-                                        >
-                                            Change Password
-                                        </Link>
+                                
                                     </div>
                                 ) : (
                                     <div className="list-group">
