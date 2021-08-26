@@ -22,10 +22,8 @@ const Category = (props) => {
             const itemResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/categories/items/${categoryName}`
             );
-            const sortedItemResponse = itemResponse.data.data.reverse();
-            setItems(sortedItemResponse);
-            console.log(sortedItemResponse);
-            setFilteredItems(sortedItemResponse);
+            setItems(itemResponse.data.data);
+            setFilteredItems(itemResponse.data.data);
 
             const categoriesResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/categories/name/${categoryName}`

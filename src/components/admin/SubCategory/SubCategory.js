@@ -16,10 +16,7 @@ const SubCategory = ()=>{
                 `${process.env.REACT_APP_API_URL}/api/admin/sub-categories`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedSubCategoryRes = subCategoryRes.data.data.reverse();
-            console.log(sortedSubCategoryRes)
-            
-            setSubCategory(sortedSubCategoryRes);
+            setSubCategory(subCategoryRes.data.data);
         };
 
         loadSubCategory();

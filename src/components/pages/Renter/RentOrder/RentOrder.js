@@ -17,8 +17,7 @@ const RentOrder = () => {
                 `${process.env.REACT_APP_API_URL}/api/renter/orders`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedOrderResponse = orderResponse.data.data.reverse();
-            setOrders(sortedOrderResponse);
+            setOrders(orderResponse.data.data);
         };
         getOrder();
     }, []);

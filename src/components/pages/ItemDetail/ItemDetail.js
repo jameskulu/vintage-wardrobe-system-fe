@@ -77,8 +77,7 @@ const ItemDetail = (props) => {
                 `${process.env.REACT_APP_API_URL}/api/reviews/${itemId}`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedReviewsResponse = reviewResponse.data.data.reverse();
-            setReviews(sortedReviewsResponse);
+            setReviews(reviewResponse.data.data);
 
             const itemReviewResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/reviews/reviewed`,
@@ -195,8 +194,7 @@ const ItemDetail = (props) => {
                 `${process.env.REACT_APP_API_URL}/api/reviews/${itemId}`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedReviewsResponse = reviewResponse.data.data.reverse();
-            setReviews(sortedReviewsResponse);
+            setReviews(reviewResponse.data.data);
             setIsReviewed(false);
             toast.success('Review is added successfully.');
         } catch (err) {

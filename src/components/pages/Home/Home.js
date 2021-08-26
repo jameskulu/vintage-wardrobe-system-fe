@@ -17,8 +17,7 @@ const Home = () => {
             const itemResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/items/`
             );
-            const sortedItemResponse = itemResponse.data.data.reverse();
-            setLatestItems(sortedItemResponse);
+            setLatestItems(itemResponse.data.data);
         };
         displayItems();
     }, []);

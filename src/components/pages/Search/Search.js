@@ -14,15 +14,12 @@ const SearchPage = () => {
             const searchedItemsResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/items/s?q=${search}`
             );
-            const sortedSearchedItemsResponse =
-                searchedItemsResponse.data.data.reverse();
-            setSearchedItems(sortedSearchedItemsResponse);
+            setSearchedItems(searchedItemsResponse.data.data);
         } else {
             const itemsResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/items`
             );
-            const sortedItemResponse = itemsResponse.data.data.reverse();
-            setSearchedItems(sortedItemResponse);
+            setSearchedItems(itemsResponse.data.data);
         }
     };
 

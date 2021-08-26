@@ -72,9 +72,7 @@ const AddItemAdmin = () => {
             const categoriesResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/categories/${id}`
             );
-            const sortedCategoriesResponse =
-                categoriesResponse.data.data.category.reverse();
-            setSubCategories(sortedCategoriesResponse);
+            setSubCategories(categoriesResponse.data.data.category);
         } catch (err) {
             toast.error(err.response.data.message);
         }

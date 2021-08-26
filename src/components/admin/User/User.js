@@ -17,9 +17,7 @@ const UserAdmin = () => {
                 `${process.env.REACT_APP_API_URL}/api/admin/users`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedUsersRes = usersRes.data.data.reverse();
-            console.log(sortedUsersRes)
-            setUsers(sortedUsersRes);
+            setUsers(usersRes.data.data);
             
         };
 
