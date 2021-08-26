@@ -411,8 +411,10 @@ const ItemDetail = (props) => {
                                 <div className="top">
                                     <div className="detail">
                                         <h6>One-Time Rental</h6>
-                                        <p>Rent for 4 Days</p>
-                                        <h6>$40 - $60</h6>
+                                        <br></br>
+                                        <h8>Mentioned price above is per day</h8>
+                                        <br></br>
+                                        <h8>Select number of days for rent below;</h8>
                                     </div>
                                     <div className="detailimg">
                                         {singleItem.images ? (

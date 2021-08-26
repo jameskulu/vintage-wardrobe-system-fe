@@ -83,7 +83,7 @@ const Category = (props) => {
             <div class="container">
                 <div class="row">
                     <div class="col-5 col-sm-3">
-                        <h1>Category</h1>
+                        <h3>Category</h3>
                         <p className="mt-3">
                             <Link to="/category/Men">Men</Link>
                         </p>
@@ -93,7 +93,7 @@ const Category = (props) => {
                         <p>
                             <Link to="/category/Kids">Kids</Link>
                         </p>
-                        <h1 className="mt-4 mb-2">Filters</h1>
+                        <h3 className="mt-4 mb-2">Filters</h3>
 
                         <Link
                             style={{ textDecoration: 'underline' }}
@@ -130,56 +130,18 @@ const Category = (props) => {
 
                         <h3>Colors</h3>
                         <div class="color">
-                            <div class="filter-input-pairs filter-input-pairs--colors">
-                                <div class="input-wrapper grid-color-1">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-2">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-3">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-4">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-5">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-6">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-7">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-8">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-9">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-10">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-11">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-12">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-13">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-14">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-15">
-                                    <input type="checkbox" />
-                                </div>
-                                <div class="input-wrapper grid-color-16">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
+                            <span class="dot grid-color-1"></span>
+                            <span class="dot grid-color-2"></span>
+                            <span class="dot grid-color-3"></span>
+                            <span class="dot grid-color-4"></span>
+                            <span class="dot grid-color-5"></span>
+                            <span class="dot grid-color-6"></span>
+                            <span class="dot grid-color-7"></span>
+                            <span class="dot grid-color-8"></span>
+                            <span class="dot grid-color-9"></span>
+                            <span class="dot grid-color-10"></span>
+                            <span class="dot grid-color-11"></span>
+                            <span class="dot grid-color-12"></span>
                         </div>
                     </div>
                     <div class="col-sm-9 col-7">
