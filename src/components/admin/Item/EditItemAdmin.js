@@ -87,7 +87,7 @@ const EditItemAdmin = (props) => {
                         <input
                             type="text"
                             id="inpuTFirstname"
-                            className="form-control"
+                            className="form-control description"
                             value={description}
                             required
                             onChange={(e) => setDescription(e.target.value)}
@@ -98,7 +98,7 @@ const EditItemAdmin = (props) => {
                         <label>Price</label>
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control price"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                         />
