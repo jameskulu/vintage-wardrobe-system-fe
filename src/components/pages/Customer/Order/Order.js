@@ -17,8 +17,7 @@ const Order = () => {
                 `${process.env.REACT_APP_API_URL}/api/users/orders`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedMyOrderResponse = myOrderResponse.data.data.reverse();
-            setMyOrders(sortedMyOrderResponse);
+            setMyOrders(myOrderResponse.data.data);
         };
         getMyOrder();
     }, []);
@@ -42,9 +41,7 @@ const Order = () => {
                         `${process.env.REACT_APP_API_URL}/api/users/orders`,
                         { headers: { Authorization: 'Bearer ' + token } }
                     );
-                    const sortedMyOrderResponse =
-                        myOrderResponse.data.data.reverse();
-                    setMyOrders(sortedMyOrderResponse);
+                    setMyOrders(myOrderResponse.data.data);
                     toast.success(`Your order has been cancelled.`);
                 } catch (err) {
                     toast.error(`${err.response.data.message}`);

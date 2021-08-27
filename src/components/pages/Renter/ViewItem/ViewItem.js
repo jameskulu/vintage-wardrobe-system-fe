@@ -17,8 +17,7 @@ const ViewItem = () => {
                 `${process.env.REACT_APP_API_URL}/api/renter/items`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedItemResponse = itemResponse.data.data.reverse();
-            setItems(sortedItemResponse);
+            setItems(itemResponse.data.data);
         };
         displayItems();
     }, []);
@@ -43,8 +42,7 @@ const ViewItem = () => {
                         `${process.env.REACT_APP_API_URL}/api/renter/items`,
                         { headers: { Authorization: 'Bearer ' + token } }
                     );
-                    const sortedItemResponse = itemResponse.data.data.reverse();
-                    setItems(sortedItemResponse);
+                    setItems(itemResponse.data.data);
 
                     toast.success('Item has been deleted.');
                 } catch (err) {

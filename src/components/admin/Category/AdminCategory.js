@@ -19,9 +19,8 @@ const AdminCategory =()=>{
                 `${process.env.REACT_APP_API_URL}/api/admin/categories`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedCategoryRes = categoryRes.data.data.reverse();
             
-            setCategory(sortedCategoryRes);
+            setCategory(categoryRes.data.data);
         };
 
         loadCategory();

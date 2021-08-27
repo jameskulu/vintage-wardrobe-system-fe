@@ -17,9 +17,7 @@ const ItemAdmin = () => {
                 `${process.env.REACT_APP_API_URL}/api/admin/items`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedItemsRes = itemRes.data.data.reverse();
-
-            setItems(sortedItemsRes);
+            setItems(itemRes.data.data);
         };
 
         loadItems();

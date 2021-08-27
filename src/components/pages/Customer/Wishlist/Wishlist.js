@@ -17,9 +17,7 @@ const Wishlist = () => {
                 `${process.env.REACT_APP_API_URL}/api/users/wishlist`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const sortedWishlistResponse = wishlistResponse.data.data.reverse();
-            setWishlist(sortedWishlistResponse);
-            console.log(sortedWishlistResponse);
+            setWishlist(wishlistResponse.data.data);
         };
         getMyWishlist();
     }, []);
@@ -42,9 +40,7 @@ const Wishlist = () => {
                         `${process.env.REACT_APP_API_URL}/api/users/wishlist`,
                         { headers: { Authorization: 'Bearer ' + token } }
                     );
-                    const sortedWishlistResponse =
-                        wishlistResponse.data.data.reverse();
-                    setWishlist(sortedWishlistResponse);
+                    setWishlist(wishlistResponse.data.data);
                     toast.success('Removed from wishlist.');
                 } catch (err) {
                     toast.error(err.response.data.message);
