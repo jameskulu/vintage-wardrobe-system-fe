@@ -1,71 +1,73 @@
 .profile-container heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg);
-    height: 120px;
-    font-size: 26px;
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  height: 120px;
+  font-size: 26px;
+  color: white;
 }
 .profile-container .img {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 40px 0;
 }
 .profile-container .img img {
-    object-fit: cover;
+  object-fit: cover;
 }
 .profile-container .edit-btn {
-    width: fit-content;
-    position: relative;
+  width: fit-content;
+  position: relative;
 }
 .profile-container .row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .profile-container #updatebtn {
-    width: 100%;
+  width: 100%;
 }
 .profile-container .name-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .profile-container .name-row div {
-    display: flex;
+  display: flex;
 }
 .profile-container .n1,
 .profile-container .n2 {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .profile-container .n1 p,
 .profile-container .n2 p {
-    font-weight: 500;
-    font-size: 1rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 .profile-container .information {
-    padding: 10px;
+  padding: 10px;
 }
 .profile-container .a p {
-    font-size: clamp(1rem, 1vw, 2rem);
+  font-size: clamp(1rem, 1vw, 2rem);
 }
 .profile-container .a,
 .profile-container .b,
 .profile-container .c,
 .profile-container .d,
-.profile-container .e {
-    display: flex;
-    flex-wrap: wrap;
+.profile-container .e,
+.profile-container .f,
+.profile-container .l {
+  display: flex;
+  flex-wrap: wrap;
 }
 .profile-container label {
-    font-weight: 600;
-    margin-right: 5px;
+  font-weight: 600;
+  margin-right: 5px;
 }
 .profile-container #profilebtn {
-    background: #8aaae5;
-    width: 100%;
+  background: #8aaae5;
+  width: 100%;
 }
