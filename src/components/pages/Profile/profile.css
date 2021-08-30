@@ -77,3 +77,15 @@
   background-color: #59a896;
     box-shadow: 2px 2px 1px #6bac9d;
 }
+
+.profile-container #pswrdbtn {
+  
+  /* background-color: #59a896; */
+  width: 100%;
+  text-align: center;
+  border: none;
+}
+.profile-container #pswrdbtn:hover {
+  background: #8b8d8f;
+    box-shadow: 2px 2px 1px #8b8d8f;
+}

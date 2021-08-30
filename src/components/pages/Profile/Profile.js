@@ -109,6 +109,12 @@ const Profile = () => {
                       Edit Profile
                     </button>
                   </Link>
+                  <Link to={`/change-password`}>
+                    <button id="pswrdbtn" class="btn btn-danger mt-3">
+                      Change Password
+                    </button>
+                  </Link>
+                  
                 </div>
               </div>
             </>
