@@ -59,7 +59,7 @@
   font-size: 2.2rem !important;
   font-weight: 900 !important;
 }
-.category-container .col-5 h3 {
+.category-container .col-5 h4 {
   margin: 20px 0;
   font-size: 1.5rem !important;
   font-weight: 600 !important;
@@ -81,6 +81,12 @@
   margin: 10px 5px;
   width: 30%;
   /* height: 500px; */
+  transition: transform .1s ease-out;
+}
+
+.category-container .card:hover {
+  box-shadow: 3px 3px 2px rgb(239, 243, 243);
+  transform: translateY(-10px);
 }
 /* .card img {
  width: 70%;

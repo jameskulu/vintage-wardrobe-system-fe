@@ -33,6 +33,9 @@ const Footer = () => {
                                     <Link to="/s" className="list-group-item ">
                                         More Search
                                     </Link>
+                                    <Link to="/category/Men" className="list-group-item ">
+                                        Categories
+                                    </Link>
                                 </div>
                             </div>
 
@@ -41,19 +44,15 @@ const Footer = () => {
                                     <p className="list-group-item list-heading">
                                         Rentals
                                     </p>
-
                                     <Link
                                         to="/cart"
                                         className="list-group-item "
                                     >
                                         My Cart
                                     </Link>
-                                    <Link
-                                        to="/category/Men"
-                                        className="list-group-item "
-                                    >
-                                        Categories
-                                    </Link>
+
+                                  
+                                  
 
                                     {userData.user !== undefined ? (
                                         <>
@@ -92,6 +91,13 @@ const Footer = () => {
                                         >
                                             My Profile
                                         </Link>
+                                        <Link
+                                            to="/wishlist"
+                                            className="list-group-item "
+                                        >
+                                            My Wishlist
+                                        </Link>
+                                     
 
                                         
 
@@ -102,12 +108,7 @@ const Footer = () => {
                                             My Orders
                                         </Link>
 
-                                        <Link
-                                            to="/wishlist"
-                                            className="list-group-item "
-                                        >
-                                            My Wishlist
-                                        </Link>
+                                      
 
                                 
                                     </div>

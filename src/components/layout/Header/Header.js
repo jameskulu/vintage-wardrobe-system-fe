@@ -205,12 +205,7 @@ const Header = () => {
                                     >
                                         My Orders
                                     </Link>
-                                    <Link
-                                        className="dropdown-item"
-                                        to="/wishlist"
-                                    >
-                                        My Wishlist
-                                    </Link>
+                                  
                                     {/* <Link
                                         className="dropdown-item"
                                         to="/change-password"

@@ -142,7 +142,7 @@ const Category = (props) => {
             <div class="container">
                 <div class="row">
                     <div class="col-5 col-sm-3">
-                        <h3>Category</h3>
+                        <h4 className="mt-4 mb-2">Category</h4>
                         <p className="mt-3">
                             <Link to="/category/Men">Men</Link>
                         </p>
@@ -152,14 +152,16 @@ const Category = (props) => {
                         <p>
                             <Link to="/category/Kids">Kids</Link>
                         </p>
-                        <h3 className="mt-4 mb-2">Filters</h3>
+                        <h4 className="mt-4 mb-2">Filters</h4>
 
                         <Link
                             style={{ textDecoration: 'underline' }}
                             onClick={onRemoveFilter}
                         >
                             Remove filter
+                            
                         </Link>
+                        
                         {subCategories.map((sub) => (
                             <div className="select-item">
                                 <input
@@ -176,7 +178,8 @@ const Category = (props) => {
                             </div>
                         ))}
 
-                        <h3>Price (Rs)</h3>
+                        <h4>Price (Rs)</h4>
+                        
                         <Slider
                             value={priceSlider}
                             onChange={onSliderChange}
@@ -186,8 +189,9 @@ const Category = (props) => {
                             title="Choose price range"
                             aria-labelledby="range-slider"
                         />
+                        
 
-                        <h3>Colors</h3>
+                        <h4>Colors</h4>
                         <div class="color">
                             <span class="dot grid-color-1">
                                 <input
