@@ -28,7 +28,6 @@ const EditUser = (props) => {
                 `${process.env.REACT_APP_API_URL}/api/admin/users/${userId}`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            console.log(singleUserRes.data.data)
 
             setFirstName(singleUserRes.data.data.firstName);
             setLastName(singleUserRes.data.data.lastName);

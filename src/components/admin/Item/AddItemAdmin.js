@@ -32,7 +32,6 @@ const AddItemAdmin = () => {
 
     const onItemAdd = async (e) => {
         e.preventDefault();
-        console.log(images)
 
         try {
             const newItem = new FormData();
