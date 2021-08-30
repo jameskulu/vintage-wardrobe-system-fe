@@ -10,6 +10,12 @@
     text-decoration: none;
 }
 
+.view-items-container .empty-div button:hover{
+    background-color: #59a896;
+    box-shadow: 2px 2px 1px #6bac9d;
+
+}
+
 .view-items-container .img-thumbnail {
     height: 90px;
     width: 80px;
