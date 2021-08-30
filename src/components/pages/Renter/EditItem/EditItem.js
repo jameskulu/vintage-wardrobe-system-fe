@@ -14,6 +14,7 @@ const EditItem = (props) => {
     const [price, setPrice] = useState();
     const [color, setColor] = useState();
     const [size, setSize] = useState();
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         const loadSingleItem = async () => {
@@ -25,6 +26,8 @@ const EditItem = (props) => {
             setPrice(singleItemResponse.data.data.price);
             setSize(singleItemResponse.data.data.size);
             setColor(singleItemResponse.data.data.color);
+
+            // setImages(singleItemResponse.data.data.images);
         };
 
         loadSingleItem();
@@ -35,13 +38,25 @@ const EditItem = (props) => {
         setDisable(true);
 
         try {
-            const updateItem = {
-                name,
-                description,
-                price: parseInt(Math.abs(price)),
-                size,
-                color
-            };
+            // const updateItem = {
+            //     name,
+            //     description,
+            //     price: parseInt(Math.abs(price)),
+            //     size,
+            //     color
+            // };
+
+            const updateItem = new FormData();
+            updateItem.append('name', name);
+            updateItem.append('description', description);
+            updateItem.append('price', parseInt(Math.abs(price)));
+            updateItem.append('size', size);
+            updateItem.append('color', color);
+            updateItem.append('images', images);
+
+            for (let i = 0; i < images.length; i++) {
+                updateItem.append('images', images[i]);
+            }
 
             const token = localStorage.getItem('auth-token');
             await axios.put(
@@ -124,7 +139,7 @@ const EditItem = (props) => {
 
                             <div className="form-group">
                                 <label
-                                    for="exampleFormControlSelect1 "
+                                    for="exampleFormControlSelect1"
                                     className="form-title"
                                 >
                                     Color
@@ -174,6 +189,22 @@ const EditItem = (props) => {
                                     <option>Large</option>
                                     <option>Extra Large</option>
                                 </select>
+                            </div>
+
+                            <div className="form-group">
+                                <label
+                                    for="exampleFormControlFile1 "
+                                    className="form-title"
+                                >
+                                    Images
+                                </label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    onChange={(e) => setImages(e.target.files)}
+                                    className="form-control-file"
+                                    // id="itemImage"
+                                />
                             </div>
 
                             <button

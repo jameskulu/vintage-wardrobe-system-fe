@@ -21,7 +21,6 @@ const AddUser = () => {
 
     const onUserAdd = async (e) => {
         e.preventDefault();
-
         try {
             const newUser = new FormData();
             newUser.append('image', image);
