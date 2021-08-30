@@ -43,7 +43,7 @@ const AddUser = () => {
 
             toast.success('New user has been added.');
             setFirstName('');
-            setLastName('');
+            setLastName(''); 
             setEmail('');
             setPassword('');
 
