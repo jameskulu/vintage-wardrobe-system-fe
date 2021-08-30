@@ -36,13 +36,14 @@ const AddItemAdmin = () => {
 
         try {
             const newItem = new FormData();
+            newItem.append('images', images);
             newItem.append('name', name);
             newItem.append('description', description);
             newItem.append('price', parseInt(Math.abs(price)));
             newItem.append('color', color);
             newItem.append('size', size);
             newItem.append('subCategoryId', subCategoryId);
-            newItem.append('images', images);
+            
 
 
             const token = localStorage.getItem('auth-token');

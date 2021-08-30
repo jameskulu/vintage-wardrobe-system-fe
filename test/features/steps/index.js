@@ -567,3 +567,21 @@ Given('Test registration functionality',{timeout: 4 * 5000}, async () => {
 //   await driver.findElement(By.className(`text-danger`)).click();
 //   await driver.switchTo().alert().accept();
 // });
+
+
+// Given('change password funtionality', {timeout: 5 * 5000}, async()=>{
+//     let driver = await new Builder().forBrowser('chrome').build();
+//     await driver.get('https://vintagewardrobe.herokuapp.com/login')
+//     await driver.findElement(By.name('email')).sendKeys('rijan22shrestha@gmail.com');
+//     await driver.findElement(By.name('password')).sendKeys('Rijan@23');
+//     await driver.findElement(By.className('loginbtn')).click();
+//     await driver.sleep(8000);
+//     await driver.findElement(By.id('navbarDropdown2')).click();
+//     await driver.sleep(delay);
+//     await driver.get('https://vintagewardrobe.herokuapp.com/change-password')
+//     await driver.findElement(By.id('oldPassword')).sendKeys('Rijan@23');
+//     await driver.findElement(By.id('newPassword')).sendKeys('Rijan@12');
+//     await driver.findElement(By.id('confirmPassword')).sendKeys('Rijan@12');
+//     await driver.sleep(delay);
+//     await driver.findElement(By.className('password-btn')).click();
+// })
