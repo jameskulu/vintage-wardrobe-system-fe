@@ -158,7 +158,7 @@ const Category = (props) => {
                             style={{ textDecoration: 'underline' }}
                             onClick={onRemoveFilter}
                         >
-                            remove filter
+                            Remove filter
                         </Link>
                         {subCategories.map((sub) => (
                             <div className="select-item">
