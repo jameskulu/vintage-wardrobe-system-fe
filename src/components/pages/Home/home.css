@@ -79,8 +79,17 @@
   color: #8aaae5;
   background-color: #ffffff;
   margin-bottom: 50px;
+  margin-top: 50px;
+  border: 1px solid #fff;
 }
-
+.homepage .btn-browse:hover {
+   
+    color: #fff;
+    background-color: #8aaae5;
+    border: 1px solid #fff;
+    font-weight: bold;
+  
+  }
 .homepage button {
   background-color: #6aab9c;
   color: white;
@@ -178,10 +187,14 @@
   width: 100%;
   padding: 1rem;
   border: 0.5px solid rgb(235, 235, 235);
+  transition: transform .1s ease-out;
 }
 
 .outer-latest-released .latest-released .single-latest-released:hover {
   box-shadow: 3px 3px 2px rgb(239, 243, 243);
+  transform: translateY(-10px);
+
+  
 }
 
 .outer-latest-released .latest-released .single-latest-released img {
@@ -191,10 +204,7 @@
   width: 100%;
 }
 
-.outer-latest-released .latest-released .single-latest-released img:hover {
-  opacity: 0.95;
-  height: 350px;
-}
+
 
 .outer-latest-released .latest-released .single-latest-released .movie-info {
   padding: 20px 0;

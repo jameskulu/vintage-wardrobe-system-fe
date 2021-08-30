@@ -70,4 +70,10 @@
 .profile-container #profilebtn {
   background: #8aaae5;
   width: 100%;
+  text-align: center;
+  border: none;
+}
+.profile-container #profilebtn:hover {
+  background-color: #59a896;
+    box-shadow: 2px 2px 1px #6bac9d;
 }

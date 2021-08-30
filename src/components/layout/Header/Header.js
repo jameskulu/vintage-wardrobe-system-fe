@@ -163,6 +163,12 @@ const Header = () => {
                                 ) : null}
                             </Link>
                         </li>
+                        <li>
+                            <Link to="/wishlist" className="nav-item-link">
+                               
+                                <i class="far fa-heart"></i>
+                            </Link>
+                        </li>
 
                         <li>
                             <Link to="/s" className="nav-item-link">
@@ -191,7 +197,7 @@ const Header = () => {
                                         className="dropdown-item"
                                         to="/profile"
                                     >
-                                        Manage Profile
+                                        My Profile
                                     </Link>
                                     <Link
                                         className="dropdown-item"
@@ -205,20 +211,19 @@ const Header = () => {
                                     >
                                         My Wishlist
                                     </Link>
-                                    <Link
+                                    {/* <Link
                                         className="dropdown-item"
                                         to="/change-password"
                                     >
                                         Change Password
-                                    </Link>
-                                    <div className="dropdown-divider"></div>
+                                    </Link> */}
+                                    <div className="dropdown-divider" ></div>
                                     <Link
                                         onClick={() => {
                                             logout();
                                         }}
-                                        className="dropdown-item"
-                                    >
-                                        Logout
+                                        className="dropdown-item " style={{ color: 'red' }} >
+                                       Logout
                                     </Link>
                                 </div>
                             </li>

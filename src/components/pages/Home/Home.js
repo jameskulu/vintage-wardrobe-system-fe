@@ -79,15 +79,15 @@ const Home = () => {
       </div>
 
       <div class="container-fluid offer p-2 ">
-        <h2 class="text-light text-uppercase text-center txt-new">
+        <h4 class="text-light text-uppercase text-center txt-new">
           New Customer Exclusive
-        </h2>
-        <h3 class="text-light font-weight-normal text-center mt-6">
+        </h4>
+        <h5 class="text-light font-weight-normal text-center mt-6">
           Access Designer Deals On Of Pre-Loved Clothing And Accessories.
-        </h3>
+        </h5>
 
         <div class="col-12 col-md-12 col-sm-12 text-center m-0 p-0">
-          <button class="btn btn-light text-primary btn-browse ">
+          <button class="btn btn-light btn-browse ">
             Browse Now
           </button>
         </div>

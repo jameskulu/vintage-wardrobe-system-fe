@@ -79,7 +79,7 @@ header .inner-header nav ul li a.nav-item-link {
 
 
 header .inner-header nav ul li a:hover {
-    color: var(--mainColor);
+    color: #68aba7;
 }
 
 header .inner-header nav ul li button{

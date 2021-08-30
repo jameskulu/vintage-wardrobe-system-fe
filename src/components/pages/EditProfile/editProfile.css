@@ -26,6 +26,11 @@
     outline: none;
     width: 100%;
 }
+.edit-profile-container #updatebtn:hover {
+    background-color: #59a896;
+    box-shadow: 2px 2px 1px #6bac9d;
+}
+
 .edit-profile-container .edit-btn {
     width: fit-content;
     position: relative;
