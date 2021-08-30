@@ -12,9 +12,27 @@ const Footer = () => {
                     <div className="col-md-12 col-sm-12">
                         <div className="row">
                             <div className="col-md-12 col-sm-12 text-center">
-                                <i className="fab fa-facebook"></i>
-                                <i className="fab fa-instagram"></i>
-                                <i className="fab fa-twitter"></i>
+                                <a
+                                    href="https://facebook.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <i className="fab fa-facebook"></i>
+                                </a>
+                                <a
+                                    href="https://instagram.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <i className="fab fa-instagram"></i>
+                                </a>
+                                <a
+                                    href="https://twitter.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <i className="fab fa-twitter"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -33,7 +51,10 @@ const Footer = () => {
                                     <Link to="/s" className="list-group-item ">
                                         More Search
                                     </Link>
-                                    <Link to="/category/Men" className="list-group-item ">
+                                    <Link
+                                        to="/category/Men"
+                                        className="list-group-item "
+                                    >
                                         Categories
                                     </Link>
                                 </div>
@@ -50,9 +71,6 @@ const Footer = () => {
                                     >
                                         My Cart
                                     </Link>
-
-                                  
-                                  
 
                                     {userData.user !== undefined ? (
                                         <>
@@ -97,9 +115,6 @@ const Footer = () => {
                                         >
                                             My Wishlist
                                         </Link>
-                                     
-
-                                        
 
                                         <Link
                                             to="/orders"
@@ -107,10 +122,6 @@ const Footer = () => {
                                         >
                                             My Orders
                                         </Link>
-
-                                      
-
-                                
                                     </div>
                                 ) : (
                                     <div className="list-group">
