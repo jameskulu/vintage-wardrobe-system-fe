@@ -174,6 +174,7 @@ const EditItemAdmin = (props) => {
                             multiple
                             onChange={(e) => setImages(e.target.files)}
                             className="form-control-file"
+                            accept="image/*"
                             // id="itemImage"
                         />
                     </div>

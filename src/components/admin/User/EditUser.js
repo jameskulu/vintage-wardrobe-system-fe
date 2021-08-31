@@ -158,6 +158,7 @@ const EditUser = (props) => {
                             type="file"
                             className="form-control"
                             onChange={(e) => setImage(e.target.files[0])}
+                            accept="image/*"
                         />
                     </div>
 

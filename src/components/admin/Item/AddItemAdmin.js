@@ -240,6 +240,7 @@ const AddItemAdmin = () => {
                             className="form-control"
                             multiple
                             onChange={(e) => setImages(e.target.files)}
+                            accept="image/*"
                         />
                     </div>
 
