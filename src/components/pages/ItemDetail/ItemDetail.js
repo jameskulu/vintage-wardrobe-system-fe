@@ -351,13 +351,13 @@ const ItemDetail = (props) => {
                                     {isWishlist ? (
                                         <i
                                             onClick={removeFromWishlist}
-                                            className="fas fa-heart"
+                                            className="fas fa-heart hearts"
                                             id="filled-heart-icon"
                                         ></i>
                                     ) : (
                                         <i
                                             onClick={addToWishlist}
-                                            className="far fa-heart"
+                                            className="far fa-heart hearts"
                                         ></i>
                                     )}
                                 </div>
