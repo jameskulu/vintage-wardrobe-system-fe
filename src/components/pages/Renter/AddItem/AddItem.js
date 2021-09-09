@@ -20,6 +20,7 @@ const AddItem = () => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
+
         const loadCategories = async () => {
             const categoriesResponse = await axios.get(
                 `${process.env.REACT_APP_API_URL}/api/categories`
@@ -242,6 +243,7 @@ const AddItem = () => {
                                     <option value="Violet">Violet</option>
                                     <option value="Purple">Purple</option>
                                     <option value="Maroon">Maroon</option>
+                                    <option value="Yellow">Yellow</option>
                                 </select>
                             </div>
 
@@ -281,7 +283,8 @@ const AddItem = () => {
                                     multiple
                                     onChange={(e) => setImages(e.target.files)}
                                     className="form-control-file"
-                                    id="itemImage"
+                                    accept="image/*"
+                                    // id="itemImage"
                                 />
                             </div>
 

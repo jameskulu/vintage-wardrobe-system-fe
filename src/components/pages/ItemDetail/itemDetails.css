@@ -16,6 +16,13 @@
     color: white;
     font-size: 30px;
 }
+
+.item-detail .bottom-btn button:hover{
+    background-color: #59a896;
+    box-shadow: 2px 2px 1px #6bac9d;
+
+}
+
 .item-detail .row {
     display: flex;
     justify-content: space-evenly;

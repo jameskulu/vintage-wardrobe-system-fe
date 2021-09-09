@@ -1,9 +1,9 @@
 import './checkout.css';
 import { useEffect, useState } from 'react';
-import dress1 from '../../../../images/dress1.jpg';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
+import NoImage from '../../../../images/noimage.jpg';
 
 const Checkout = () => {
     const items = JSON.parse(localStorage.getItem('cart')) || [];
@@ -82,7 +82,11 @@ const Checkout = () => {
                                     <td>
                                         <img
                                             className="img-thumbnail"
-                                            src={dress1}
+                                            src={
+                                                item.images.length < 1
+                                                    ? NoImage
+                                                    : item.images[0].imageURL
+                                            }
                                             alt=""
                                         />
                                     </td>

@@ -39,7 +39,6 @@ const ItemDetail = (props) => {
                 .get(`${process.env.REACT_APP_API_URL}/api/items/${itemId}`)
                 .then(async (singleItemResponse) => {
                     setSingleItem(singleItemResponse.data.data);
-                    console.log(singleItemResponse.data.data);
 
                     if (
                         items.some(
@@ -57,7 +56,6 @@ const ItemDetail = (props) => {
                         `${process.env.REACT_APP_API_URL}/api/users/wishlist`,
                         { headers: { Authorization: 'Bearer ' + token } }
                     );
-                    console.log(wishlist.data.data);
                     if (
                         wishlist.data.data.some(
                             (item) =>
@@ -112,7 +110,11 @@ const ItemDetail = (props) => {
     };
 
     const addToCart = () => {
-        console.log(dateRange);
+
+        if (userData.user.id === singleItem.user.id) {
+            return toast.error('Cannot add your own item to cart');
+        }
+
         if (dateRange.includes(null)) {
             return toast.error('Please select a date range.');
         }

@@ -91,9 +91,8 @@ const EditProfile = () => {
                             <input
                                 id="editprofileinput"
                                 type="file"
-                                accept="image/*"
                                 style={{ display: 'none' }}
-                                
+                                accept="image/*"
                             />
                             {/* <button class="butn btn-primary">
                                 <i class="fas fa-pen"></i>
@@ -106,6 +105,7 @@ const EditProfile = () => {
                                 id="fusk"
                                 type="file"
                                 style={{ display: 'none' }}
+                                accept="image/*"
                             />
                         </div>
                     </div>

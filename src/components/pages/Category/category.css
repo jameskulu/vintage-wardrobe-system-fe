@@ -1,21 +1,21 @@
 :root {
   --bg: #8aaae5;
-  --a: #ccc1c1;
+  --a: #dbdbdb;
   --b: #000000;
-  --c: #d75e5e;
-  --d: #ccc1c1;
-  --e: #d0e777;
-  --f: #39ff18;
-  --g: #929ae3;
-  --h: #d0e777;
-  --i: #f0a8dc;
-  --j: #68aba7;
-  --k: #d6f12c;
-  --l: #f0a8dc;
-  --m: #ff9900;
+  --c: blue;
+  --d: red;
+  --e: green;
+  --f: orange;
+  --g: gray;
+  --h: pink;
+  --i: violet;
+  --j: purple;
+  --k: maroon;
+  --l: yellow;
+  /* --m: #ff9900;
   --n: #936837;
   --o: #e2dff2;
-  --p: #ff9900;
+  --p: #ff9900; */
 }
 
 .dot {
@@ -59,7 +59,7 @@
   font-size: 2.2rem !important;
   font-weight: 900 !important;
 }
-.category-container .col-5 h3 {
+.category-container .col-5 h4 {
   margin: 20px 0;
   font-size: 1.5rem !important;
   font-weight: 600 !important;
@@ -81,6 +81,12 @@
   margin: 10px 5px;
   width: 30%;
   /* height: 500px; */
+  transition: transform .1s ease-out;
+}
+
+.category-container .card:hover {
+  box-shadow: 3px 3px 2px rgb(239, 243, 243);
+  transform: translateY(-10px);
 }
 /* .card img {
  width: 70%;

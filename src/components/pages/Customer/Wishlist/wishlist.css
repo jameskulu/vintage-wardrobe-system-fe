@@ -14,6 +14,12 @@
     background: white;
 }
 
+.wishlist-container .empty-div button:hover{
+    background-color: #59a896;
+    box-shadow: 2px 2px 1px #6bac9d;
+
+}
+
 .wishlist-container .cart-heading {
     background: #8aaae5;
     margin-bottom: 50px;

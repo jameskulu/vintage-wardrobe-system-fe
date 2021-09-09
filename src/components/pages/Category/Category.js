@@ -17,6 +17,8 @@ const Category = (props) => {
 
     const [priceSlider, setPriceSlider] = useState([0, 10000]);
 
+    const [colorValue, setColorValue] = useState();
+
     useEffect(() => {
         const displayItems = async () => {
             const itemResponse = await axios.get(
@@ -33,16 +35,52 @@ const Category = (props) => {
         displayItems();
     }, [categoryName]);
 
+    const changeColor = (value) => {
+        setColorValue(value);
+        filteredItems = [...items];
+
+        let filItems;
+        if (subCategoryFilter === undefined) {
+            filItems = filteredItems.filter(
+                (item) =>
+                    item.price > priceSlider[0] &&
+                    item.price < priceSlider[1] &&
+                    item.color === value
+            );
+        } else {
+            filItems = filteredItems.filter(
+                (item) =>
+                    item.subCategory.name === subCategoryFilter &&
+                    item.price > priceSlider[0] &&
+                    item.price < priceSlider[1] &&
+                    item.color === value
+            );
+        }
+        setFilteredItems(filItems);
+    };
+
     const onSubcategoryChange = (e) => {
         const value = e.target.value;
         setSubCategoryFilter(value);
         filteredItems = [...items];
-        const filItems = filteredItems.filter(
-            (item) =>
-                item.subCategory.name === value &&
-                item.price > priceSlider[0] &&
-                item.price < priceSlider[1]
-        );
+
+        let filItems;
+        if (colorValue === undefined) {
+            filItems = filteredItems.filter(
+                (item) =>
+                    item.subCategory.name === value &&
+                    item.price > priceSlider[0] &&
+                    item.price < priceSlider[1]
+            );
+        } else {
+            filItems = filteredItems.filter(
+                (item) =>
+                    item.subCategory.name === value &&
+                    item.price > priceSlider[0] &&
+                    item.price < priceSlider[1] &&
+                    item.color === colorValue
+            );
+        }
         setFilteredItems(filItems);
     };
 
@@ -51,16 +89,31 @@ const Category = (props) => {
         filteredItems = [...items];
         let filItems;
 
-        if (subCategoryFilter === undefined) {
+        if (subCategoryFilter === undefined && colorValue === undefined) {
             filItems = filteredItems.filter(
                 (item) => item.price > newValue[0] && item.price < newValue[1]
+            );
+        } else if (colorValue === undefined) {
+            filItems = filteredItems.filter(
+                (item) =>
+                    item.price > newValue[0] &&
+                    item.price < newValue[1] &&
+                    item.subCategory.name === subCategoryFilter
+            );
+        } else if (subCategoryFilter === undefined) {
+            filItems = filteredItems.filter(
+                (item) =>
+                    item.price > newValue[0] &&
+                    item.price < newValue[1] &&
+                    item.color === colorValue
             );
         } else {
             filItems = filteredItems.filter(
                 (item) =>
                     item.price > newValue[0] &&
                     item.price < newValue[1] &&
-                    item.subCategory.name === subCategoryFilter
+                    item.subCategory.name === subCategoryFilter &&
+                    item.color === colorValue
             );
         }
         setFilteredItems(filItems);
@@ -68,12 +121,18 @@ const Category = (props) => {
 
     const onRemoveFilter = () => {
         setSubCategoryFilter(undefined);
+        setColorValue(undefined);
         setPriceSlider([0, 10000]);
         setFilteredItems(items);
 
         var ele = document.getElementsByName('subcategory');
         for (let i = 0; i < ele.length; i++) {
             ele[i].checked = false;
+        }
+
+        var ele2 = document.getElementsByName('color-filter');
+        for (let i = 0; i < ele2.length; i++) {
+            ele2[i].checked = false;
         }
     };
 
@@ -83,7 +142,7 @@ const Category = (props) => {
             <div class="container">
                 <div class="row">
                     <div class="col-5 col-sm-3">
-                        <h3>Category</h3>
+                        <h4 className="mt-4 mb-2">Category</h4>
                         <p className="mt-3">
                             <Link to="/category/Men">Men</Link>
                         </p>
@@ -93,14 +152,16 @@ const Category = (props) => {
                         <p>
                             <Link to="/category/Kids">Kids</Link>
                         </p>
-                        <h3 className="mt-4 mb-2">Filters</h3>
+                        <h4 className="mt-4 mb-2">Filters</h4>
 
                         <Link
                             style={{ textDecoration: 'underline' }}
                             onClick={onRemoveFilter}
                         >
-                            remove filter
+                            Remove filter
+                            
                         </Link>
+                        
                         {subCategories.map((sub) => (
                             <div className="select-item">
                                 <input
@@ -117,7 +178,8 @@ const Category = (props) => {
                             </div>
                         ))}
 
-                        <h3>Price (Rs)</h3>
+                        <h4>Price (Rs)</h4>
+                        
                         <Slider
                             value={priceSlider}
                             onChange={onSliderChange}
@@ -127,21 +189,130 @@ const Category = (props) => {
                             title="Choose price range"
                             aria-labelledby="range-slider"
                         />
+                        
 
-                        <h3>Colors</h3>
+                        <h4>Colors</h4>
                         <div class="color">
-                            <span class="dot grid-color-1"></span>
-                            <span class="dot grid-color-2"></span>
-                            <span class="dot grid-color-3"></span>
-                            <span class="dot grid-color-4"></span>
-                            <span class="dot grid-color-5"></span>
-                            <span class="dot grid-color-6"></span>
-                            <span class="dot grid-color-7"></span>
-                            <span class="dot grid-color-8"></span>
-                            <span class="dot grid-color-9"></span>
-                            <span class="dot grid-color-10"></span>
-                            <span class="dot grid-color-11"></span>
-                            <span class="dot grid-color-12"></span>
+                            <span class="dot grid-color-1">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="White"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-2">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Black"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-3">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Blue"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-4">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Red"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-5">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Green"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-6">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Orange"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-7">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Gray"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-8">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Pink"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-9">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Violet"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-10">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Purple"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-11">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Maroon"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
+                            <span class="dot grid-color-12">
+                                <input
+                                    type="radio"
+                                    name="color-filter"
+                                    value="Yellow"
+                                    onChange={(e) =>
+                                        changeColor(e.target.value)
+                                    }
+                                />
+                            </span>
                         </div>
                     </div>
                     <div class="col-sm-9 col-7">

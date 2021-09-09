@@ -12,6 +12,12 @@
     font-size: xx-large;
 }
 
+.add-item-container button:hover{
+    background-color: #59a896;
+    box-shadow: 2px 2px 1px #6bac9d;
+
+}
+
 .add-item-container .edit {
     background: #8aaae5;
     color: white;

@@ -32,7 +32,6 @@ const AddItemAdmin = () => {
 
     const onItemAdd = async (e) => {
         e.preventDefault();
-        console.log(images)
 
         try {
             const newItem = new FormData();
@@ -44,6 +43,10 @@ const AddItemAdmin = () => {
             newItem.append('subCategoryId', subCategoryId);
             newItem.append('images', images);
 
+            
+            for (let i = 0; i < images.length; i++) {
+                newItem.append('images', images[i]);
+            }
 
             const token = localStorage.getItem('auth-token');
             await axios.post(
@@ -237,6 +240,7 @@ const AddItemAdmin = () => {
                             className="form-control"
                             multiple
                             onChange={(e) => setImages(e.target.files)}
+                            accept="image/*"
                         />
                     </div>
 

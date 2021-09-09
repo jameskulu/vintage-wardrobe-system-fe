@@ -13,7 +13,6 @@ const EditUser = (props) => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
     const [address, setAddress] = useState();
     const [gender, setGender] = useState('ma');
     const [city, setCity] = useState();
@@ -28,12 +27,10 @@ const EditUser = (props) => {
                 `${process.env.REACT_APP_API_URL}/api/admin/users/${userId}`,
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            console.log(singleUserRes.data.data)
 
             setFirstName(singleUserRes.data.data.firstName);
             setLastName(singleUserRes.data.data.lastName);
             setEmail(singleUserRes.data.data.email);
-            setPassword(singleUserRes.data.data.password);
             setAddress(singleUserRes.data.data.address);
             setGender(singleUserRes.data.data.gender);
             setCity(singleUserRes.data.data.city);
@@ -46,14 +43,12 @@ const EditUser = (props) => {
 
     const onUserAdd = async (e) => {
         e.preventDefault();
-
         try {
             const updatedUser = new FormData();
             updatedUser.append('image', image);
             updatedUser.append('firstName', firstName);
             updatedUser.append('lastName', lastName);
             updatedUser.append('email', email);
-            updatedUser.append('password', password);
             updatedUser.append('gender', gender);
             updatedUser.append('address', address);
             updatedUser.append('city', city);
@@ -115,17 +110,6 @@ const EditUser = (props) => {
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="inpuTFirstname">Password</label>
-                        <input
-                            type="password"
-                            id="inpuTFirstname"
-                            className="form-control"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-
                     <div class="form-group">
                         <label for="Phone Number">Gender</label>
                         <select
@@ -174,6 +158,7 @@ const EditUser = (props) => {
                             type="file"
                             className="form-control"
                             onChange={(e) => setImage(e.target.files[0])}
+                            accept="image/*"
                         />
                     </div>
 

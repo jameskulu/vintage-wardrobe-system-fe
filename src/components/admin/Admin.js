@@ -20,7 +20,7 @@ const Admin = (props) => {
     return (
         <div>
             <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-                <Link class="navbar-brand mr-1" to="/">
+                <Link class="navbar-brand mr-1" to="/admin">
                     Admin Dashboard
                 </Link>
 
@@ -34,7 +34,7 @@ const Admin = (props) => {
 
                 {/* <!-- Navbar Search --> */}
                 <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                    <div class="input-group">
+                    {/* <div class="input-group">
                         <input
                             type="text"
                             class="form-control"
@@ -47,7 +47,10 @@ const Admin = (props) => {
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> */}
+                    <Link className="text-light ml-4" to="/">
+                        Back To Website
+                    </Link>
                 </form>
 
                 {/* <!-- Navbar --> */}

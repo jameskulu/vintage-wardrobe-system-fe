@@ -21,7 +21,6 @@ const AddUser = () => {
 
     const onUserAdd = async (e) => {
         e.preventDefault();
-
         try {
             const newUser = new FormData();
             newUser.append('image', image);
@@ -44,7 +43,7 @@ const AddUser = () => {
 
             toast.success('New user has been added.');
             setFirstName('');
-            setLastName('');
+            setLastName(''); 
             setEmail('');
             setPassword('');
 
@@ -157,6 +156,7 @@ const AddUser = () => {
                             type="file"
                             className="form-control"
                             onChange={(e) => setImage(e.target.files[0])}
+                            accept="image/*"
                         />
                     </div>
 

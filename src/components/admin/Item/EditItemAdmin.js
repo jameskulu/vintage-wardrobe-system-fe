@@ -21,6 +21,7 @@ const EditItemAdmin = (props) => {
     const [categoryId, setCategoryId] = useState();
     const [subCategoryId, setSubCategoryId] = useState();
     const [size, setSize] = useState();
+    const [images, setImages] = useState();
 
     useEffect(() => {
         const loadSingleItem = async () => {
@@ -43,14 +44,17 @@ const EditItemAdmin = (props) => {
         e.preventDefault();
 
         try {
-            const updatedItem = {
-                name,
-                description,
-                color,
-                price,
-                size,
-            };
-            console.log(updatedItem)
+            const updatedItem = new FormData();
+            updatedItem.append('name', name);
+            updatedItem.append('description', description);
+            updatedItem.append('price', parseInt(Math.abs(price)));
+            updatedItem.append('size', size);
+            updatedItem.append('color', color);
+            updatedItem.append('images', images);
+
+            for (let i = 0; i < images.length; i++) {
+                updatedItem.append('images', images[i]);
+            }
 
             const token = localStorage.getItem('auth-token');
             await axios.put(
@@ -156,6 +160,23 @@ const EditItemAdmin = (props) => {
                             <option>Large</option>
                             <option>Extra Large</option>
                         </select>
+                    </div>
+
+                    <div className="form-group">
+                        <label
+                            for="exampleFormControlFile1 "
+                            className="form-title"
+                        >
+                            Images
+                        </label>
+                        <input
+                            type="file"
+                            multiple
+                            onChange={(e) => setImages(e.target.files)}
+                            className="form-control-file"
+                            accept="image/*"
+                            // id="itemImage"
+                        />
                     </div>
 
                     <button className="btn btn-lg btn-success btn-block text-uppercase mt-4">
