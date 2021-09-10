@@ -4,19 +4,19 @@ const axios = require('axios')
 const { Builder, By, Key, until, sleep } = require('selenium-webdriver');
 const { delay } = require('../utils/constant');
 
-// Given('Test registration functionality',{timeout: 4 * 5000}, async () => {
-//     let driver = await new Builder().forBrowser('chrome').build();
-//    await driver.get('https://vintagewardrobe.herokuapp.com/signup');
-//    await driver.findElement(By.name('firstName')).sendKeys('Rijan');
-//    await driver.findElement(By.name('lastName')).sendKeys('Shrestha');
-//    await driver.findElement(By.name('email')).sendKeys('rijanxrestha@gmail.com');
-//    await driver.findElement(By.name('password')).sendKeys('Rijan123');
-//    await driver.findElement(By.name('confirmPassword')).sendKeys('Rijan123');
-//    await driver.findElement(By.id('checkbox')).click();  
-//    await driver.findElement(By.className('registerbtn')).click();
-//    await driver.sleep(delay);
-//    await driver.quit();
-// });
+Given('Test registration functionality',{timeout: 4 * 5000}, async () => {
+    let driver = await new Builder().forBrowser('chrome').build();
+   await driver.get('https://vintagewardrobe.herokuapp.com/signup');
+   await driver.findElement(By.name('firstName')).sendKeys('Rijan');
+   await driver.findElement(By.name('lastName')).sendKeys('Shrestha');
+   await driver.findElement(By.name('email')).sendKeys('rijanxrestha@gmail.com');
+   await driver.findElement(By.name('password')).sendKeys('Rijan123');
+   await driver.findElement(By.name('confirmPassword')).sendKeys('Rijan123');
+   await driver.findElement(By.id('checkbox')).click();  
+   await driver.findElement(By.className('registerbtn')).click();
+   await driver.sleep(delay);
+   await driver.quit();
+});
 
 // Given('Test login functionality',{timeout: 2 * 5000}, async () => {
   
@@ -243,7 +243,7 @@ const { delay } = require('../utils/constant');
 //   await driver.findElement(By.className('single-latest-released')).click();
 //   await driver.sleep(6000);
 //   // await driver.get('https://vintagewardrobe.herokuapp.com/items/bfda6356-24f2-48f9-93ac-5cded061d960');
-//   await driver.findElement(By.className('fa-heart')).click();
+//   await driver.findElement(By.className('hearts')).click();
 // });
 
 // Given('view and remove wishlist funtionality', {timeout: 2 * 5000},async () => {
