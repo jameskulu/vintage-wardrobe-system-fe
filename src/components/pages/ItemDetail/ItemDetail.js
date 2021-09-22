@@ -111,7 +111,7 @@ const ItemDetail = (props) => {
 
     const addToCart = () => {
 
-        if (userData.user.id === singleItem.user.id) {
+        if (userData.user && userData.user.id === singleItem.user.id) {
             return toast.error('Cannot add your own item to cart');
         }
 

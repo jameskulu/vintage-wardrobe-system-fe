@@ -34,7 +34,7 @@ const Cart = () => {
                         <div class="col-md-12 col-sm-12 cart-heading">
                             <div class="text-center">
                                 <h4 class="text-light text-center cart-title">
-                                    Add to Cart
+                                    My Cart
                                 </h4>
                             </div>
                         </div>
